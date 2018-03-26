@@ -1,5 +1,15 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {
+  IonicPage,
+  Loading,
+  LoadingController,
+  NavController,
+  NavParams,
+  AlertController
+} from 'ionic-angular';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { AuthData } from '../../providers/auth/auth';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +17,16 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    public authProvider: AuthData
+  ) {
 
   }
 
+  logoutUser(){
+    this.authProvider.logoutUser().then( () => {
+      this.navCtrl.setRoot('LoginPage');
+    });
+  }
 }
