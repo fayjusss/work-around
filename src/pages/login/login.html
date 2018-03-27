@@ -41,4 +41,9 @@
   <button ion-button block clear (click)="goToResetPassword()">
     I forgot my password
   </button>
+
+  <button ion-button block (click)="googleLogin()" *ngIf="!userProfile">
+    GOOGLE LOGIN
+  </button>
+
 </ion-content>
