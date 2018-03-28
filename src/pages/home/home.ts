@@ -29,4 +29,16 @@ export class HomePage {
       this.navCtrl.setRoot('LoginPage');
     });
   }
+
+  goToProfilePage(): void {
+    this.navCtrl.push('ProfilePage');
+  }
+
+  goToBrowseJobs(): void {
+    this.navCtrl.push('BrowseJobsPage');
+  }
+
+  goToAddJob(): void {
+    this.navCtrl.push('AddJobPage');
+  }
 }
