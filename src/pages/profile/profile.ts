@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AuthData } from '../../providers/auth/auth';
+
 
 /**
  * Generated class for the ProfilePage page.
@@ -15,12 +17,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, public authProvider: AuthData) {
   }
 
   logoutUser(){
       this.authProvider.logoutUser().then( () => {
-          this.navCtrl.setRoot('LoginPage');
+          this.app.getRootNav().setRoot('LoginPage');
       });
   }
 
