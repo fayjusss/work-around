@@ -46,4 +46,11 @@
     GOOGLE LOGIN
   </button>
 
+  <button ion-button block (click)="facebookLogin()" *ngIf="!userProfile">
+    FACEBOOK LOGIN
+  </button>
+
+  <button ion-button block (click)="twitterLogin()" *ngIf="!userProfile">
+    TWITTER LOGIN
+  </button>
 </ion-content>

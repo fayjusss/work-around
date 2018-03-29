@@ -3,7 +3,8 @@ import firebase from 'firebase';
 
 @Injectable()
 export class AuthData {
-  constructor() {
+  constructor(
+  ) {
   }
 
   loginUser(email: string, password: string){
@@ -32,11 +33,59 @@ export class AuthData {
   }
 
   googleLogin(): Promise<void> {
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const providerGoogle = new firebase.auth.GoogleAuthProvider();
 
     return firebase
     .auth()
-    .signInWithRedirect(provider)
+    .signInWithRedirect(providerGoogle)
+    .then( () => {
+      firebase
+      .auth()
+      .getRedirectResult()
+      .then( result => {
+        // This gives you a Google Access Token.
+        // You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        console.log(token, user);
+      }).catch(function(error) {
+        // Handle Errors here.
+        console.log(error.message);
+      });
+    });
+  }
+
+  facebookLogin(): Promise<any> {
+    const providerFacebook = new firebase.auth.FacebookAuthProvider();
+
+    return firebase
+    .auth()
+    .signInWithRedirect(providerFacebook)
+    .then( () => {
+      firebase
+      .auth()
+      .getRedirectResult()
+      .then( result => {
+        // This gives you a Google Access Token.
+        // You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        console.log(token, user);
+      }).catch(function(error) {
+        // Handle Errors here.
+        console.log(error.message);
+      });
+    });
+  }
+
+  twitterLogin(): Promise<any> {
+    const providerTwitter = new firebase.auth.TwitterAuthProvider();
+
+    return firebase
+    .auth()
+    .signInWithRedirect(providerTwitter)
     .then( () => {
       firebase
       .auth()
