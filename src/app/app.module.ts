@@ -14,6 +14,7 @@ import { credentials } from './config';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AuthData } from '../providers/auth/auth';
+import { JobsProvider } from '../providers/jobs/jobs';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AuthData } from '../providers/auth/auth';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthData
+    AuthData,
+    JobsProvider
   ]
 })
 export class AppModule {}
