@@ -15,7 +15,6 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs'
 import { AuthData } from '../providers/auth/auth';
-import { AddJobPage } from "../pages/add-job/add-job";
 import { BrowseJobsPage } from "../pages/browse-jobs/browse-jobs";
 import { JobsPage } from "../pages/jobs/jobs";
 import { MessengerPage } from "../pages/messenger/messenger";
@@ -30,7 +29,6 @@ import { JobsProvider } from '../providers/jobs/jobs';
 @NgModule({
   declarations: [
     MyApp,
-    AddJobPage,
     BrowseJobsPage,
     HomePage,
     JobsPage,
@@ -52,7 +50,6 @@ import { JobsProvider } from '../providers/jobs/jobs';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AddJobPage,
     BrowseJobsPage,
     HomePage,
     JobsPage,

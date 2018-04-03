@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the JobsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-jobs',
@@ -20,6 +13,10 @@ export class JobsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JobsPage');
+  }
+
+  nagivateToCreateJob() {
+    this.navCtrl.push('AddJobPage');
   }
 
 }
