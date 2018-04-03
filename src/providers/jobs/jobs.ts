@@ -31,7 +31,7 @@ export class JobsProvider {
         return this.fireStore
             .doc<Job>(`/jobs/${jobId}`)
             .set({
-                id: jobId,
+                jobId,
                 title,
                 description
             });
