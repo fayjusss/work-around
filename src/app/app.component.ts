@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
-import { HomePage } from '../pages/home/home';
+import { TabsPage } from "../pages/tabs/tabs";
 
 import { credentials } from './config';
 
@@ -28,7 +28,7 @@ export class MyApp {
         this.rootPage = 'LoginPage';
         unsubscribe();
       } else {
-        this.rootPage = HomePage;
+        this.rootPage = TabsPage;
         unsubscribe();
       }
     });
