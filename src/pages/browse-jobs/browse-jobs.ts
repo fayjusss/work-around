@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the BrowseJobsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Alert, AlertController, NavController } from 'ionic-angular';
+import { JobsProvider } from '../../providers/jobs/jobs';
+import { Job } from '../../models/job';
+import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -14,12 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'browse-jobs.html',
 })
 export class BrowseJobsPage {
+  jobList: Observable<Job[]>;
+  constructor(public navCtrl: NavController,
+              public jobProvider: JobsProvider,
+              public alertCtrl: AlertController) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BrowseJobsPage');
+    this.jobList = this.jobProvider
+        .getJobList()
+        .valueChanges();
   }
-
 }
