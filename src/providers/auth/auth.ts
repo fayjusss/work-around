@@ -32,75 +32,25 @@ export class AuthData {
     return firebase.auth().signOut();
   }
 
-  googleLogin(): Promise<void> {
-    const providerGoogle = new firebase.auth.GoogleAuthProvider();
+  socialLogin(provider): Promise<void> {
 
-    return firebase
-    .auth()
-    .signInWithRedirect(providerGoogle)
-    .then( () => {
-      firebase
-      .auth()
-      .getRedirectResult()
-      .then( result => {
-        // This gives you a Google Access Token.
-        // You can use it to access the Google API.
-        var token = result.credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        console.log(token, user);
-      }).catch(function(error) {
-        // Handle Errors here.
-        console.log(error.message);
-      });
-    });
-  }
+    switch(provider) {
+      case 'google':
+        provider = new firebase.auth.GoogleAuthProvider();
+        break;
+      case 'facebook':
+        provider = new firebase.auth.FacebookAuthProvider();
+        break;
+      case 'twitter':
+        provider = new firebase.auth.TwitterAuthProvider();
+    }
 
-  facebookLogin(): Promise<any> {
-    const providerFacebook = new firebase.auth.FacebookAuthProvider();
-
-    return firebase
-    .auth()
-    .signInWithRedirect(providerFacebook)
-    .then( () => {
-      firebase
-      .auth()
-      .getRedirectResult()
-      .then( result => {
-        // This gives you a Google Access Token.
-        // You can use it to access the Google API.
-        var token = result.credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        console.log(token, user);
-      }).catch(function(error) {
-        // Handle Errors here.
-        console.log(error.message);
-      });
-    });
-  }
-
-  twitterLogin(): Promise<any> {
-    const providerTwitter = new firebase.auth.TwitterAuthProvider();
-
-    return firebase
-    .auth()
-    .signInWithRedirect(providerTwitter)
-    .then( () => {
-      firebase
-      .auth()
-      .getRedirectResult()
-      .then( result => {
-        // This gives you a Google Access Token.
-        // You can use it to access the Google API.
-        var token = result.credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        console.log(token, user);
-      }).catch(function(error) {
-        // Handle Errors here.
-        console.log(error.message);
-      });
+    // Sign in using a popup.
+    return firebase.auth().signInWithPopup(provider).then(function(result) {
+      // This gives you a Facebook Access Token.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
     });
   }
 }
