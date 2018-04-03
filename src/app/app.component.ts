@@ -31,7 +31,6 @@ export class MyApp {
         this.rootPage = HomePage;
         unsubscribe();
       }
-      console.log(user);
     });
   }
 }
