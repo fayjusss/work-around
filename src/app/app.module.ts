@@ -26,7 +26,7 @@ import { AuthData } from '../providers/auth/auth';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthData
+    AuthData,
   ]
 })
 export class AppModule {}
