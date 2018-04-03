@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import {
   IonicPage,
@@ -13,10 +14,10 @@ import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
-  selector: 'page-profile',
-  templateUrl: 'profile.html'
+  selector: 'page-edit-profile',
+  templateUrl: 'edit-profile.html'
 })
-export class ProfilePage {
+export class EditProfilePage {
 
   constructor(
     public navCtrl: NavController,
