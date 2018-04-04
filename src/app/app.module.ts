@@ -21,9 +21,6 @@ import { MessengerPage } from "../pages/messenger/messenger";
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { ProfilePage } from "../pages/profile/profile";
 
-import { ResetPasswordPage } from "../pages/reset-password/reset-password";
-import { SignupPage } from "../pages/signup/signup";
-
 import { JobsProvider } from '../providers/jobs/jobs';
 
 
@@ -36,8 +33,6 @@ import { JobsProvider } from '../providers/jobs/jobs';
     MessengerPage,
     NotificationsPage,
     ProfilePage,
-    ResetPasswordPage,
-    SignupPage,
     TabsPage,
 
   ],
@@ -58,10 +53,7 @@ import { JobsProvider } from '../providers/jobs/jobs';
     MessengerPage,
     NotificationsPage,
     ProfilePage,
-    ResetPasswordPage,
-    SignupPage,
     TabsPage,
-
   ],
   providers: [
     StatusBar,
