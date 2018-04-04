@@ -85,7 +85,7 @@ export class LoginPage {
     this.authProvider.socialLogin(provider)
     .then( authData => {
       this.loading.dismiss().then( () => {
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(TabsPage);
       });
     }, error => {
       this.loading.dismiss().then( () => {
