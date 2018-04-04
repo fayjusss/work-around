@@ -5,22 +5,22 @@ import { AngularFireDatabase} from 'angularfire2/database';
 import { AngularFireAuth } from "angularfire2/auth";
 import firebase from 'firebase';
 
-/**
- * Generated class for the ProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-profile',
-  templateUrl: 'profile.html',
+  templateUrl: 'profile.html'
 })
 export class ProfilePage {
+
+
   public myPerson = {};
-  constructor(private afAuth: AngularFireAuth,
-    private afDatabase: AngularFireDatabase,public app: App, public navCtrl: NavController, public navParams: NavParams, public authProvider: AuthData) {
+  constructor(
+    private afAuth: AngularFireAuth,
+    private afDatabase: AngularFireDatabase,
+    public app: App, 
+    public navCtrl: NavController,
+    public navParams: NavParams, 
+    public authProvider: AuthData) {
   }
 
   ionViewDidLoad() {
@@ -43,6 +43,4 @@ export class ProfilePage {
   updateprofile(): void {
     this.navCtrl.push('ProfileupdatePage');
   }
-
-
 }

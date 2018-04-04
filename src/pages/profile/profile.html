@@ -14,11 +14,25 @@
 
 
 <ion-content padding>
-  <p>Name: {{ myPerson?.name}}</p>
-  <p>Age: {{ myPerson?.age }}</p>
-  <p>Name: {{ myPerson?.location }}</p>
+  <ion-item>
+    <ion-thumbnail item-start>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
+    </ion-thumbnail>
+    <button ion-button (click)="updateprofile()">Edit Profile</button>
+  </ion-item>
 
-  <button ion-button block (click)="updateprofile()">Update profile</button>
+  <ion-item>
+    <h2>{{ myPerson?.name}}</h2>
+  </ion-item>
+
+  <ion-item>
+    <h2>{{ myPerson?.age }}</h2>
+  </ion-item>
+
+  <ion-item>
+    <h2>{{ myPerson?.location }}</h2>
+  </ion-item>
+
   <button ion-button block type="button" (click)="logoutUser()">
     Log out
   </button>
