@@ -1,0 +1,35 @@
+<!--
+  Generated template for the ProfileupdatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>profileupdate</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+   <ion-item>
+     <ion-label fixed>Name</ion-label>
+     <ion-input type="text" [(ngModel)]="name"></ion-input>
+   </ion-item>
+
+   <ion-item>
+     <ion-label fixed>Age</ion-label>
+     <ion-input type="text" [(ngModel)]="age"></ion-input>
+   </ion-item>
+
+   <ion-item>
+     <ion-label fixed>Location</ion-label>
+     <ion-input type="text" [(ngModel)]="location"></ion-input>
+   </ion-item>
+  </ion-list>
+
+  <button ion-button (click)="createProfile(name,age,location)">Update profile</button>
+</ion-content>
