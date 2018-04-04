@@ -20,6 +20,7 @@ import { JobsPage } from "../pages/jobs/jobs";
 import { MessengerPage } from "../pages/messenger/messenger";
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { ProfilePage } from "../pages/profile/profile";
+
 import { ResetPasswordPage } from "../pages/reset-password/reset-password";
 import { SignupPage } from "../pages/signup/signup";
 
@@ -38,6 +39,7 @@ import { JobsProvider } from '../providers/jobs/jobs';
     ResetPasswordPage,
     SignupPage,
     TabsPage,
+
   ],
   imports: [
     BrowserModule,
@@ -59,6 +61,7 @@ import { JobsProvider } from '../providers/jobs/jobs';
     ResetPasswordPage,
     SignupPage,
     TabsPage,
+
   ],
   providers: [
     StatusBar,

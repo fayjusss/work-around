@@ -14,6 +14,11 @@
 
 
 <ion-content padding>
+  <p>Name: {{ myPerson?.name}}</p>
+  <p>Age: {{ myPerson?.age }}</p>
+  <p>Name: {{ myPerson?.location }}</p>
+
+  <button ion-button block (click)="updateprofile()">Update profile</button>
   <button ion-button block type="button" (click)="logoutUser()">
     Log out
   </button>
