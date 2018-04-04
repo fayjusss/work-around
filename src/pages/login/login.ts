@@ -11,6 +11,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { EmailValidator } from '../../validators/email';
 import { AuthData } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
+import { TabsPage } from "../tabs/tabs";
 
 /**
  * Generated class for the LoginPage page.
@@ -33,7 +34,7 @@ export class LoginPage {
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public authProvider: AuthData,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
   ) {
       this.loginForm = formBuilder.group({
         email: ['',
@@ -51,7 +52,7 @@ export class LoginPage {
         this.loginForm.value.password)
       .then( authData => {
         this.loading.dismiss().then( () => {
-          this.navCtrl.setRoot(HomePage);
+          this.navCtrl.setRoot(TabsPage);
         });
       }, error => {
         this.loading.dismiss().then( () => {
@@ -80,11 +81,11 @@ export class LoginPage {
     this.navCtrl.push('ResetPasswordPage');
   }
 
-  googleLogin():void {
-    this.authProvider.googleLogin()
+  socialLogin(provider: string):void {
+    this.authProvider.socialLogin(provider)
     .then( authData => {
       this.loading.dismiss().then( () => {
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(TabsPage);
       });
     }, error => {
       this.loading.dismiss().then( () => {
@@ -100,6 +101,8 @@ export class LoginPage {
         alert.present();
       });
     });
+    this.loading = this.loadingCtrl.create();
+    this.loading.present();
   }
 
   ionViewDidLoad() {

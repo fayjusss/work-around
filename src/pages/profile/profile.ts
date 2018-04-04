@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
-import {
-  IonicPage,
-  Loading,
-  LoadingController,
-  NavController,
-  NavParams,
-  AlertController
-} from 'ionic-angular';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthData } from '../../providers/auth/auth';
-import { LoginPage } from '../login/login';
+import { AngularFireDatabase} from 'angularfire2/database';
+import { AngularFireAuth } from "angularfire2/auth";
+import firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -18,32 +12,35 @@ import { LoginPage } from '../login/login';
 })
 export class ProfilePage {
 
+
+  public myPerson = {};
   constructor(
+    private afAuth: AngularFireAuth,
+    private afDatabase: AngularFireDatabase,
+    public app: App, 
     public navCtrl: NavController,
-    public authProvider: AuthData
-  ) {
+    public navParams: NavParams, 
+    public authProvider: AuthData) {
+  }
+
+  ionViewDidLoad() {
+    this.afAuth.authState.take(1).subscribe(auth =>{
+      const personRef: firebase.database.Reference = firebase.database().ref(`/profile2/${auth.uid}`);
+      personRef.on('value', personSnapshot => {
+        this.myPerson = personSnapshot.val();
+      });
+    })
 
   }
 
   logoutUser(){
-    this.authProvider.logoutUser().then( () => {
-      this.navCtrl.setRoot('LoginPage');
-    });
+      this.authProvider.logoutUser().then( () => {
+          this.app.getRootNav().setRoot('LoginPage');
+      });
   }
 
-  goToProfilePage(): void {
-    this.navCtrl.push('ProfilePage');
-  }
 
-  goToBrowseJobs(): void {
-    this.navCtrl.push('BrowseJobsPage');
-  }
-
-  goToAddJob(): void {
-    this.navCtrl.push('AddJobPage');
-  }
-
- goToEditProfile(): void {
-    this.navCtrl.push('EditProfilePage');
+  updateprofile(): void {
+    this.navCtrl.push('ProfileupdatePage');
   }
 }

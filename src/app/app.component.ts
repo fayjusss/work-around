@@ -3,7 +3,9 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
-import { HomePage } from '../pages/home/home';
+import { TabsPage } from "../pages/tabs/tabs";
+
+import { credentials } from './config';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,24 +21,16 @@ export class MyApp {
       splashScreen.hide();
     });
 
-    firebase.initializeApp({
-      apiKey: "AIzaSyCES0a3oJ36DR4aqC_kspkM_gyXwJbzZms",
-      authDomain: "workaround-84153.firebaseapp.com",
-      databaseURL: "https://workaround-84153.firebaseio.com",
-      projectId: "workaround-84153",
-      storageBucket: "workaround-84153.appspot.com",
-      messagingSenderId: "369826061404"
-    });
+    firebase.initializeApp(credentials.firebase);
 
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
       if (!user) {
         this.rootPage = 'LoginPage';
         unsubscribe();
       } else {
-        this.rootPage = HomePage;
+        this.rootPage = TabsPage;
         unsubscribe();
       }
-      console.log(user);
     });
   }
 }

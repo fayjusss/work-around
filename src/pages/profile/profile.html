@@ -22,16 +22,20 @@
     </ion-item>
 
     <ion-item>
-      <h2>Name</h2>
+      <h2>{{ myPerson?.name}}</h2>
     </ion-item>
 
     <ion-item>
-      <h2>Email</h2>
+      <h2>{{ myPerson?.age }}</h2>
     </ion-item>
     
     <ion-item>
-      <h2>Bio</h2>
+      <h2>{{ myPerson?.location }}</h2>
     </ion-item>
-    
+
+  <button ion-button block (click)="updateprofile()">Update profile</button>
+  <button ion-button block type="button" (click)="logoutUser()">
+    Log out
+  </button>
 </ion-content>
 
