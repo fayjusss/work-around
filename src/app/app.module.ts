@@ -16,7 +16,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs'
 import { AuthData } from '../providers/auth/auth';
 import { BrowseJobsPage } from "../pages/browse-jobs/browse-jobs";
-import { JobsPage } from "../pages/jobs/jobs";
+import { MyJobsPage } from "../pages/my-jobs/my-jobs";
 import { MessengerPage } from "../pages/messenger/messenger";
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { ProfilePage } from "../pages/profile/profile";
@@ -29,7 +29,7 @@ import { JobsProvider } from '../providers/jobs/jobs';
     MyApp,
     BrowseJobsPage,
     HomePage,
-    JobsPage,
+    MyJobsPage,
     MessengerPage,
     NotificationsPage,
     ProfilePage,
@@ -49,7 +49,7 @@ import { JobsProvider } from '../providers/jobs/jobs';
     MyApp,
     BrowseJobsPage,
     HomePage,
-    JobsPage,
+    MyJobsPage,
     MessengerPage,
     NotificationsPage,
     ProfilePage,
