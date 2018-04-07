@@ -27,6 +27,9 @@ export class AuthData {
       userDocument.set({
           id: newUser.uid,
           email: email,
+          name: null,
+          age: null,
+          location: null
       });
     });
   }

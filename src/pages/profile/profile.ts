@@ -4,7 +4,6 @@ import { AuthData } from '../../providers/auth/auth';
 import { AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import { AngularFireAuth } from "angularfire2/auth";
 import firebase from 'firebase';
-import { User } from '../../models/user';
 import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
@@ -13,8 +12,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'profile.html'
 })
 export class ProfilePage {
-  userProfile: Observable<User>;
-  userProfileRef: AngularFirestoreCollection<User>;
+  userProfile: Observable<any>;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -22,16 +20,13 @@ export class ProfilePage {
     public app: App,
     public navCtrl: NavController,
     public authProvider: AuthData) {
-
-
-
-
   }
 
   ionViewDidLoad() {
     this.afAuth.authState.take(1).subscribe(auth => {
-        this.userProfileRef = this.afs.collection('users',ref => ref.where('id', '==', auth.uid));
-        this.userProfile = this.userProfileRef.valueChanges();
+        this.userProfile = this.afs.collection
+            ('users', ref => ref.where('id', '==', auth.uid))
+            .valueChanges();
         console.log(this.userProfile);
     })
   }
