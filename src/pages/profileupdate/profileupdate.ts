@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController} from 'ionic-angular';
-import { AngularFirestore} from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
 import { AngularFireAuth } from "angularfire2/auth";
 import { User } from '../../models/user';
 import { Observable } from 'rxjs/Observable';
