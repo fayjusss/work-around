@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, IonicPage, NavController} from 'ionic-angular';
 import { AuthData } from '../../providers/auth/auth';
-import { AngularFireDatabase} from 'angularfire2/database';
+import { AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import { AngularFireAuth } from "angularfire2/auth";
 import firebase from 'firebase';
+import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -11,26 +12,23 @@ import firebase from 'firebase';
   templateUrl: 'profile.html'
 })
 export class ProfilePage {
+  userProfile: Observable<any>;
 
-
-  public myPerson = {};
   constructor(
     private afAuth: AngularFireAuth,
-    private afDatabase: AngularFireDatabase,
-    public app: App, 
+    public afs: AngularFirestore,
+    public app: App,
     public navCtrl: NavController,
-    public navParams: NavParams, 
     public authProvider: AuthData) {
   }
 
   ionViewDidLoad() {
-    this.afAuth.authState.take(1).subscribe(auth =>{
-      const personRef: firebase.database.Reference = firebase.database().ref(`/profile2/${auth.uid}`);
-      personRef.on('value', personSnapshot => {
-        this.myPerson = personSnapshot.val();
-      });
+    this.afAuth.authState.take(1).subscribe(auth => {
+        this.userProfile = this.afs.collection
+            ('users', ref => ref.where('id', '==', auth.uid))
+            .valueChanges();
+        console.log(this.userProfile);
     })
-
   }
 
   logoutUser(){
@@ -43,4 +41,5 @@ export class ProfilePage {
   updateprofile(): void {
     this.navCtrl.push('ProfileupdatePage');
   }
+
 }
