@@ -19,7 +19,9 @@ import firebase from 'firebase';
 export class ProfileupdatePage {
   public myPerson = {};
   constructor(private afAuth: AngularFireAuth,
-    private afDatabase: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams) {
+              private afDatabase: AngularFireDatabase,
+              public navCtrl: NavController,
+              public navParams: NavParams) {
   }
 
   createProfile(name: string, age: number, location: string){
