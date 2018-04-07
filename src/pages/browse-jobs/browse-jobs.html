@@ -12,7 +12,7 @@
     <ion-list-header>
       Job List
     </ion-list-header>
-    <ion-item *ngFor="let job of jobList | async">
+    <ion-item *ngFor="let job of jobList | async" (click)="presentViewJobModal(job)">
       <h2>
         {{ job.title }}
       </h2>
