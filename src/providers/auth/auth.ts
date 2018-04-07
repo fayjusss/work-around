@@ -24,12 +24,6 @@ export class AuthData {
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then( newUser => {
-      firebase
-      .database()
-      .ref('/userProfile')
-      .child(newUser.uid)
-      .set({ email: email });
-
       const userDocument: AngularFirestoreDocument<user> = this.fireStore.doc(`users/${newUser.uid}`);
       userDocument.set({
           id: newUser.uid,
