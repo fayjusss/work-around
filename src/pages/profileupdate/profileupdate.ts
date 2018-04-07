@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireDatabase} from 'angularfire2/database';
+import { IonicPage, NavController} from 'ionic-angular';
+import { AngularFirestore} from 'angularfire2/firestore';
 import { AngularFireAuth } from "angularfire2/auth";
-import firebase from 'firebase';
-
-/**
- * Generated class for the ProfileupdatePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { User } from '../../models/user';
+import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -17,26 +11,31 @@ import firebase from 'firebase';
   templateUrl: 'profileupdate.html',
 })
 export class ProfileupdatePage {
-  public myPerson = {};
-  constructor(private afAuth: AngularFireAuth,
-              private afDatabase: AngularFireDatabase,
-              public navCtrl: NavController,
-              public navParams: NavParams) {
+  private userDocument: AngularFirestoreDocument<User>;
+  user: Observable<User>;
+  constructor(public afAuth: AngularFireAuth,
+              public afs: AngularFirestore,
+              public navCtrl: NavController) {
   }
 
   createProfile(name: string, age: number, location: string){
+
     this.afAuth.authState.take(1).subscribe(auth =>{
-      const personRef: firebase.database.Reference = firebase.database().ref(`/profile2/${auth.uid}`);
-      personRef.set({
-      name,
-      age,
-      location
-    })
-  })
-  this.navCtrl.pop();
-};
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfileupdatePage');
+        this.userDocument = this.afs.doc<User>(`users/${auth.uid}`);
+        // const personRef: firebase.database.Reference = firebase.database().ref(`/profile2/${auth.uid}`);
+        // personRef.set({
+        //   name,
+        //   age,
+        //   location
+        // })
+        this.userDocument.update({
+          name: name,
+          age: age,
+          location: location
+        })
+      })
+
+      this.navCtrl.pop();
   }
 
 }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
     AngularFirestore,
-    AngularFirestoreCollection,
     AngularFirestoreDocument,
 } from 'angularfire2/firestore';
 import firebase from 'firebase';
@@ -24,7 +23,7 @@ export class AuthData {
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then( newUser => {
-      const userDocument: AngularFirestoreDocument<user> = this.fireStore.doc(`users/${newUser.uid}`);
+      const userDocument: AngularFirestoreDocument<User> = this.fireStore.doc(`users/${newUser.uid}`);
       userDocument.set({
           id: newUser.uid,
           email: email,
