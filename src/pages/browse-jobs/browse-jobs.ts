@@ -21,14 +21,9 @@ export class BrowseJobsPage {
   }
 
   formatDate(givenDate : string): string {
-    if (givenDate) {
       return moment(givenDate).fromNow();
-    } else {
-      return "Not specified";
-    }
   }
 
   ionViewDidLoad() {
-    console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
   }
 }
