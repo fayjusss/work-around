@@ -16,6 +16,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs'
 import { AuthData } from '../providers/auth/auth';
 import { BrowseJobsPage } from "../pages/browse-jobs/browse-jobs";
+import {BiddingPage} from "../pages/bidding/bidding";
 import { MyJobsPage } from "../pages/my-jobs/my-jobs";
 import {ViewJobPage} from "../pages/view-job/view-job";
 import { MessengerPage } from "../pages/messenger/messenger";
@@ -30,6 +31,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
   declarations: [
     MyApp,
     BrowseJobsPage,
+    BiddingPage,
     HomePage,
     MyJobsPage,
     ViewJobPage,
@@ -52,6 +54,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
   entryComponents: [
     MyApp,
     BrowseJobsPage,
+    BiddingPage,
     HomePage,
     MyJobsPage,
     ViewJobPage,
