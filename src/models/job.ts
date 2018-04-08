@@ -4,5 +4,6 @@ export interface Job {
     title: string;
     description: string;
     money: number;
-    startingDate: string;
+    startDate: string;
+    endDate: string;
 }

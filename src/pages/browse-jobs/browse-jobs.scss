@@ -1,3 +1,19 @@
 page-browse-jobs {
-
+  .description {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  .description {
+    margin-top: 8px;
+    color: Black ;
+  }
+  .job-attributes h6 {
+    display: inline;
+    font-size: 12px;
+  }
+  .money {
+    color: green;
+  }
 }

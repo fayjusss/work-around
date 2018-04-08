@@ -14,6 +14,7 @@
         <ion-option value="code">Programming</ion-option>
         <ion-option value="brush">Art</ion-option>
         <ion-option value="musical-notes">Music</ion-option>
+        <ion-option value="medical">Other</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -29,8 +30,12 @@
       <ion-input formControlName="money" type="text" placeholder="Approximate reward in euros"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Date</ion-label>
-      <ion-datetime formControlName="startingDate" displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY"></ion-datetime>
+      <ion-label>Start Date</ion-label>
+      <ion-datetime formControlName="startDate" displayFormat="DD/MM/YYYY"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>End Date</ion-label>
+      <ion-datetime formControlName="endDate" displayFormat="DD/MM/YYYY"></ion-datetime>
     </ion-item>
     <ion-item class="error-message" *ngIf="!addJobForm.controls.title.valid
       && addJobForm.controls.title.touched">

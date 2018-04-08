@@ -29,8 +29,9 @@ export class AddJobPage {
           type: ['', Validators.compose([Validators.required])],
           title: ['', Validators.compose([Validators.required])],
           description: ['', Validators.compose([Validators.required])],
-          money: ['', Validators.compose([Validators.required])],
-          startingDate: ['']
+          money: ['5', Validators.compose([Validators.required])],
+          startDate: [''],
+          endDate: ['']
       });
   }
 
@@ -51,9 +52,10 @@ export class AddJobPage {
           const title: string = this.addJobForm.value.title;
           const description: string = this.addJobForm.value.description;
           const money: number = Number(this.addJobForm.value.money);
-          const startingDate: string = this.addJobForm.value.startingDate;
+          const startDate: string = this.addJobForm.value.startDate;
+          const endDate: string = this.addJobForm.value.endDate;
 
-          console.log(startingDate);
+          console.log(startDate);
 
           try {
               // Here we'll talk to the provider
@@ -62,7 +64,8 @@ export class AddJobPage {
                   title,
                   description,
                   money,
-                  startingDate
+                  startDate,
+                  endDate
               );
               await loading.dismiss();
               this.navCtrl.pop();
