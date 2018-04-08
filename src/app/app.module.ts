@@ -17,12 +17,14 @@ import { TabsPage } from '../pages/tabs/tabs'
 import { AuthData } from '../providers/auth/auth';
 import { BrowseJobsPage } from "../pages/browse-jobs/browse-jobs";
 import { MyJobsPage } from "../pages/my-jobs/my-jobs";
+import {ViewJobPage} from "../pages/view-job/view-job";
 import { MessengerPage } from "../pages/messenger/messenger";
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { ProfilePage } from "../pages/profile/profile";
 
 import { JobsProvider } from '../providers/jobs/jobs';
 
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { JobsProvider } from '../providers/jobs/jobs';
     BrowseJobsPage,
     HomePage,
     MyJobsPage,
+    ViewJobPage,
     MessengerPage,
     NotificationsPage,
     ProfilePage,
@@ -42,7 +45,8 @@ import { JobsProvider } from '../providers/jobs/jobs';
     AngularFireModule.initializeApp(credentials.firebase),
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -50,6 +54,7 @@ import { JobsProvider } from '../providers/jobs/jobs';
     BrowseJobsPage,
     HomePage,
     MyJobsPage,
+    ViewJobPage,
     MessengerPage,
     NotificationsPage,
     ProfilePage,

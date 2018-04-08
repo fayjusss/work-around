@@ -23,7 +23,7 @@ export class BrowseJobsPage {
         .getJobList()
         .valueChanges();
   }
-    
+
   presentViewJobModal(job) {
       let viewJobModal = this.modalCtrl.create(ViewJobPage, job);
       viewJobModal.present();

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ViewController, NavParams } from 'ionic-angular';
+import {Job} from "../../models/job";
 
 /**
  * Generated class for the ViewJobPage page.
@@ -14,12 +15,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'view-job.html',
 })
 export class ViewJobPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  jobDetails: Job;
+  rate: number;
+  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ViewJobPage');
+    this.jobDetails = this.navParams.data;
+    console.log(this.jobDetails);
+    this.rate = 5;
+  }
+
+  closeModal() {
+    this.viewCtrl.dismiss();
+  }
+
+  onStarModelChange(event) {
+    console.log(event);
   }
 
 }
