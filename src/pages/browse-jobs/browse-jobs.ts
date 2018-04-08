@@ -3,6 +3,7 @@ import { Alert, AlertController, NavController } from 'ionic-angular';
 import { JobsProvider } from '../../providers/jobs/jobs';
 import { Job } from '../../models/job';
 import { Observable } from 'rxjs/Observable';
+import moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -14,12 +15,20 @@ export class BrowseJobsPage {
   constructor(public navCtrl: NavController,
               public jobProvider: JobsProvider,
               public alertCtrl: AlertController) {
+    this.jobList = this.jobProvider
+      .getJobList()
+      .valueChanges();
+  }
 
+  formatDate(givenDate : string): string {
+    if (givenDate) {
+      return moment(givenDate).fromNow();
+    } else {
+      return "Not specified";
+    }
   }
 
   ionViewDidLoad() {
-    this.jobList = this.jobProvider
-        .getJobList()
-        .valueChanges();
+    console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
   }
 }
