@@ -7,12 +7,35 @@
 <ion-content padding>
   <form [formGroup]="addJobForm" (submit)="addJob()" novalidate>
     <ion-item>
+      <ion-label>Job type</ion-label>
+      <ion-select formControlName="type">
+        <ion-option value="build"><ion-icon name="build"></ion-icon>Repair, fix and physical work</ion-option>
+        <ion-option value="game-controller-b">Game related offer</ion-option>
+        <ion-option value="code">Programming</ion-option>
+        <ion-option value="brush">Art</ion-option>
+        <ion-option value="musical-notes">Music</ion-option>
+        <ion-option value="medical">Other</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
       <ion-label>Name</ion-label>
       <ion-input formControlName="title" type="text" placeholder="Add Title"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Description</ion-label>
       <ion-input formControlName="description" type="text" placeholder="Add Description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Money</ion-label>
+      <ion-input formControlName="money" type="text" placeholder="Approximate reward in euros"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Start Date</ion-label>
+      <ion-datetime formControlName="startDate" displayFormat="DD/MM/YYYY"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>End Date</ion-label>
+      <ion-datetime formControlName="endDate" displayFormat="DD/MM/YYYY"></ion-datetime>
     </ion-item>
     <ion-item class="error-message" *ngIf="!addJobForm.controls.title.valid
       && addJobForm.controls.title.touched">

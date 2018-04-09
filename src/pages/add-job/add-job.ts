@@ -26,8 +26,12 @@ export class AddJobPage {
               public jobsProvider: JobsProvider,
               formBuilder: FormBuilder) {
       this.addJobForm = formBuilder.group({
+          type: ['', Validators.compose([Validators.required])],
           title: ['', Validators.compose([Validators.required])],
           description: ['', Validators.compose([Validators.required])],
+          money: ['5', Validators.compose([Validators.required])],
+          startDate: [''],
+          endDate: ['']
       });
   }
 
@@ -44,14 +48,24 @@ export class AddJobPage {
           loading = this.loadingCtrl.create();
           loading.present();
 
+          const type: string = this.addJobForm.value.type;
           const title: string = this.addJobForm.value.title;
           const description: string = this.addJobForm.value.description;
+          const money: number = Number(this.addJobForm.value.money);
+          const startDate: string = this.addJobForm.value.startDate;
+          const endDate: string = this.addJobForm.value.endDate;
+
+          console.log(startDate);
 
           try {
               // Here we'll talk to the provider
               await this.jobsProvider.createJob(
+                  type,
                   title,
                   description,
+                  money,
+                  startDate,
+                  endDate
               );
               await loading.dismiss();
               this.navCtrl.pop();
