@@ -5,7 +5,6 @@ import {
     AngularFirestoreCollection,
     AngularFirestoreDocument,
 } from 'angularfire2/firestore';
-import * as firebase from 'firebase/app';
 import { Job } from '../../models/job';
 import { DocumentReference } from '@firebase/firestore-types';
 
@@ -27,11 +26,13 @@ export class JobsProvider {
         description: string,
     ): Promise<void> {
         const jobId: string = this.fireStore.createId();
+        const providerId: string = this.userId;
 
         return this.fireStore
             .doc<Job>(`/jobs/${jobId}`)
             .set({
                 jobId,
+                providerId,
                 title,
                 description
             });

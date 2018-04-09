@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Alert, AlertController, NavController } from 'ionic-angular';
+import { ModalController, NavController } from 'ionic-angular';
 import { JobsProvider } from '../../providers/jobs/jobs';
 import { Job } from '../../models/job';
 import { Observable } from 'rxjs/Observable';
+import {ViewJobPage} from "../view-job/view-job";
 
 @IonicPage()
 @Component({
@@ -13,7 +14,7 @@ export class BrowseJobsPage {
   jobList: Observable<Job[]>;
   constructor(public navCtrl: NavController,
               public jobProvider: JobsProvider,
-              public alertCtrl: AlertController) {
+              public modalCtrl: ModalController) {
 
   }
 
@@ -21,5 +22,10 @@ export class BrowseJobsPage {
     this.jobList = this.jobProvider
         .getJobList()
         .valueChanges();
+  }
+
+  presentViewJobModal(job) {
+      let viewJobModal = this.modalCtrl.create(ViewJobPage, job);
+      viewJobModal.present();
   }
 }
