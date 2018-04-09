@@ -48,7 +48,7 @@ export class JobsProvider {
     getJobList(title : string): AngularFirestoreCollection<Job> {
         return this.fireStore.collection<Job>(
             `/jobs`, // This creates the reference
-            ref => { }ref.orderBy('title') // This is the query
+            ref => ref.orderBy('title') // This is the query
         );
     }
 }

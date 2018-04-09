@@ -14,6 +14,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/combineLatest';
+import firebase from 'firebase';
 
 
 @IonicPage()
@@ -22,7 +23,7 @@ import 'rxjs/add/observable/combineLatest';
   templateUrl: 'browse-jobs.html',
 })
 export class BrowseJobsPage {
-  jobList: Observable<Job[]>;
+  jobList: Observable<any[]>;
   title: BehaviorSubject<string|null>;
   constructor(public navCtrl: NavController,
               public jobProvider: JobsProvider,
@@ -42,7 +43,7 @@ export class BrowseJobsPage {
      );
   }
 
-  filterTitle(input: string|null) {
+  filterTitle(input: any) {
     this.title.next(input.srcElement.value);
   }
 
@@ -51,7 +52,6 @@ export class BrowseJobsPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.jobList);
   }
 
   presentViewJobModal(job) {
