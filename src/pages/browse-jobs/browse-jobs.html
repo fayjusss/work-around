@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content padding-horizontal>
+  <ion-searchbar (ionInput)="filterTitle($event)"></ion-searchbar>
   <ion-list margin-bottom>
     <button text-wrap ion-item *ngFor="let job of jobList | async" (click)="presentViewJobModal(job)">
       <div class="job-head" margin-bottom>
