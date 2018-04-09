@@ -1,6 +1,8 @@
 export interface Bid {
-    id: string;
+    bidId: string;
     jobId: string;
-    title: string;
-    description: string;
+    seekerId: string;
+    time: string;
+    payRequest: string;
+    bidProposal: string;
 }
