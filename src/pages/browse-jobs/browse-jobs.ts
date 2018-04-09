@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController } from 'ionic-angular';
+import { ModalController, NavController, AlertController } from 'ionic-angular';
 import { JobsProvider } from '../../providers/jobs/jobs';
 import { Job } from '../../models/job';
 import { Observable } from 'rxjs/Observable';
