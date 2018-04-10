@@ -37,7 +37,19 @@ export class BrowseJobsPage {
    ).switchMap(([title]) =>
        this.fireStore.collection('/jobs', ref => {
          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-         if (title) { query = query.where('title', '==', title) };
+
+         if (title != null && title != "") {
+           var strSearch : string = title;
+           var strlength : number = strSearch.length;
+           var strFrontCode = strSearch.slice(0, strlength-1);
+           var strEndCode = strSearch.slice(strlength-1, strSearch.length);
+
+           var startcode = strSearch;
+           var endcode= strFrontCode + String.fromCharCode(strEndCode.charCodeAt(0) + 1);
+
+           query = query.where('title', '>=', startcode).where('title', '<', endcode);
+         }
+
          return query;
        }).valueChanges()
      );
