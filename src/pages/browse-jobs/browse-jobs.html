@@ -29,24 +29,27 @@
     <ion-input (ionChange)="filterMoney($event, 2)" type="number" placeholder="EUR"></ion-input>
   </ion-item>
   <ion-list margin-bottom>
-    <button text-wrap ion-item *ngFor="let job of jobList | async" (click)="presentViewJobModal(job)">
-      <div class="job-head" margin-bottom>
-        <h2> {{ job.title }} </h2>
-        <p class="description"> {{ job.description }} </p>
-      </div>
-      <div class="job-attributes">
-        <h4 class="money" *ngIf="job.money; else noMoney"> {{ job.money }} &euro; </h4>
-          <ng-template #noMoney><h4 ion-text color="light">Reward is not specified</h4></ng-template>
-        <ion-icon color="" float-right [name]="job.type"></ion-icon>
-        <h6 item-left> Starting date:
-          <span *ngIf="job.startDate; else noStartDate">{{ formatDate(job.startDate) }}</span>
-          <ng-template #noStartDate><span ion-text color="light">Not specified</span></ng-template>
-        </h6>
-        <h6 item-left> Ending date:
-          <span *ngIf="job.endDate; else noEndDate">{{ formatDate(job.endDate) }}</span>
-            <ng-template #noEndDate><span ion-text color="light">Not specified</span></ng-template>
-        </h6>
-      </div>
-    </button>
+    <div *ngFor="let job of jobList | async">
+      <!-- {{ checkMaxMoney(job.money) }} -->
+      <button text-wrap ion-item  (click)="presentViewJobModal(job)" *ngIf="job.money >= minMoney && job.money <= maxMoney">
+        <div class="job-head" margin-bottom>
+          <h2> {{ job.title }} </h2>
+          <p class="description"> {{ job.description }} </p>
+        </div>
+        <div class="job-attributes">
+          <h4 class="money" *ngIf="job.money; else noMoney"> {{ job.money }} &euro; </h4>
+            <ng-template #noMoney><h4 ion-text color="light">Reward is not specified</h4></ng-template>
+          <ion-icon color="" float-right [name]="job.type"></ion-icon>
+          <h6 item-left> Starting date:
+            <span *ngIf="job.startDate; else noStartDate">{{ formatDate(job.startDate) }}</span>
+            <ng-template #noStartDate><span ion-text color="light">Not specified</span></ng-template>
+          </h6>
+          <h6 item-left> Ending date:
+            <span *ngIf="job.endDate; else noEndDate">{{ formatDate(job.endDate) }}</span>
+              <ng-template #noEndDate><span ion-text color="light">Not specified</span></ng-template>
+          </h6>
+        </div>
+      </button>
+    </div>
   </ion-list>
 </ion-content>

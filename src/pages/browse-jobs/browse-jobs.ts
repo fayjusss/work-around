@@ -26,8 +26,8 @@ export class BrowseJobsPage {
   jobList: Observable<any[]>;
   jobTitle: BehaviorSubject<string|null>;
   jobType: BehaviorSubject<string|null>;
-  // minMoney: BehaviorSubject<string|null>;
-  // maxMoney: BehaviorSubject<string|null>;
+  minMoney: number;
+  maxMoney: number;
 
   constructor(public navCtrl: NavController,
               public jobProvider: JobsProvider,
@@ -36,15 +36,13 @@ export class BrowseJobsPage {
               public fireStore: AngularFirestore) {
     this.jobTitle = new BehaviorSubject(null);
     this.jobType = new BehaviorSubject(null);
-    // this.minMoney = new BehaviorSubject(null);
-    // this.maxMoney = new BehaviorSubject(null);
+    this.minMoney = 0;
+    this.maxMoney = Infinity;
 
     this.jobList = Observable.combineLatest(
       this.jobTitle,
-      this.jobType,
-      // this.minMoney,
-      // this.maxMoney
-   ).switchMap(([title, type]) =>
+      this.jobType
+    ).switchMap(([title, type]) =>
        this.fireStore.collection('/jobs', ref => {
          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
 
@@ -65,7 +63,7 @@ export class BrowseJobsPage {
          if (type !=null && type != "all") {
            query = query.where('type', '==', type);
          }
-         
+
          return query;
        }).valueChanges()
      );
@@ -81,14 +79,14 @@ export class BrowseJobsPage {
 
   filterMoney(input: any, minmax: number) {
     if (minmax == 1) {
-      console.log("MIN: " +input.value);
+      // This affects the minimum
+      this.minMoney = input.value;
     } else {
-      console.log("MAX: " +input.value);
+      // This goes to maximum
+      this.maxMoney = input.value;
     }
-    // var amount = Number(value);
-    // this.jobType.next(type);
   }
-
+  
   formatDate(givenDate : string): string {
       return moment(givenDate).fromNow();
   }
