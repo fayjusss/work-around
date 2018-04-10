@@ -24,20 +24,31 @@ import firebase from 'firebase';
 })
 export class BrowseJobsPage {
   jobList: Observable<any[]>;
-  title: BehaviorSubject<string|null>;
+  jobTitle: BehaviorSubject<string|null>;
+  jobType: BehaviorSubject<string|null>;
+  // minMoney: BehaviorSubject<string|null>;
+  // maxMoney: BehaviorSubject<string|null>;
+
   constructor(public navCtrl: NavController,
               public jobProvider: JobsProvider,
               public modalCtrl: ModalController,
               public alertCtrl: AlertController,
               public fireStore: AngularFirestore) {
-    this.title = new BehaviorSubject(null);
+    this.jobTitle = new BehaviorSubject(null);
+    this.jobType = new BehaviorSubject(null);
+    // this.minMoney = new BehaviorSubject(null);
+    // this.maxMoney = new BehaviorSubject(null);
 
     this.jobList = Observable.combineLatest(
-      this.title
-   ).switchMap(([title]) =>
+      this.jobTitle,
+      this.jobType,
+      // this.minMoney,
+      // this.maxMoney
+   ).switchMap(([title, type]) =>
        this.fireStore.collection('/jobs', ref => {
          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
 
+         // Checks whether to filter by title
          if (title != null && title != "") {
            var strSearch : string = title;
            var strlength : number = strSearch.length;
@@ -50,13 +61,32 @@ export class BrowseJobsPage {
            query = query.where('title', '>=', startcode).where('title', '<', endcode);
          }
 
+         // Checks whether to check the job type
+         if (type !=null && type != "all") {
+           query = query.where('type', '==', type);
+         }
+         
          return query;
        }).valueChanges()
      );
   }
 
   filterTitle(input: any) {
-    this.title.next(input.srcElement.value);
+    this.jobTitle.next(input.srcElement.value);
+  }
+
+  filterType(type: string) {
+    this.jobType.next(type);
+  }
+
+  filterMoney(input: any, minmax: number) {
+    if (minmax == 1) {
+      console.log("MIN: " +input.value);
+    } else {
+      console.log("MAX: " +input.value);
+    }
+    // var amount = Number(value);
+    // this.jobType.next(type);
   }
 
   formatDate(givenDate : string): string {

@@ -6,8 +6,28 @@
 
 </ion-header>
 
-<ion-content padding-horizontal>
+<ion-content>
   <ion-searchbar (ionInput)="filterTitle($event)"></ion-searchbar>
+  <ion-item>
+    <ion-label>Job type</ion-label>
+    <ion-select #C (ionChange)="filterType(C.value)">
+      <ion-option value="all" selected>All</ion-option>
+      <ion-option value="build">Repair, fix and physical work</ion-option>
+      <ion-option value="game-controller-b">Game related offer</ion-option>
+      <ion-option value="code">Programming</ion-option>
+      <ion-option value="brush">Art</ion-option>
+      <ion-option value="musical-notes">Music</ion-option>
+      <ion-option value="medical">Other</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" stacked>Minimum</ion-label>
+    <ion-input (ionChange)="filterMoney($event, 1)" type="number" placeholder="EUR"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" stacked>Maximum</ion-label>
+    <ion-input (ionChange)="filterMoney($event, 2)" type="number" placeholder="EUR"></ion-input>
+  </ion-item>
   <ion-list margin-bottom>
     <button text-wrap ion-item *ngFor="let job of jobList | async" (click)="presentViewJobModal(job)">
       <div class="job-head" margin-bottom>
