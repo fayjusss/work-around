@@ -13,22 +13,22 @@
 
   <ion-item>
     <ion-label color="primary" stacked>Paid to you</ion-label>
-    <ion-input type="number" placeholder="EUR"></ion-input>
+    <ion-input type="number" [(ngModel)]="money" placeholder="EUR"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="primary" stacked>Deliver in</ion-label>
-    <ion-input type="number" placeholder="Days"></ion-input>
+    <ion-input type="number" [(ngModel)]="days" placeholder="Days"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="primary" stacked>Bid Proposal</ion-label>
-    <ion-textarea color="primary" placeholder="Add your message to the provider"></ion-textarea>
+    <ion-textarea color="primary" [(ngModel)]="message" placeholder="Add your message to the provider"></ion-textarea>
   </ion-item>
 
 
 
 
-  <button ion-button block margin-vertical>Place a bid</button>
+  <button ion-button block margin-vertical (click)="createmybid(jobDetails,money,days,message)">Place a bid</button>
 
 </ion-content>
