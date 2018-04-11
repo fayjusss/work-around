@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {
+    App,
     Alert,
     AlertController,
     IonicPage,
@@ -11,6 +12,7 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JobsProvider } from '../../providers/jobs/jobs';
 
+
 @IonicPage()
 @Component({
   selector: 'page-add-job',
@@ -19,11 +21,13 @@ import { JobsProvider } from '../../providers/jobs/jobs';
 export class AddJobPage {
   addJobForm: FormGroup;
 
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
               public jobsProvider: JobsProvider,
+              public app: App,
               formBuilder: FormBuilder) {
       this.addJobForm = formBuilder.group({
           type: ['', Validators.compose([Validators.required])],
@@ -35,9 +39,7 @@ export class AddJobPage {
       });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddJobPage');
-  }
+
 
   async addJob(): Promise<any> {
       if (!this.addJobForm.valid) {

@@ -13,4 +13,8 @@
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
+  <ion-item *ngFor="let userProfile of userProfile | async">
+
+    <h2>{{ userProfile?.title}}</h2>
+  </ion-item>
 </ion-content>
