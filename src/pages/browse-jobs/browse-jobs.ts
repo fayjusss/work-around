@@ -29,7 +29,7 @@ export class BrowseJobsPage {
   minMoney: number;
   maxMoney: number;
   startDate: any;
-  endDate: string;
+  endDate: any;
 
   constructor(public navCtrl: NavController,
               public jobProvider: JobsProvider,
@@ -133,7 +133,6 @@ export class BrowseJobsPage {
     } else if (this.endDate != null && !seDate) {
       return false;
     } else {
-      console.log("YAY")
       return true;
     }
   }
