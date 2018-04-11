@@ -11,6 +11,8 @@ import {
 } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JobsProvider } from '../../providers/jobs/jobs';
+import { AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
+import { AngularFireAuth } from "angularfire2/auth";
 
 
 @IonicPage()
@@ -20,7 +22,7 @@ import { JobsProvider } from '../../providers/jobs/jobs';
 })
 export class AddJobPage {
   addJobForm: FormGroup;
-
+  private userDocument: AngularFirestoreDocument<any>;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -28,6 +30,8 @@ export class AddJobPage {
               public loadingCtrl: LoadingController,
               public jobsProvider: JobsProvider,
               public app: App,
+              public afAuth: AngularFireAuth,
+              public afs: AngularFirestore,
               formBuilder: FormBuilder) {
       this.addJobForm = formBuilder.group({
           type: ['', Validators.compose([Validators.required])],
@@ -37,6 +41,19 @@ export class AddJobPage {
           startDate: [''],
           endDate: ['']
       });
+  }
+
+
+  createbids(){
+    this.afAuth.authState.take(1).subscribe(auth =>{
+      const bidId: string = this.afs.createId();
+        this.userDocument = this.afs.doc(`bids/${bidId}`);
+
+        this.userDocument.set({
+          providerID: auth.uid,
+          bidId:bidId
+        })
+      })
   }
 
 

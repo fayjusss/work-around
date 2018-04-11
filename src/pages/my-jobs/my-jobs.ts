@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'my-jobs.html',
 })
 export class MyJobsPage {
-  userProfile: Observable<any>;
+  myjobList: Observable<any>;
     constructor(public navCtrl: NavController, public navParams: NavParams,public authProvider: AuthData,private afAuth: AngularFireAuth,
     public afs: AngularFirestore,
     public app: App) {
@@ -23,10 +23,10 @@ export class MyJobsPage {
 
     ionViewDidLoad() {
       this.afAuth.authState.take(1).subscribe(auth => {
-          this.userProfile = this.afs.collection
+          this.myjobList = this.afs.collection
               ('jobs', ref => ref.where('providerId', '==', auth.uid))
               .valueChanges();
-          console.log(this.userProfile);
+          console.log(this.myjobList);
       })
     }
 
