@@ -27,7 +27,7 @@ export class BiddingPage {
   }
 
   closeModal() {
-      this.viewCtrl.dismiss();
+
   }
 
   createmybid(jobDetails:any, money:number, days: number, message:string){
@@ -48,6 +48,7 @@ export class BiddingPage {
 
         })
       })
+      this.viewCtrl.dismiss();
   }
 
 
