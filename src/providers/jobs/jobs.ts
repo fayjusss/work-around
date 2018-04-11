@@ -45,7 +45,7 @@ export class JobsProvider {
                 endDate
             });
     }
-    getJobList(): AngularFirestoreCollection<Job> {
+    getJobList(title : string): AngularFirestoreCollection<Job> {
         return this.fireStore.collection<Job>(
             `/jobs`, // This creates the reference
             ref => ref.orderBy('title') // This is the query

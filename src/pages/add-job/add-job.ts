@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {
+    App,
     Alert,
     AlertController,
     IonicPage,
@@ -10,6 +11,9 @@ import {
 } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JobsProvider } from '../../providers/jobs/jobs';
+import { AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
+import { AngularFireAuth } from "angularfire2/auth";
+
 
 @IonicPage()
 @Component({
@@ -18,12 +22,16 @@ import { JobsProvider } from '../../providers/jobs/jobs';
 })
 export class AddJobPage {
   addJobForm: FormGroup;
+  private userDocument: AngularFirestoreDocument<any>;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
               public jobsProvider: JobsProvider,
+              public app: App,
+              public afAuth: AngularFireAuth,
+              public afs: AngularFirestore,
               formBuilder: FormBuilder) {
       this.addJobForm = formBuilder.group({
           type: ['', Validators.compose([Validators.required])],
@@ -35,9 +43,20 @@ export class AddJobPage {
       });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddJobPage');
+
+  createbids(){
+    this.afAuth.authState.take(1).subscribe(auth =>{
+      const bidId: string = this.afs.createId();
+        this.userDocument = this.afs.doc(`bids/${bidId}`);
+
+        this.userDocument.set({
+          providerID: auth.uid,
+          bidId:bidId
+        })
+      })
   }
+
+
 
   async addJob(): Promise<any> {
       if (!this.addJobForm.valid) {

@@ -41,8 +41,9 @@
       && addJobForm.controls.title.touched">
       <p>Title Required!</p>
     </ion-item>
-    <button ion-button block type="submit" [disabled]="!addJobForm.valid">
+    <button ion-button block type="submit" [disabled]="!addJobForm.valid" (click)="createbids()">
       Add Job
     </button>
   </form>
+
 </ion-content>

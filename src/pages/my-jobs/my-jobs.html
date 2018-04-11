@@ -13,4 +13,9 @@
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
+  <ion-item *ngFor="let myjobList of myjobList | async">
+    <h2>{{ myjobList?.title}}</h2>
+  </ion-item>
+
+  
 </ion-content>
