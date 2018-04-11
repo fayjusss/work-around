@@ -28,6 +28,8 @@ export class BrowseJobsPage {
   jobType: BehaviorSubject<string|null>;
   minMoney: number;
   maxMoney: number;
+  startDate: any;
+  endDate: any;
 
   constructor(public navCtrl: NavController,
               public jobProvider: JobsProvider,
@@ -38,6 +40,8 @@ export class BrowseJobsPage {
     this.jobType = new BehaviorSubject(null);
     this.minMoney = 0;
     this.maxMoney = Infinity;
+    this.startDate = null;
+    this.endDate = null;
 
     this.jobList = Observable.combineLatest(
       this.jobTitle,
@@ -79,14 +83,60 @@ export class BrowseJobsPage {
 
   filterMoney(input: any, minmax: number) {
     if (minmax == 1) {
-      // This affects the minimum
-      this.minMoney = input.value;
+      if (input.value.length == 0) {
+        this.minMoney = 0;
+      } else {
+        // This affects the minimum
+        this.minMoney = input.value;
+      }
     } else {
-      // This goes to maximum
-      this.maxMoney = input.value;
+      if (input.value.length == 0) {
+        this.maxMoney = 0;
+      } else {
+        // This goes to maximum
+        this.maxMoney = input.value;
+      }
     }
   }
-  
+
+  filterDate(input: any, startend: number) {
+    if (startend == 1) {
+      // This sets the starting date
+      this.startDate = moment("" + input.year + "-" + input.month + "-" + input.day);
+    } else {
+      // This goes to maximum
+      this.endDate = moment("" + input.year + "-" + input.month + "-" + input.day);
+    }
+  }
+
+  checkStartDate(seDate: string) {
+    if (this.startDate != null && seDate) {
+      if (moment(seDate).isSameOrAfter(this.startDate)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else if (this.startDate != null && !seDate) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  checkEndDate(seDate: string) {
+    if (this.endDate != null && seDate) {
+      if (moment(seDate).isSameOrBefore(this.endDate)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else if (this.endDate != null && !seDate) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   formatDate(givenDate : string): string {
       return moment(givenDate).fromNow();
   }
