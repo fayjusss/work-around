@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class MyJobsPage {
   myjobList: Observable<any>;
+  mybidList: Observable<any>;
     constructor(public navCtrl: NavController, public navParams: NavParams,public authProvider: AuthData,private afAuth: AngularFireAuth,
     public afs: AngularFirestore,
     public app: App) {
@@ -25,6 +26,9 @@ export class MyJobsPage {
       this.afAuth.authState.take(1).subscribe(auth => {
           this.myjobList = this.afs.collection
               ('jobs', ref => ref.where('providerId', '==', auth.uid))
+              .valueChanges();
+          this.mybidList = this.afs.collection
+              ('bids', ref => ref.where('seekerID','==',auth.uid))
               .valueChanges();
           console.log(this.myjobList);
       })

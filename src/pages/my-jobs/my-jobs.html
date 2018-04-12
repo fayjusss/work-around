@@ -13,9 +13,27 @@
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
-  <ion-item *ngFor="let myjobList of myjobList | async">
-    <h2>{{ myjobList?.title}}</h2>
-  </ion-item>
+  <div *ngFor="let myjobList of myjobList | async">
 
-  
+    <button text-wrap ion-item  >
+      <div class="job-head" margin-bottom>
+        <h2> {{ myjobList?.title}} </h2>
+        <p class="description"> {{ myjobList?.title}} </p>
+      </div>
+    </button>
+  </div>
+  <h2>Bidding List</h2>
+  <div *ngFor="let mybidList of mybidList | async">
+
+    <button text-wrap ion-item  >
+      <div class="job-head" margin-bottom>
+        <h2> {{ mybidList?.title}} </h2>
+        <p class="description"> {{ mybidList?.title}} </p>
+      </div>
+    </button>
+  </div>
+
+
+
+
 </ion-content>

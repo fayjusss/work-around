@@ -27,7 +27,8 @@ export class JobsProvider {
         description: string,
         money: number,
         startDate: string,
-        endDate: string
+        endDate: string,
+        status: string
     ): Promise<void> {
         const jobId: string = this.fireStore.createId();
         const providerId: string = this.userId;
@@ -42,7 +43,8 @@ export class JobsProvider {
                 description,
                 money,
                 startDate,
-                endDate
+                endDate,
+                status,
             });
     }
     getJobList(title : string): AngularFirestoreCollection<Job> {

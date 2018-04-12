@@ -3,8 +3,7 @@ import {IonicPage, NavParams, ViewController} from 'ionic-angular';
 import {Job} from "../../models/job";
 import { AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
 import { AngularFireAuth } from "angularfire2/auth";
-import { User } from '../../models/user';
-import { Observable } from 'rxjs/Observable';
+
 
 /**
  * Generated class for the BiddingPage page.
@@ -33,12 +32,20 @@ export class BiddingPage {
   createmybid(jobDetails:any, money:number, days: number, message:string){
     this.afAuth.authState.take(1).subscribe(auth =>{
       const providerId= this.jobDetails.providerId;
+      const startDate= this.jobDetails.startDate;
+      const type= this.jobDetails.type;
+      const providerMoneyOffer= this.jobDetails.money;
+      const title= this.jobDetails.title;
       const jobId = this.jobDetails.jobId;
       const bidId: string = this.afs.createId();
         this.userDocument = this.afs.doc(`bids/${bidId}`);
 
         this.userDocument.set({
           bidId:bidId,
+          title:title,
+          startDate: startDate,
+          type: type,
+          providerMoneyOffer:providerMoneyOffer,
           jobId: jobId,
           providerId: providerId,
           seekerID: auth.uid,
