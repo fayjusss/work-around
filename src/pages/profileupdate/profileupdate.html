@@ -16,7 +16,7 @@
 <ion-content padding>
 	<ion-item>
       <ion-thumbnail item-start>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
+        <img id="profilePhoto" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
       </ion-thumbnail>
       <button ion-button (click)="createProfile(name,age,location)">Update profile</button>
     </ion-item>
@@ -24,23 +24,28 @@
 	
   <ion-list>
    <ion-item>
-     <ion-label fixed>Name</ion-label>
+     <ion-label color="primary" floating>Name</ion-label>
      <ion-input type="text" [(ngModel)]="name"></ion-input>
 		 <ion-icon name="create" item-right></ion-icon>
    </ion-item>
 
    <ion-item>
-     <ion-label fixed>Age</ion-label>
+     <ion-label color="primary" floating>Age</ion-label>
      <ion-input type="text" [(ngModel)]="age"></ion-input>
 		 <ion-icon name="create" item-right></ion-icon>
    </ion-item>
 
    <ion-item>
-     <ion-label fixed>Location</ion-label>
+     <ion-label color="primary" floating>Location</ion-label>
      <ion-input type="text" [(ngModel)]="location"></ion-input>
 		 <ion-icon name="create" item-right></ion-icon>
    </ion-item>
+		
+	 <ion-item>
+     <ion-label class="bio" color="primary" floating>Edit Bio</ion-label>
+     <ion-input></ion-input>
+		 <ion-icon name="create" item-right></ion-icon>
+   </ion-item>
   </ion-list>
-
   
 </ion-content>

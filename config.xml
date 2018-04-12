@@ -98,4 +98,5 @@
         <variable name="APP_ID" value="1965336986842238" />
         <variable name="APP_NAME" value="WorkAround" />
     </plugin>
+    <plugin name="cordova-plugin-camera" spec="^4.0.2" />
 </widget>
