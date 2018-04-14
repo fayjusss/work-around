@@ -15,7 +15,7 @@
   </ion-fab>
   <div *ngFor="let myjobList of myjobList | async">
 
-    <button text-wrap ion-item  >
+    <button text-wrap ion-item  (click)="presentBidModal(myjobList)">
       <div class="job-head" margin-bottom>
         <h2> {{ myjobList?.title}} </h2>
         <p class="description"> {{ myjobList?.title}} </p>

@@ -22,6 +22,7 @@ import {ViewJobPage} from "../pages/view-job/view-job";
 import { MessengerPage } from "../pages/messenger/messenger";
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { ProfilePage } from "../pages/profile/profile";
+import { AcceptBidPage } from "../pages/accept-bid/accept-bid";
 
 import { JobsProvider } from '../providers/jobs/jobs';
 
@@ -39,7 +40,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     NotificationsPage,
     ProfilePage,
     TabsPage,
-
+    AcceptBidPage,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +63,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     NotificationsPage,
     ProfilePage,
     TabsPage,
+    AcceptBidPage
   ],
   providers: [
     StatusBar,
