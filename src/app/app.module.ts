@@ -26,6 +26,7 @@ import { ProfilePage } from "../pages/profile/profile";
 import { JobsProvider } from '../providers/jobs/jobs';
 
 import { Ionic2RatingModule } from 'ionic2-rating';
+import { MessengerProvider } from '../providers/messenger/messenger';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthData,
-    JobsProvider
+    JobsProvider,
+    MessengerProvider
   ]
 })
 export class AppModule {}

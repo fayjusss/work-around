@@ -35,7 +35,7 @@ export class BrowseJobsPage {
               public jobProvider: JobsProvider,
               public modalCtrl: ModalController,
               public alertCtrl: AlertController,
-              public fireStore: AngularFirestore) {
+              public firestore: AngularFirestore) {
     this.jobTitle = new BehaviorSubject(null);
     this.jobType = new BehaviorSubject(null);
     this.minMoney = 0;
@@ -47,7 +47,7 @@ export class BrowseJobsPage {
       this.jobTitle,
       this.jobType
     ).switchMap(([title, type]) =>
-       this.fireStore.collection('/jobs', ref => {
+       this.firestore.collection('/jobs', ref => {
          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
 
          // Checks whether to filter by title
