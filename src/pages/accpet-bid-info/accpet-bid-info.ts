@@ -29,9 +29,6 @@ export class AccpetBidInfoPage {
     .valueChanges();
   }
 
-  closeModal() {
-    this.viewCtrl.dismiss();
-  }
 
   acceptbid(){
     this.jobDocument = this.afs.doc(`jobs/${this.bidDetails.jobId}`);
@@ -43,6 +40,7 @@ export class AccpetBidInfoPage {
     this.bidDocument.update({
       status:'ongoing',
     })
+    this.viewCtrl.dismiss();
   }
 
 }

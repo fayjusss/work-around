@@ -37,7 +37,7 @@ export class MyJobsPage {
           this.ongoingList = this.afs.collection
                   ('jobs', ref => ref.where('providerId', '==', auth.uid).where('status','==','ongoing'))
                   .valueChanges();
-                  this.workingList = this.afs.collection
+        this.workingList = this.afs.collection
                       ('bids', ref => ref.where('seekerID','==',auth.uid).where('status','==','ongoing'))
                       .valueChanges();
           console.log(this.myjobList);
@@ -53,5 +53,7 @@ export class MyJobsPage {
       let viewWorkModal = this.modalCtrl.create(WorkDonePage, workingList);
       viewWorkModal.present();
     }
+
+    
 
 }

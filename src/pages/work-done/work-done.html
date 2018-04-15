@@ -5,14 +5,26 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>work-done</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Work Info</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
+  <div *ngFor="let bidinfo of bidinfo | async">
+<h2>Title:{{ bidDetails?.title}} </h2>
+<h2>Payment:£{{ bidDetails?.payRequest}}</h2>
+<h2>Provider name:{{ bidinfo?.name}} </h2>
+<div *ngFor="let workinfo of workinfo | async">
+<h2>description:{{ workinfo?.description}} </h2>
+</div>
+<button text-wrap ion-item (click)="Complete()" >Complete Job</button>
+</div>
 
 </ion-content>
