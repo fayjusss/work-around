@@ -13,6 +13,7 @@
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
+  <h2>Job List</h2>
   <div *ngFor="let myjobList of myjobList | async">
 
     <button text-wrap ion-item  (click)="presentBidModal(myjobList)">
@@ -32,8 +33,24 @@
       </div>
     </button>
   </div>
+  <h2>Ongoing job List</h2>
+  <div *ngFor="let ongoingList of ongoingList | async">
 
+    <button text-wrap ion-item  >
+      <div class="job-head" margin-bottom>
+        <h2> {{ ongoingList?.title}} </h2>
+        <p class="description"> {{ ongoingList?.title}} </p>
+      </div>
+    </button>
+  </div>
+  <h2>Curently working</h2>
+  <div *ngFor="let workingList of workingList | async">
 
-
-
+    <button text-wrap ion-item (click)="presentWorkingModal(workingList)" >
+      <div class="job-head" margin-bottom>
+        <h2> {{ workingList?.title}} </h2>
+        <p class="description"> {{ workingList?.title}} </p>
+      </div>
+    </button>
+  </div>
 </ion-content>

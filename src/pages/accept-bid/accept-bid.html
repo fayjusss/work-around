@@ -20,7 +20,7 @@
 <h1>{{ jobDetails?.title }} </h1>
 <div *ngFor="let mybidList of mybidList | async">
 
-  <button text-wrap ion-item  >
+  <button text-wrap ion-item (click)='presentBidInfo(mybidList)'  >
     <div class="job-head" margin-bottom>
       <h2> {{ mybidList?.seekerID}} </h2>
       <p class="description"> {{ mybidList?.payRequest}} </p>

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import {Job} from "../../models/job";
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import { AngularFireAuth } from "angularfire2/auth";
+import {AccpetBidInfoPage} from "../accpet-bid-info/accpet-bid-info";
 /**
  * Generated class for the AcceptBidPage page.
  *
@@ -30,10 +31,15 @@ export class AcceptBidPage {
         this.mybidList = this.afs.collection
             ('bids', ref => ref.where('providerId','==',auth.uid).where('jobId','==',this.jobDetails.jobId))
             .valueChanges();
-        
+
 
     })
     console.log('ionViewDidLoad AcceptBidPage');
+  }
+
+  presentBidInfo(mybidList){
+    let bidinfoModal = this.modalCtrl.create(AccpetBidInfoPage, mybidList);
+    bidinfoModal.present();
   }
 
   closeModal() {

@@ -23,6 +23,8 @@ import { MessengerPage } from "../pages/messenger/messenger";
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { ProfilePage } from "../pages/profile/profile";
 import { AcceptBidPage } from "../pages/accept-bid/accept-bid";
+import { WorkDonePage } from "../pages/work-done/work-done";
+import {AccpetBidInfoPage} from "../pages/accpet-bid-info/accpet-bid-info";
 
 import { JobsProvider } from '../providers/jobs/jobs';
 
@@ -41,6 +43,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     ProfilePage,
     TabsPage,
     AcceptBidPage,
+    WorkDonePage,
+    AccpetBidInfoPage,
   ],
   imports: [
     BrowserModule,
@@ -57,13 +61,15 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     BrowseJobsPage,
     BiddingPage,
     HomePage,
+    WorkDonePage,
     MyJobsPage,
     ViewJobPage,
     MessengerPage,
     NotificationsPage,
     ProfilePage,
     TabsPage,
-    AcceptBidPage
+    AcceptBidPage,
+    AccpetBidInfoPage
   ],
   providers: [
     StatusBar,
