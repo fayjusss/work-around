@@ -1,10 +1,21 @@
 page-login {
-  .invalid {
-    border-bottom: 1px solid #ff6153;
-  }
+  ion-content {
+    background: #FF9800;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #FF9800, #FF9800);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #FF9800, #FF9800); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  button[disabled] {
-    // styles when the element is disabled
-    background-color: #FF8A65;
+    img {
+      padding-top: 15%;
+    }
+
+    .item.item-input {
+      background-color: transparent;
+      color: white;
+    }
+
+    button[disabled] {
+      // styles when the element is disabled
+      background-color: #FAFAFA;
+    }
   }
 }
