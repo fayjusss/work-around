@@ -11,17 +11,18 @@ import moment from 'moment';
   templateUrl: 'messenger.html',
 })
 export class MessengerPage {
-  messagesList: Observable<any[]>;
+  chatId: string;
+  messagesList: Observable<Message>;
   message: string = '';
   timeStamp: string;
-  // _chatSubscription;
-  // messages: object[] = [];
+  newmessage: string;
 
   constructor(
     public messengerProvider: MessengerProvider,
     public navCtrl: NavController,
     public navParams: NavParams)
   {
+    this.chatId = this.navParams.get('chatId');
     this.messagesList = this.messengerProvider
       .getMessagesList()
   }
@@ -40,11 +41,14 @@ export class MessengerPage {
   }
 
   ionViewDidLoad() {
-    try {
-      this.messengerProvider.sendSpecialMessage("joined", moment().toISOString());
-    } catch (error) {
-      console.log(error);
-    }
+    this.messengerProvider.setChatId(this.chatId)
+    // console.log(this.navParams.get('chatId'));
+
+    // try {
+    //   this.messengerProvider.sendSpecialMessage("joined", moment().toISOString());
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   ionViewWillLeave(){

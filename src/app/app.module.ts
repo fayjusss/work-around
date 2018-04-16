@@ -16,10 +16,10 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs'
 import { AuthData } from '../providers/auth/auth';
 import { BrowseJobsPage } from "../pages/browse-jobs/browse-jobs";
-import {BiddingPage} from "../pages/bidding/bidding";
+import { BiddingPage } from "../pages/bidding/bidding";
 import { MyJobsPage } from "../pages/my-jobs/my-jobs";
-import {ViewJobPage} from "../pages/view-job/view-job";
-import { MessengerPage } from "../pages/messenger/messenger";
+import { ViewJobPage } from "../pages/view-job/view-job";
+import { ChatsPage } from "../pages/chats/chats";
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { ProfilePage } from "../pages/profile/profile";
 
@@ -36,7 +36,7 @@ import { MessengerProvider } from '../providers/messenger/messenger';
     HomePage,
     MyJobsPage,
     ViewJobPage,
-    MessengerPage,
+    ChatsPage,
     NotificationsPage,
     ProfilePage,
     TabsPage,
@@ -59,7 +59,7 @@ import { MessengerProvider } from '../providers/messenger/messenger';
     HomePage,
     MyJobsPage,
     ViewJobPage,
-    MessengerPage,
+    ChatsPage,
     NotificationsPage,
     ProfilePage,
     TabsPage,
