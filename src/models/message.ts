@@ -1,5 +1,5 @@
 export interface Message {
-  messageId: string;
+  senderId: string;
   messageText: string;
   timeStamp: string;
   specialMessage: boolean;

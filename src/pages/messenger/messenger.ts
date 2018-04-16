@@ -11,8 +11,9 @@ import moment from 'moment';
   templateUrl: 'messenger.html',
 })
 export class MessengerPage {
+  userId: string;
   chatId: string;
-  messagesList: Observable<Message>;
+  messagesList: Observable<Message[]>;
   message: string = '';
   timeStamp: string;
   newmessage: string;
@@ -22,9 +23,12 @@ export class MessengerPage {
     public navCtrl: NavController,
     public navParams: NavParams)
   {
+    this.userId = this.messengerProvider.userId;
     this.chatId = this.navParams.get('chatId');
+    this.messengerProvider.setChatId(this.chatId);
     this.messagesList = this.messengerProvider
       .getMessagesList()
+      .valueChanges()
   }
 
   async send(): Promise<any> {
@@ -41,7 +45,7 @@ export class MessengerPage {
   }
 
   ionViewDidLoad() {
-    this.messengerProvider.setChatId(this.chatId)
+    // You joined the chat code
     // console.log(this.navParams.get('chatId'));
 
     // try {
@@ -52,6 +56,7 @@ export class MessengerPage {
   }
 
   ionViewWillLeave(){
+    // You left the chat code
     // try {
     //   this.messengerProvider.sendSpecialMessage("left", moment().toISOString());
     // } catch (error) {

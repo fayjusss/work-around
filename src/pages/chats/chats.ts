@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Chat } from '../../models/chat';
 import { MessengerProvider } from '../../providers/messenger/messenger';
 import { Observable } from 'rxjs/Observable';
 import { MessengerPage } from "../messenger/messenger";
@@ -17,7 +18,7 @@ import { MessengerPage } from "../messenger/messenger";
   templateUrl: 'chats.html',
 })
 export class ChatsPage {
-  chatList: Observable<any>;
+  chatList: Observable<any[]>;
 
   constructor(
     public messengerProvider: MessengerProvider,
@@ -25,7 +26,15 @@ export class ChatsPage {
     public navParams: NavParams)
   {
     this.chatList = this.messengerProvider
-      .getChatsList();
+      .getChatsList()
+      .snapshotChanges().map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          console.log(id)
+          return { id, ...data };
+        })
+      })
   }
 
   openChat(chatId) {
