@@ -28,7 +28,9 @@ export class AccpetBidInfoPage {
     this.bidinfo = this.afs.collection('users', ref => ref.where('id','==',this.bidDetails.seekerID))
     .valueChanges();
   }
-
+  closeModal(){
+    this.viewCtrl.dismiss();
+  }
 
   acceptbid(){
     this.jobDocument = this.afs.doc(`jobs/${this.bidDetails.jobId}`);

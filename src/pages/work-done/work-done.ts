@@ -34,7 +34,9 @@ export class WorkDonePage {
     console.log('ionViewDidLoad WorkDonePage');
   }
 
-  
+  closeModal(){
+    this.viewCtrl.dismiss();
+  }
   Complete(){
     this.jobDocument = this.afs.doc(`jobs/${this.bidDetails.jobId}`);
     this.jobDocument.update({
