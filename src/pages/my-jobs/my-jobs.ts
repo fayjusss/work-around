@@ -5,14 +5,20 @@ import { AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firest
 import { AngularFireAuth } from "angularfire2/auth";
 import firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';
+
 @IonicPage()
 @Component({
   selector: 'page-my-jobs',
   templateUrl: 'my-jobs.html',
 })
+
 export class MyJobsPage {
   myjobList: Observable<any>;
-    constructor(public navCtrl: NavController, public navParams: NavParams,public authProvider: AuthData,private afAuth: AngularFireAuth,
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public authProvider: AuthData,
+    private afAuth: AngularFireAuth,
     public afs: AngularFirestore,
     public app: App) {
     }
@@ -29,6 +35,5 @@ export class MyJobsPage {
           console.log(this.myjobList);
       })
     }
-
 
 }

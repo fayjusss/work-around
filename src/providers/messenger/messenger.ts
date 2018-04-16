@@ -66,18 +66,24 @@ export class MessengerProvider {
 
   getMessagesList(): AngularFirestoreCollection<any> {
       return this.firestore.collection<any>(
-          `/chats/${this.chatId}/messenger/`, // This creates the reference
-          ref => ref.orderBy('timeStamp') // This is the query
+          `/chats/${this.chatId}/messenger/`,
+          ref => ref.orderBy('timeStamp')
       )
   }
 
   getChatsList(): AngularFirestoreCollection<any> {
       return this.firestore.collection<any>(
-          `/chats`, // This creates the reference
-          ref => ref // This is the query
+          `/chats`,
+          ref => ref
       )
   }
 
+  getUsersList(): AngularFirestoreCollection<any> {
+      return this.firestore.collection<any>(
+          `/users`,
+          ref => ref
+      )
+  }
   setChatId(chatId: string) {
     this.chatId = chatId;
   }

@@ -1,26 +1,23 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Chat } from '../../models/chat';
 import { MessengerProvider } from '../../providers/messenger/messenger';
 import { Observable } from 'rxjs/Observable';
-import { MessengerPage } from "../messenger/messenger";
-import { NewDialoguePage } from "../new-dialogue/new-dialogue";
 
 @IonicPage()
 @Component({
-  selector: 'page-chats',
-  templateUrl: 'chats.html',
+  selector: 'page-new-dialogue',
+  templateUrl: 'new-dialogue.html',
 })
-export class ChatsPage {
-  chatList: Observable<any[]>;
+export class NewDialoguePage {
+  userList: Observable<any[]>;
 
   constructor(
     public messengerProvider: MessengerProvider,
     public navCtrl: NavController,
     public navParams: NavParams)
   {
-    this.chatList = this.messengerProvider
-      .getChatsList()
+    this.userList = this.messengerProvider
+      .getUsersList()
       .snapshotChanges().map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -30,13 +27,8 @@ export class ChatsPage {
       })
   }
 
-  navigateToStartNewDialogue() {
-    this.navCtrl.push('NewDialoguePage');
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad NewDialoguePage');
   }
 
-  openChat(chatId) {
-    this.navCtrl.push('MessengerPage', {
-      chatId: chatId
-    });
-  }
 }

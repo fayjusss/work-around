@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Start a new dialogue</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-item *ngFor="let user of userList | async; index as i">
+      <button text-wrap ion-item>
+        <span *ngIf="user.name; else noUserName">{{ user.name }}</span>
+        <ng-template #noUserName><span ion-text color="light">No name</span></ng-template>
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>
