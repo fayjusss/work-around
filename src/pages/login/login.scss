@@ -2,4 +2,9 @@ page-login {
   .invalid {
     border-bottom: 1px solid #ff6153;
   }
+
+  button[disabled] {
+    // styles when the element is disabled
+    background-color: #FF8A65;
+  }
 }

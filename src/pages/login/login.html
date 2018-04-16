@@ -14,6 +14,7 @@
 
 
 <ion-content padding>
+  <img margin-vertical src="assets/imgs/logo2.png">
   <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
 
     <ion-item>
@@ -28,17 +29,17 @@
         [class.invalid]="!loginForm.controls.password.valid && blur"></ion-input>
     </ion-item>
 
-    <button ion-button block round margin-top style="box-shadow: 5px 10px;" type="submit" [disabled]="!loginForm.valid">
+    <button ion-button block margin-vertical type="submit" [disabled]="!loginForm.valid">
       Login
     </button>
 
   </form>
 
-  <button ion-button block clear (click)="goToSignup()">
+  <button ion-button block outline (click)="goToSignup()">
     Create a new account
   </button>
 
-  <button ion-button block clear (click)="goToResetPassword()">
+  <button margin-top ion-button block outline (click)="goToResetPassword()">
     I forgot my password
   </button>
 
