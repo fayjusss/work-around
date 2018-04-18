@@ -11,20 +11,22 @@
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Bids for the job</ion-title>
+    <ion-title>Bid for the job</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-<h1>{{ jobDetails?.title }} </h1>
+<h1>Title: {{ jobDetails?.title }} </h1>
+<h1>Money Offer: <a class="money">{{ jobDetails?.money }} &euro;</a></h1>
 <div *ngFor="let mybidList of mybidList | async">
 
   <button text-wrap ion-item (click)='presentBidInfo(mybidList)'  >
     <div class="job-head" margin-bottom>
-      <h2> {{ getName(mybidList?.seekerID)}} </h2>
-      <p class="description"> {{ mybidList?.payRequest}} </p>
+      <h2 >Bid:<a class="money"> {{ mybidList?.payRequest}} &euro; </a></h2>
+      <h2 >Task completion time: {{ mybidList?.time}} days</h2>
     </div>
+    <h6>Proposal: {{mybidList?.bidProposal}} </h6>
   </button>
 </div>
 </ion-content>

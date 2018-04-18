@@ -38,6 +38,7 @@ export class AccpetBidInfoPage {
       status:'ongoing',
       money: this.bidDetails.payRequest,
       time:this.bidDetails.time,
+
     })
 
     this.bidDocument = this.afs.doc(`bids/${this.bidDetails.bidId}`);
