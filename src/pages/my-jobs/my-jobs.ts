@@ -7,17 +7,24 @@ import firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';
 import {AcceptBidPage} from '../accept-bid/accept-bid';
 import {WorkDonePage} from '../work-done/work-done';
+
 @IonicPage()
 @Component({
   selector: 'page-my-jobs',
   templateUrl: 'my-jobs.html',
 })
+
 export class MyJobsPage {
   myjobList: Observable<any>;
   mybidList: Observable<any>;
   ongoingList: Observable<any>;
   workingList: Observable<any>;
-    constructor(public navCtrl: NavController,public modalCtrl: ModalController, public navParams: NavParams,public authProvider: AuthData,private afAuth: AngularFireAuth,
+    constructor(
+    public navCtrl: NavController,
+    public modalCtrl: ModalController, 
+    public navParams: NavParams,
+    public authProvider: AuthData,
+    private afAuth: AngularFireAuth,
     public afs: AngularFirestore,
     public app: App) {
     }
@@ -43,7 +50,6 @@ export class MyJobsPage {
           console.log(this.myjobList);
       })
     }
-
     presentBidModal(myjobList) {
         let viewBidModal = this.modalCtrl.create(AcceptBidPage, myjobList);
         viewBidModal.present();
@@ -53,7 +59,4 @@ export class MyJobsPage {
       let viewWorkModal = this.modalCtrl.create(WorkDonePage, workingList);
       viewWorkModal.present();
     }
-
-    
-
 }
