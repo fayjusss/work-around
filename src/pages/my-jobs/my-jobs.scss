@@ -1,3 +1,27 @@
 page-my-jobs {
+  .provider {
+    color: #9933ff !important;
+  }
+  .money{
+    color: green !important;
+  }
+  .details{
 
+    font-size: 20px;
+  }
+  .open{
+    color: #4d88ff;
+  }
+  .pending{
+    color: #ffff1a;
+  }
+  .bidder{
+    color: #ff9933;
+  }
+  .onprogress{
+    color: #1aff1a;
+  }
+  .worker{
+    color: #cc4400;
+  }
 }

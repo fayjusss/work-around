@@ -2,8 +2,13 @@ export interface Bid {
     bidId: string;
     jobId: string;
     providerId: string;
-    seekerId: string;
+    seekerID: string;
     time: number;
     payRequest: number;
     bidProposal: string;
+    providerMoneyOffer:number;
+    startDate:string;
+    status:string;
+    title:string;
+    type:string;
 }
