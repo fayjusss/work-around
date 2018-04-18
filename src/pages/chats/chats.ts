@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ModalController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chat } from '../../models/chat';
 import { MessengerProvider } from '../../providers/messenger/messenger';
 import { Observable } from 'rxjs/Observable';
@@ -16,8 +16,10 @@ export class ChatsPage {
 
   constructor(
     public messengerProvider: MessengerProvider,
+    public modalCtrl: ModalController,
     public navCtrl: NavController,
-    public navParams: NavParams)
+    public navParams: NavParams,
+  )
   {
     this.chatList = this.messengerProvider
       .getChatsList()
@@ -31,7 +33,8 @@ export class ChatsPage {
   }
 
   navigateToStartNewDialogue() {
-    this.navCtrl.push('NewDialoguePage');
+      let startNewDialogueModal = this.modalCtrl.create(NewDialoguePage);
+      startNewDialogueModal.present();
   }
 
   openChat(chatId) {

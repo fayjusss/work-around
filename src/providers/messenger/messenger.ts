@@ -24,6 +24,15 @@ export class MessengerProvider {
     });
   }
 
+  createNewChat(newChatId): Promise<void> {
+    const random : string = "Hey";
+
+    return this.firestore
+      .doc<Chat>(`/chats/${newChatId}/`)
+      .set({
+      });
+  }
+
   send(messageText: string, timeStamp: string): Promise<void> {
     const messageId: string = this.firestore.createId();
     const specialMessage: boolean = false;
@@ -62,6 +71,10 @@ export class MessengerProvider {
         timeStamp,
         specialMessage
       });
+  }
+
+  generateNewId() {
+    return this.firestore.createId();
   }
 
   getMessagesList(): AngularFirestoreCollection<any> {

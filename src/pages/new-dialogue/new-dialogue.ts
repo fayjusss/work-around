@@ -27,8 +27,14 @@ export class NewDialoguePage {
       })
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewDialoguePage');
+  openNewChat() {
+    var newChatId = this.messengerProvider.generateNewId();
+    this.messengerProvider.createNewChat(newChatId)
+    .then(data=> {
+      this.navCtrl.push('MessengerPage', {
+        chatId: newChatId
+      });
+    });
   }
 
 }

@@ -55,7 +55,7 @@ export class MessengerPage {
     // }
   }
 
-  ionViewWillLeave(){
+  ionViewWillLeave() {
     // You left the chat code
     // try {
     //   this.messengerProvider.sendSpecialMessage("left", moment().toISOString());

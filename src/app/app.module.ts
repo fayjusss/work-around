@@ -22,6 +22,7 @@ import { ViewJobPage } from "../pages/view-job/view-job";
 import { ChatsPage } from "../pages/chats/chats";
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { ProfilePage } from "../pages/profile/profile";
+import { NewDialoguePage } from "../pages/new-dialogue/new-dialogue";
 
 import { JobsProvider } from '../providers/jobs/jobs';
 
@@ -40,7 +41,7 @@ import { MessengerProvider } from '../providers/messenger/messenger';
     NotificationsPage,
     ProfilePage,
     TabsPage,
-
+    NewDialoguePage,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +64,7 @@ import { MessengerProvider } from '../providers/messenger/messenger';
     NotificationsPage,
     ProfilePage,
     TabsPage,
+    NewDialoguePage,
   ],
   providers: [
     StatusBar,
