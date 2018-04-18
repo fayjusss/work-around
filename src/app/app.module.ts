@@ -23,6 +23,9 @@ import { ChatsPage } from "../pages/chats/chats";
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { ProfilePage } from "../pages/profile/profile";
 import { NewDialoguePage } from "../pages/new-dialogue/new-dialogue";
+import { AcceptBidPage } from "../pages/accept-bid/accept-bid";
+import { WorkDonePage } from "../pages/work-done/work-done";
+import {AccpetBidInfoPage} from "../pages/accpet-bid-info/accpet-bid-info";
 
 import { JobsProvider } from '../providers/jobs/jobs';
 
@@ -42,6 +45,9 @@ import { MessengerProvider } from '../providers/messenger/messenger';
     ProfilePage,
     TabsPage,
     NewDialoguePage,
+    AcceptBidPage,
+    WorkDonePage,
+    AccpetBidInfoPage,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +64,7 @@ import { MessengerProvider } from '../providers/messenger/messenger';
     BrowseJobsPage,
     BiddingPage,
     HomePage,
+    WorkDonePage,
     MyJobsPage,
     ViewJobPage,
     ChatsPage,
@@ -65,6 +72,8 @@ import { MessengerProvider } from '../providers/messenger/messenger';
     ProfilePage,
     TabsPage,
     NewDialoguePage,
+    AcceptBidPage,
+    AccpetBidInfoPage
   ],
   providers: [
     StatusBar,

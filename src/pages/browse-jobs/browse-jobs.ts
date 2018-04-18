@@ -68,6 +68,9 @@ export class BrowseJobsPage {
            query = query.where('type', '==', type);
          }
 
+         if (status !=null && status != "ongoing"&& status != "closed") {
+           query = query.where('status', '==', 'open');
+         }
          return query;
        }).valueChanges()
      );
