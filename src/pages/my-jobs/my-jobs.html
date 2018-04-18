@@ -18,9 +18,19 @@
 
     <button text-wrap ion-item  (click)="presentBidModal(myjobList)">
       <div class="job-head" margin-bottom>
-        <h2> {{ myjobList?.title}} </h2>
-        <p class="description"> {{ myjobList?.title}} </p>
-      </div>
+        <h2>Title: {{ myjobList?.title}} </h2>
+        <p class="description"> Starting date:{{ myjobList?.startDate}} </p>
+        <p class="description"> Ending date:{{ myjobList?.endDate}} </p>
+        </div>
+        <div class="details">
+          <ion-icon color="" float-right [name]="myjobList.type"></ion-icon>
+          <h6 > Description: {{ myjobList?.description}} </h6>
+          <h6 > Money Offer:<a class="money"> {{ myjobList?.money}} &euro;</a> </h6>
+          <h6 > Status:<a class="open"> {{ myjobList?.status}} </a></h6>
+          <h6 > Position:<a class="provider">Provider</a> </h6>
+        </div>
+
+
     </button>
   </div>
   <h2>Bidding List</h2>
@@ -28,9 +38,16 @@
 
     <button text-wrap ion-item  >
       <div class="job-head" margin-bottom>
-        <h2> {{ mybidList?.title}} </h2>
-        <p class="description"> {{ mybidList?.title}} </p>
+        <h2> Title {{ mybidList?.title}} </h2>
+        <p class="description">Starting date: {{ mybidList?.startDate}} </p>
+        <p class="description"> Ending date:{{ mybidList?.endDate}} </p>
       </div>
+      <ion-icon color="" float-right [name]="mybidList.type"></ion-icon>
+        <h6 class="description">Proposal: {{ mybidList?.bidProposal}}  </h6>
+        <h6 class="description">Money bid: <a class="money">{{ mybidList?.payRequest}} &euro;</a>  </h6>
+        <h6 class="description">Status:<a class="pending"> Pending</a>  </h6>
+        <h6 class="description">Position:<a class="bidder"> Bidder </a> </h6>
+
     </button>
   </div>
   <h2>Ongoing job List</h2>
@@ -38,9 +55,16 @@
 
     <button text-wrap ion-item  >
       <div class="job-head" margin-bottom>
-        <h2> {{ ongoingList?.title}} </h2>
-        <p class="description"> {{ ongoingList?.title}} </p>
-      </div>
+        <h2>Title: {{ ongoingList?.title}} </h2>
+        <p class="description"> Time: {{ ongoingList?.time}} days left </p>
+
+        </div>
+
+        <ion-icon color="" float-right [name]="ongoingList.type"></ion-icon>
+        <h6 > Money Offer: <a class="money">{{ ongoingList?.money}} &euro;</a> </h6>
+        <h6 > Status: <a class="onprogress">On Progress</a> </h6>
+        <h6 >Position: <a class="provider">Provider</a> </h6>
+
     </button>
   </div>
   <h2>Curently working</h2>
@@ -48,9 +72,14 @@
 
     <button text-wrap ion-item (click)="presentWorkingModal(workingList)" >
       <div class="job-head" margin-bottom>
-        <h2> {{ workingList?.title}} </h2>
-        <p class="description"> {{ workingList?.title}} </p>
-      </div>
+        <h2>Title {{ workingList?.title}} </h2>
+        <p class="description"> Time: {{ workingList?.time}} days left </p>
+        </div>
+        <ion-icon color="" float-right [name]="workingList.type"></ion-icon>
+        <h6 class="description"> Paymet: <a class="money">{{ workingList?.payRequest}} &euro;</a> </h6>
+        <h6 class="description"> Status: <a class="onprogress">On process</a> </h6>
+        <h6 class="description"> Position: <a class="worker">Worker</a> </h6>
+
     </button>
   </div>
 </ion-content>

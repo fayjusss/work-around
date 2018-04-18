@@ -20,8 +20,10 @@ import {AccpetBidInfoPage} from "../accpet-bid-info/accpet-bid-info";
 export class AcceptBidPage {
   jobDetails: Job;
   mybidList: Observable<any>;
+  bidderList: Observable<any>;
   constructor(public navCtrl: NavController,private afAuth: AngularFireAuth, public navParams: NavParams, public modalCtrl: ModalController,public viewCtrl: ViewController,
   public afs: AngularFirestore) {
+
   }
 
   ionViewDidLoad() {
@@ -35,6 +37,20 @@ export class AcceptBidPage {
 
     })
     console.log('ionViewDidLoad AcceptBidPage');
+  }
+
+  getName(seekerID: string) {
+    this.bidderList = this.afs
+      .collection('users', ref => ref.where('id', '==', seekerID))
+      .snapshotChanges().map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          console.log(data.name.toString());
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })
+      });
+    return this.bidderList.toString();
   }
 
   presentBidInfo(mybidList){

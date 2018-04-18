@@ -40,12 +40,13 @@ export class WorkDonePage {
   Complete(){
     this.jobDocument = this.afs.doc(`jobs/${this.bidDetails.jobId}`);
     this.jobDocument.update({
-      status:'closed',
+      status:'completed',
+      workerID:this.bidDetails.seekerID,
     })
 
     this.bidDocument = this.afs.doc(`bids/${this.bidDetails.bidId}`);
     this.bidDocument.update({
-      status:'closed',
+      status:'completed',
     })
     this.viewCtrl.dismiss();
   }
