@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ProfilePage {
   userProfile: Observable<any>;
-
+  option: any = "profile";
   constructor(
     private afAuth: AngularFireAuth,
     public afs: AngularFirestore,
