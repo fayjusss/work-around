@@ -26,6 +26,7 @@ import { NewDialoguePage } from "../pages/new-dialogue/new-dialogue";
 import { AcceptBidPage } from "../pages/accept-bid/accept-bid";
 import { WorkDonePage } from "../pages/work-done/work-done";
 import {AccpetBidInfoPage} from "../pages/accpet-bid-info/accpet-bid-info";
+import {VerifyPage} from "../pages/verify/verify";
 
 import { JobsProvider } from '../providers/jobs/jobs';
 
@@ -48,6 +49,7 @@ import { MessengerProvider } from '../providers/messenger/messenger';
     AcceptBidPage,
     WorkDonePage,
     AccpetBidInfoPage,
+    VerifyPage,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +75,8 @@ import { MessengerProvider } from '../providers/messenger/messenger';
     TabsPage,
     NewDialoguePage,
     AcceptBidPage,
-    AccpetBidInfoPage
+    AccpetBidInfoPage,
+    VerifyPage,
   ],
   providers: [
     StatusBar,

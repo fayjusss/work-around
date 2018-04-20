@@ -7,6 +7,7 @@ import firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';
 import {AcceptBidPage} from '../accept-bid/accept-bid';
 import {WorkDonePage} from '../work-done/work-done';
+import { VerifyPage } from '../verify/verify';
 
 @IonicPage()
 @Component({
@@ -19,9 +20,11 @@ export class MyJobsPage {
   mybidList: Observable<any>;
   ongoingList: Observable<any>;
   workingList: Observable<any>;
+  completedList: Observable<any>;
+  uncompletedList:Observable<any>;
     constructor(
     public navCtrl: NavController,
-    public modalCtrl: ModalController, 
+    public modalCtrl: ModalController,
     public navParams: NavParams,
     public authProvider: AuthData,
     private afAuth: AngularFireAuth,
@@ -35,18 +38,16 @@ export class MyJobsPage {
 
     ionViewDidLoad() {
       this.afAuth.authState.take(1).subscribe(auth => {
-          this.myjobList = this.afs.collection
-              ('jobs', ref => ref.where('providerId', '==', auth.uid).where('status','==','open'))
-              .valueChanges();
-          this.mybidList = this.afs.collection
-              ('bids', ref => ref.where('seekerID','==',auth.uid).where('status','==','open'))
-              .valueChanges();
-          this.ongoingList = this.afs.collection
-                  ('jobs', ref => ref.where('providerId', '==', auth.uid).where('status','==','ongoing'))
-                  .valueChanges();
-        this.workingList = this.afs.collection
-                      ('bids', ref => ref.where('seekerID','==',auth.uid).where('status','==','ongoing'))
-                      .valueChanges();
+        this.myjobList = null;
+        this.mybidList =null;
+        this.ongoingList= null;
+        this.workingList = null;
+        this.completedList = this.afs.collection
+                ('bids', ref => ref.where('providerId', '==', auth.uid).where('status','==','completed'))
+                .valueChanges();
+        this.uncompletedList = this.afs.collection
+                  ('bids', ref => ref.where('providerId', '==', auth.uid).where('status','==','uncomplete'))
+                        .valueChanges();
           console.log(this.myjobList);
       })
     }
@@ -54,9 +55,92 @@ export class MyJobsPage {
         let viewBidModal = this.modalCtrl.create(AcceptBidPage, myjobList);
         viewBidModal.present();
     }
+    presentverifyModal(completedList){
+      let viewverifyModal = this.modalCtrl.create(VerifyPage, completedList);
+      viewverifyModal.present();
+    }
 
     presentWorkingModal(workingList){
       let viewWorkModal = this.modalCtrl.create(WorkDonePage, workingList);
       viewWorkModal.present();
+    }
+
+    showjoblist(){
+      if(this.myjobList ==null){
+        this.afAuth.authState.take(1).subscribe(auth => {
+            this.myjobList = this.afs.collection
+                ('jobs', ref => ref.where('providerId', '==', auth.uid).where('status','==','open'))
+                .valueChanges();
+              })
+
+      }
+      else{
+      ;
+        this.myjobList =null;
+      }
+    }
+
+    showbidlist(){
+      if(this.mybidList == null){
+        this.afAuth.authState.take(1).subscribe(auth => {
+          this.mybidList = this.afs.collection
+              ('bids', ref => ref.where('seekerID','==',auth.uid).where('status','==','open'))
+              .valueChanges();
+        })
+      }
+      else{
+        this.mybidList = null;
+      }
+
+    }
+
+    showongoinglist(){
+      if(this.ongoingList == null){
+        this.afAuth.authState.take(1).subscribe(auth => {
+          this.ongoingList = this.afs.collection
+                  ('jobs', ref => ref.where('providerId', '==', auth.uid).where('status','==','ongoing'))
+                  .valueChanges();
+        })
+      }
+      else{
+        this.ongoingList = null;
+      }
+    }
+
+    showcurrentlist(){
+      if(this.workingList ==null){
+        this.afAuth.authState.take(1).subscribe(auth => {
+          this.workingList = this.afs.collection
+                        ('bids', ref => ref.where('seekerID','==',auth.uid).where('status','==','ongoing'))
+                        .valueChanges();
+        })
+      }
+      else{
+        this.workingList = null;
+      }
+    }
+
+    vertifylist(){
+      if(this.completedList!=null){
+        this.completedList=null;
+      }
+      else{
+        this.afAuth.authState.take(1).subscribe(auth => {
+        this.completedList = this.afs.collection
+                ('bids', ref => ref.where('providerId', '==', auth.uid).where('status','==','completed'))
+                .valueChanges();
+              })
+      }
+
+      if(this.uncompletedList !=null){
+        this.uncompletedList = null;
+      }
+      else{
+        this.afAuth.authState.take(1).subscribe(auth => {
+        this.uncompletedList = this.afs.collection
+                  ('bids', ref => ref.where('providerId', '==', auth.uid).where('status','==','uncomplete'))
+                        .valueChanges();
+                      })
+      }
     }
 }
