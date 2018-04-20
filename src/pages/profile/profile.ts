@@ -31,6 +31,19 @@ export class ProfilePage {
     })
   }
 
+  getOverlayStyle() {
+    let transform = 'translateY(-50%) ' + 'translateX(-50%)';
+
+    return {
+        'top': '40%',
+        'left': '50%',
+        'transform': transform,
+        '-moz-transform': transform,
+        '-webkit-transform': transform,
+        'font-size': 20 + 'px'
+    };
+  }
+
   logoutUser(){
       this.authProvider.logoutUser().then( () => {
           this.app.getRootNav().setRoot('LoginPage');

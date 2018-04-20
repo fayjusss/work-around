@@ -30,6 +30,7 @@ import {AccpetBidInfoPage} from "../pages/accpet-bid-info/accpet-bid-info";
 import { JobsProvider } from '../providers/jobs/jobs';
 
 import { Ionic2RatingModule } from 'ionic2-rating';
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
 import { MessengerProvider } from '../providers/messenger/messenger';
 
 @NgModule({
@@ -56,7 +57,8 @@ import { MessengerProvider } from '../providers/messenger/messenger';
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    Ionic2RatingModule
+    Ionic2RatingModule,
+    RoundProgressModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -1,3 +1,13 @@
 page-profile {
-
+  .current {
+    position: absolute;
+    color: #bbb;
+    font-weight: 100;
+    line-height: 1;
+  }
+  ion-col {
+    p {
+      height: 20% !important;
+    }
+  }
 }
