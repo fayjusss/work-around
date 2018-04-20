@@ -1,21 +1,24 @@
 page-login {
   ion-content {
-    background: #FF9800;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #FF9800, #FF9800);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #FF9800, #FF9800); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image: url("../assets/imgs/background1.png");
+    background-size: cover;
 
     img {
+      margin-left: 0;
       padding-top: 15%;
     }
 
     .item.item-input {
       background-color: transparent;
-      color: white;
+      color: #fff;
     }
 
-    button[disabled] {
-      // styles when the element is disabled
-      background-color: #FAFAFA;
+    .invalid {
+      color: #bfbfbf;
+    }
+
+    .valid {
+      color: #f4f4f4;
     }
   }
 }

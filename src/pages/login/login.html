@@ -4,13 +4,13 @@
 
     <ion-item>
       <ion-label stacked>Email</ion-label>
-      <ion-input formControlName="email" type="email" placeholder="Your email address"
+      <ion-input formControlName="email" type="email"
         [class.invalid]="!loginForm.controls.email.valid && blur"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Password</ion-label>
-      <ion-input formControlName="password" type="password" placeholder="Your password"
+      <ion-input formControlName="password" type="password"
         [class.invalid]="!loginForm.controls.password.valid && blur"></ion-input>
     </ion-item>
 
@@ -24,7 +24,7 @@
     Create a new account
   </button>
 
-  <button ion-button block clear color="light" (click)="goToResetPassword()">
+  <button ion-button small block clear color="light" (click)="goToResetPassword()">
     I forgot my password
   </button>
 
