@@ -18,12 +18,12 @@
 	<ion-row>
 		<ion-item>
     	<ion-thumbnail item-start>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
+        <img class="avatar" [src]="profileUrl | async" (click)="changeProfilePic()">
     	</ion-thumbnail>
 			<button ion-button (click)="updateprofile()">Edit Profile</button>
 			</ion-item>
 		</ion-row>
-   
+
 		<ion-list>
 			<ion-item>
     		<h2>{{ userProfile?.name}}</h2>
@@ -35,10 +35,8 @@
     		<h2>{{ userProfile?.location }}</h2>
 			</ion-item>
 			  <button ion-button block type="button" (click)="logoutUser()">
-    Log out
-  </button>
+          Log out
+        </button>
 		</ion-list>
   </ion-list>
-
-
 </ion-content>

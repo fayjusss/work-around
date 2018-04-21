@@ -3,15 +3,23 @@ import {
     AngularFirestore,
     AngularFirestoreDocument,
 } from 'angularfire2/firestore';
+import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
 import { User } from '../../models/user';
 
 
 @Injectable()
 export class AuthData {
+  userId: string;
   constructor(
-      public fireStore: AngularFirestore
+      public fireStore: AngularFirestore,
+      public afAuth: AngularFireAuth
   ) {
+    afAuth.authState.subscribe(user => {
+      if (user) {
+        this.userId = user.uid;
+      }
+    });
   }
 
   loginUser(email: string, password: string){
