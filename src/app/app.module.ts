@@ -11,13 +11,14 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { credentials } from './config';
 
+import { MyJobsPage } from "../pages/my-jobs/my-jobs";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs'
 import { AuthData } from '../providers/auth/auth';
 import { BrowseJobsPage } from "../pages/browse-jobs/browse-jobs";
 import { BiddingPage } from "../pages/bidding/bidding";
-import { MyJobsPage } from "../pages/my-jobs/my-jobs";
+
 import { ViewJobPage } from "../pages/view-job/view-job";
 import { ChatsPage } from "../pages/chats/chats";
 import { NotificationsPage } from "../pages/notifications/notifications";
@@ -35,11 +36,12 @@ import { MessengerProvider } from '../providers/messenger/messenger';
 
 @NgModule({
   declarations: [
+    MyJobsPage,
     MyApp,
     BrowseJobsPage,
     BiddingPage,
     HomePage,
-    MyJobsPage,
+
     ViewJobPage,
     ChatsPage,
     NotificationsPage,
@@ -62,12 +64,13 @@ import { MessengerProvider } from '../providers/messenger/messenger';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    MyJobsPage,
     MyApp,
     BrowseJobsPage,
     BiddingPage,
     HomePage,
     WorkDonePage,
-    MyJobsPage,
+
     ViewJobPage,
     ChatsPage,
     NotificationsPage,

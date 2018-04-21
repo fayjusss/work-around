@@ -18,6 +18,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument}
 export class AccpetBidInfoPage {
   bidDetails: Bid;
   bidinfo:Observable<any>;
+  sendNoti:Observable<any>;
   private jobDocument: AngularFirestoreDocument<any>;
   private bidDocument: AngularFirestoreDocument<any>;
   constructor(public navCtrl: NavController,public afs: AngularFirestore,public viewCtrl: ViewController, public navParams: NavParams) {
@@ -33,6 +34,14 @@ export class AccpetBidInfoPage {
   }
 
   acceptbid(){
+    const notification: string = this.afs.createId();
+    this.sendNoti = this.afs.doc(`notification/${notification}`);
+    this.sendNoti.set({
+      title: this.bidDetails.title,
+      getID: this.bidDetails.seekerID,
+      money: this.bidDetails.payRequest,
+      show: "A provider has accept your bid to work " + this.bidDetails.payRequest +" € for the job",
+    })
     this.jobDocument = this.afs.doc(`jobs/${this.bidDetails.jobId}`);
     this.jobDocument.update({
       status:'ongoing',
