@@ -21,6 +21,7 @@ export class WorkDonePage {
   workinfo:Observable<any>;
   private jobDocument: AngularFirestoreDocument<any>;
   private bidDocument: AngularFirestoreDocument<any>;
+  private sendNoti: AngularFirestoreDocument<any>;
   constructor(public navCtrl: NavController,public afs: AngularFirestore,public viewCtrl: ViewController, public navParams: NavParams) {
   }
 
@@ -38,6 +39,14 @@ export class WorkDonePage {
     this.viewCtrl.dismiss();
   }
   Complete(){
+    const notification: string = this.afs.createId();
+    this.sendNoti = this.afs.doc(`notification/${notification}`);
+    this.sendNoti.set({
+      title:this.bidDetails.title,
+      money: this.bidDetails.payRequest,
+      show: "Your worker has compeleted the job",
+      showafter: ".Please verify the job"
+    })
     this.jobDocument = this.afs.doc(`jobs/${this.bidDetails.jobId}`);
     this.jobDocument.update({
       status:'completed',

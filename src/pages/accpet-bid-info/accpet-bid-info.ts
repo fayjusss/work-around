@@ -18,7 +18,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument}
 export class AccpetBidInfoPage {
   bidDetails: Bid;
   bidinfo:Observable<any>;
-  sendNoti:Observable<any>;
+  private sendNoti: AngularFirestoreDocument<any>;
   private jobDocument: AngularFirestoreDocument<any>;
   private bidDocument: AngularFirestoreDocument<any>;
   constructor(public navCtrl: NavController,public afs: AngularFirestore,public viewCtrl: ViewController, public navParams: NavParams) {
