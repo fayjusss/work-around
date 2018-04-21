@@ -10,7 +10,6 @@ import {
 import { Observable } from 'rxjs/Observable';
 import moment from 'moment';
 import { ViewJobPage } from "../view-job/view-job";
-import { FilterJobsPage } from "../filter-jobs/filter-jobs";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/switchMap';
