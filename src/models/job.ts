@@ -7,4 +7,5 @@ export interface Job {
     money: number;
     startDate: string;
     endDate: string;
+    status:string;
 }

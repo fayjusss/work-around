@@ -4,7 +4,7 @@ import { NavParams } from 'ionic-angular';
 
 import { BrowseJobsPage } from "../browse-jobs/browse-jobs";
 import { MyJobsPage } from "../my-jobs/my-jobs";
-import { MessengerPage } from "../messenger/messenger";
+import { ChatsPage } from "../chats/chats";
 import { NotificationsPage } from "../notifications/notifications";
 import { ProfilePage } from '../profile/profile';
 
@@ -13,7 +13,7 @@ import { ProfilePage } from '../profile/profile';
 })
 export class TabsPage {
     // set the root pages for each tab
-    tab1Root: any = MessengerPage;
+    tab1Root: any = ChatsPage;
     tab2Root: any = BrowseJobsPage;
     tab3Root: any = MyJobsPage;
     tab4Root: any = NotificationsPage;

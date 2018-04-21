@@ -1,0 +1,32 @@
+<!--
+  Generated template for the AcceptBidPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Bid for the job</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<h1>Title: {{ jobDetails?.title }} </h1>
+<h1>Money Offer: <a class="money">{{ jobDetails?.money }} &euro;</a></h1>
+<div *ngFor="let mybidList of mybidList | async">
+
+  <button text-wrap ion-item (click)='presentBidInfo(mybidList)'  >
+    <div class="job-head" margin-bottom>
+      <h2 >Bid:<a class="money"> {{ mybidList?.payRequest}} &euro; </a></h2>
+      <h2 >Task completion time: {{ mybidList?.time}} days</h2>
+    </div>
+    <h6>Proposal: {{mybidList?.bidProposal}} </h6>
+  </button>
+</div>
+</ion-content>

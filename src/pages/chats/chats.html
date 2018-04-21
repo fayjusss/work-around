@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Chats</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)=navigateToStartNewDialogue()>
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-item *ngFor="let chat of chatList | async; index as i">
+      <button text-wrap ion-item (click)="openChat(chat.id)">
+        Chat {{ i+1 }}
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>

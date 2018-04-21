@@ -16,16 +16,22 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs'
 import { AuthData } from '../providers/auth/auth';
 import { BrowseJobsPage } from "../pages/browse-jobs/browse-jobs";
-import {BiddingPage} from "../pages/bidding/bidding";
+import { BiddingPage } from "../pages/bidding/bidding";
 import { MyJobsPage } from "../pages/my-jobs/my-jobs";
-import {ViewJobPage} from "../pages/view-job/view-job";
-import { MessengerPage } from "../pages/messenger/messenger";
+import { ViewJobPage } from "../pages/view-job/view-job";
+import { ChatsPage } from "../pages/chats/chats";
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { ProfilePage } from "../pages/profile/profile";
+import { NewDialoguePage } from "../pages/new-dialogue/new-dialogue";
+import { AcceptBidPage } from "../pages/accept-bid/accept-bid";
+import { WorkDonePage } from "../pages/work-done/work-done";
+import {AccpetBidInfoPage} from "../pages/accpet-bid-info/accpet-bid-info";
+import {VerifyPage} from "../pages/verify/verify";
 
 import { JobsProvider } from '../providers/jobs/jobs';
 
 import { Ionic2RatingModule } from 'ionic2-rating';
+import { MessengerProvider } from '../providers/messenger/messenger';
 
 @NgModule({
   declarations: [
@@ -35,11 +41,15 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     HomePage,
     MyJobsPage,
     ViewJobPage,
-    MessengerPage,
+    ChatsPage,
     NotificationsPage,
     ProfilePage,
     TabsPage,
-
+    NewDialoguePage,
+    AcceptBidPage,
+    WorkDonePage,
+    AccpetBidInfoPage,
+    VerifyPage,
   ],
   imports: [
     BrowserModule,
@@ -56,19 +66,25 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     BrowseJobsPage,
     BiddingPage,
     HomePage,
+    WorkDonePage,
     MyJobsPage,
     ViewJobPage,
-    MessengerPage,
+    ChatsPage,
     NotificationsPage,
     ProfilePage,
     TabsPage,
+    NewDialoguePage,
+    AcceptBidPage,
+    AccpetBidInfoPage,
+    VerifyPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthData,
-    JobsProvider
+    JobsProvider,
+    MessengerProvider
   ]
 })
 export class AppModule {}

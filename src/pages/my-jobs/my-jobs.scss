@@ -1,3 +1,58 @@
 page-my-jobs {
+  .provider {
+    color: #9933ff !important;
+  }
+  .money{
+    color: green !important;
+  }
+  .details{
 
+    font-size: 20px;
+  }
+  .open{
+    color: #4d88ff;
+  }
+  .pending{
+    color: #ffff1a;
+  }
+  .bidder{
+    color: #ff9933;
+  }
+  .onprogress{
+    color: #1aff1a;
+  }
+  .worker{
+    color: #cc4400;
+  }
+  .job-list{
+    background-color: #4d88ff;
+
+  }
+  .bid-list{
+    background-color: #ff9933;
+  }
+
+  .bid-list:hover{
+    background-color: #e67300;
+  }
+  .ongoing-list{
+    background-color: #1aff1a;
+  }
+  .ongoing-list:hover{
+    background-color: #00cc00 !important;
+  }
+  .job-list:hover{
+    background-color: blue !important;
+  }
+
+  .work-list{
+    background-color: #cc4400;
+  }
+
+  .work-list:hover{
+    background-color: #993300 !important;
+  }
+  .animation{
+    transition: 2s;
+  }
 }
