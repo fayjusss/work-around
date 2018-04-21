@@ -1,5 +1,24 @@
 page-login {
-  .invalid {
-    border-bottom: 1px solid #ff6153;
+  ion-content {
+    background-image: url("../assets/imgs/background1.png");
+    background-size: cover;
+
+    img {
+      margin-left: 0;
+      padding-top: 15%;
+    }
+
+    .item.item-input {
+      background-color: transparent;
+      color: #fff;
+    }
+
+    .invalid {
+      color: #bfbfbf;
+    }
+
+    .valid {
+      color: #f4f4f4;
+    }
   }
 }
