@@ -29,6 +29,7 @@ export class ViewJobPage {
   presentBiddingModal() {
       let biddingModal = this.modalCtrl.create(BiddingPage, this.jobDetails);
       biddingModal.present();
+      this.viewCtrl.dismiss();
   }
 
   closeModal() {
