@@ -1,63 +1,74 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Browse Jobs</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Browse</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
-  <ion-searchbar (ionInput)="filterTitle($event)"></ion-searchbar>
+
+  <!--searchbar-->
   <ion-item>
-    <ion-label>Job type</ion-label>
-    <ion-select #C (ionChange)="filterType(C.value)">
-      <ion-option value="all" selected>All</ion-option>
-      <ion-option value="build">Repair, fix and physical work</ion-option>
-      <ion-option value="game-controller-b">Game related offer</ion-option>
-      <ion-option value="code">Programming</ion-option>
-      <ion-option value="brush">Art</ion-option>
-      <ion-option value="musical-notes">Music</ion-option>
-      <ion-option value="medical">Other</ion-option>
-    </ion-select>
+    <ion-searchbar (ionInput)="filterTitle($event)" placeholder="Browse">Browse</ion-searchbar>
+    <ion-icon name="funnel" item-end (click)="ngIfCtrl()"></ion-icon>
   </ion-item>
-  <ion-item>
-    <ion-label color="primary" stacked>Minimum</ion-label>
-    <ion-input (ionChange)="filterMoney($event, 1)" type="number" placeholder="EUR"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label color="primary" stacked>Maximum</ion-label>
-    <ion-input (ionChange)="filterMoney($event, 2)" type="number" placeholder="EUR"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Start Date</ion-label>
-    <ion-datetime (ionChange)="filterDate($event, 1)" displayFormat="DD/MM/YYYY" placeholder="Pick a starting date"></ion-datetime>
-  </ion-item>
-  <ion-item>
-    <ion-label>End Date</ion-label>
-    <ion-datetime (ionChange)="filterDate($event, 2)" displayFormat="DD/MM/YYYY" placeholder="Pick an ending date"></ion-datetime>
-  </ion-item>
-  <ion-list margin-bottom>
+
+  <!--filters-->
+  <ion-list *ngIf="hide">
+    <ion-item>
+      <ion-label>Job type</ion-label>
+      <ion-select #C (ionChange)="filterType(C.value)">
+        <ion-option value="all" selected>All</ion-option>
+        <ion-option value="build">Repair, fix and physical work</ion-option>
+        <ion-option value="game-controller-b">Game related offer</ion-option>
+        <ion-option value="code">Programming</ion-option>
+        <ion-option value="brush">Art</ion-option>
+        <ion-option value="musical-notes">Music</ion-option>
+        <ion-option value="medical">Other</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Minimum</ion-label>
+      <ion-input (ionChange)="filterMoney($event, 1)" type="number" placeholder="EUR"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Maximum</ion-label>
+      <ion-input (ionChange)="filterMoney($event, 2)" type="number" placeholder="EUR"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Start Date</ion-label>
+      <ion-datetime (ionChange)="filterDate($event, 1)" displayFormat="DD/MM/YYYY" placeholder="Pick a starting date"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>End Date</ion-label>
+      <ion-datetime (ionChange)="filterDate($event, 2)" displayFormat="DD/MM/YYYY" placeholder="Pick an ending date"></ion-datetime>
+    </ion-item>
+  </ion-list>
+
+
+  <!--Jobs list-->
+  <ion-list>
     <div *ngFor="let job of jobList | async">
       <button text-wrap ion-item  (click)="presentViewJobModal(job)"
-        *ngIf="job.money >= minMoney && job.money <= maxMoney && checkStartDate(job.startDate) && checkEndDate(job.endDate)">
-        <div class="job-head" margin-bottom>
-          <h2> {{ job.title }} </h2>
-          <p class="description"> {{ job.description }} </p>
-        </div>
-        <div class="job-attributes">
-          <h4 class="money" *ngIf="job.money; else noMoney"> {{ job.money }} &euro; </h4>
-            <ng-template #noMoney><h4 ion-text color="light">Reward is not specified</h4></ng-template>
-          <ion-icon color="" float-right [name]="job.type"></ion-icon>
-          <h6 item-left> Starting date:
-            <span *ngIf="job.startDate; else noStartDate">{{ formatDate(job.startDate) }}</span>
-            <ng-template #noStartDate><span ion-text color="light">Not specified</span></ng-template>
-          </h6>
-          <h6 item-left> Ending date:
-            <span *ngIf="job.endDate; else noEndDate">{{ formatDate(job.endDate) }}</span>
-              <ng-template #noEndDate><span ion-text color="light">Not specified</span></ng-template>
-          </h6>
-        </div>
+              *ngIf="job.money >= minMoney && job.money <= maxMoney && checkStartDate(job.startDate) && checkEndDate(job.endDate)">
+        <ion-icon item-start [name]="job.type"></ion-icon>
+        <h3> {{ job.title }} </h3>
+        <p>
+          <!--Money-->
+          <span class="money" *ngIf="job.money; else noMoney"> {{ job.money }}&euro; </span>
+          <ng-template #noMoney><span ion-text color="light">Budget is not specified</span></ng-template>
+          &bull;
+
+          <span *ngIf="job.endDate; else noEndDate">Deadline: {{ formatDate(job.endDate) }}</span>
+          <ng-template #noEndDate><span ion-text>Deadline: Not specified</span></ng-template>
+        </p>
       </button>
     </div>
   </ion-list>
+
 </ion-content>

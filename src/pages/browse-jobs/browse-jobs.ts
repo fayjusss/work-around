@@ -10,6 +10,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 import moment from 'moment';
 import { ViewJobPage } from "../view-job/view-job";
+import { FilterJobsPage } from "../filter-jobs/filter-jobs";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/switchMap';
@@ -30,8 +31,9 @@ export class BrowseJobsPage {
   maxMoney: number;
   startDate: any;
   endDate: any;
+  hide:boolean = false;
 
-  constructor(public navCtrl: NavController,
+    constructor(public navCtrl: NavController,
               public jobProvider: JobsProvider,
               public modalCtrl: ModalController,
               public alertCtrl: AlertController,
@@ -150,5 +152,9 @@ export class BrowseJobsPage {
   presentViewJobModal(job) {
       let viewJobModal = this.modalCtrl.create(ViewJobPage, job);
       viewJobModal.present();
+  }
+
+  ngIfCtrl(){
+      this.hide = !this.hide;
   }
 }
