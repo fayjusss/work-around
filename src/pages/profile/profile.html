@@ -2,10 +2,29 @@
     <ion-list *ngFor="let userProfile of userProfile | async" no-lines>
         <ion-item detail-push>
             <ion-thumbnail item-start>
-                 <img class="avatar" [src]="profileUrl | async" (click)="changeProfilePic()">
+              <img *ngIf="!showSpinner; else spinner" class="avatar" [src]="profileUrl | async" (click)="changeProfilePic()">
+              <ng-template #spinner>
+                <div class="sk-circle">
+                  <div class="sk-circle1 sk-child"></div>
+                  <div class="sk-circle2 sk-child"></div>
+                  <div class="sk-circle3 sk-child"></div>
+                  <div class="sk-circle4 sk-child"></div>
+                  <div class="sk-circle5 sk-child"></div>
+                  <div class="sk-circle6 sk-child"></div>
+                  <div class="sk-circle7 sk-child"></div>
+                  <div class="sk-circle8 sk-child"></div>
+                  <div class="sk-circle9 sk-child"></div>
+                  <div class="sk-circle10 sk-child"></div>
+                  <div class="sk-circle11 sk-child"></div>
+                  <div class="sk-circle12 sk-child"></div>
+                </div>
+              </ng-template>
             </ion-thumbnail>
-            <h1>{{ userProfile?.name}}</h1>
-            <p>{{ userProfile?.age }}, {{ userProfile?.location }} </p>
+            <div *ngIf="userProfile?.name || userProfile?.age || userProfile?.location; else noInfo">
+              <h1>{{ userProfile?.name}}</h1>
+              <p>{{ userProfile?.age }}, {{ userProfile?.location }} </p>
+            </div>
+            <ng-template #noInfo><p>Please, edit your personal info</p></ng-template>
             <button ion-button outline (click)="updateprofile()">Edit Profile</button>
         </ion-item>
     </ion-list>

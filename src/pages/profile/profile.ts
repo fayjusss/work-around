@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { App, IonicPage, NavController, Loading, LoadingController } from 'ionic-angular';
 import { AuthData } from '../../providers/auth/auth';
+import { MessengerProvider } from '../../providers/messenger/messenger';
 import { AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { AngularFireAuth } from "angularfire2/auth";
@@ -15,14 +16,16 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   templateUrl: 'profile.html'
 })
 export class ProfilePage {
+  userId: string;
   public loading: Loading;
-
   userProfile: Observable<any>;
   option: any = "profile";
   profileUrl: Observable<string | null>;
+  showSpinner : boolean = true;
   selectedPhoto: string;
 
   constructor(
+    public messengerProvider: MessengerProvider,
     private afAuth: AngularFireAuth,
     public afs: AngularFirestore,
     public storage: AngularFireStorage,
@@ -32,14 +35,29 @@ export class ProfilePage {
     public loadingCtrl: LoadingController,
     private camera: Camera,
   ) {
+    this.userId = this.messengerProvider.userId;
+
     this.afAuth.authState.take(1).subscribe(auth => {
       this.userProfile = this.afs.collection
         ('users', ref => ref.where('id', '==', auth.uid))
         .valueChanges();
     })
 
-    const ref = this.storage.ref('profile-pics/' + this.authProvider.userId + '.jpg');
-    this.profileUrl = ref.getDownloadURL()
+    const ref = this.storage.ref('profile-pics/' + this.userId + '.jpg')
+    this.profileUrl = ref.getDownloadURL();
+    this.profileUrl.subscribe(() => {
+      this.showSpinner = false;
+    }, err => {
+      // Fetches the cat image if the profile pic doesn't exist
+      this.showSpinner = true;
+      this.profileUrl = this.storage.ref('profile-pics/cat.jpg').getDownloadURL();
+      this.profileUrl.subscribe(() => {
+        this.showSpinner = false;
+      }, err => {
+        console.log(err);
+      })
+    })
+
   }
 
   ionViewDidLoad() {

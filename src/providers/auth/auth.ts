@@ -18,6 +18,7 @@ export class AuthData {
     afAuth.authState.subscribe(user => {
       if (user) {
         this.userId = user.uid;
+        console.log(user);
       }
     });
   }
