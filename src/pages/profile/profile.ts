@@ -84,7 +84,9 @@ export class ProfilePage {
   }
 
   updateprofile(): void {
-    this.navCtrl.push('ProfileupdatePage');
+    this.navCtrl.push('ProfileupdatePage', {
+      userId: this.userId
+    });
   }
 
   changeProfilePic() {
