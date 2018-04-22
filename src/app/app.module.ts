@@ -61,7 +61,7 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    RoundProgressModule
+    RoundProgressModule,
     AngularFireStorageModule,
     Ionic2RatingModule
   ],
