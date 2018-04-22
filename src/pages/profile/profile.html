@@ -20,8 +20,8 @@
                 </div>
               </ng-template>
             </ion-thumbnail>
-            <div *ngIf="userProfile?.name || userProfile?.age || userProfile?.location; else noInfo">
-              <h1>{{ userProfile?.name}}</h1>
+            <h1 *ngIf="userProfile?.name">{{ userProfile?.name}}</h1>
+            <div *ngIf="userProfile?.age || userProfile?.location; else noInfo">
               <p>{{ userProfile?.age }}, {{ userProfile?.location }} </p>
             </div>
             <ng-template #noInfo><p>Please, edit your personal info</p></ng-template>

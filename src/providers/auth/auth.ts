@@ -18,7 +18,6 @@ export class AuthData {
     afAuth.authState.subscribe(user => {
       if (user) {
         this.userId = user.uid;
-        console.log(user);
       }
     });
   }
@@ -65,11 +64,26 @@ export class AuthData {
     }
 
     // Sign in using a popup.
-    return firebase.auth().signInWithPopup(provider).then(function(result) {
+    return firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(result => {
       // This gives you a Facebook Access Token.
       var token = result.credential.accessToken;
       // The signed-in user info.
-      var user = result.user;
+      var newUser = result.user;
+
+      // If user is new then create a new profiel entry
+      if (result.additionalUserInfo.isNewUser) {
+        const newSocialUserDocument: AngularFirestoreDocument<User> = this.fireStore.doc(`users/${newUser.uid}`);
+        newSocialUserDocument.set({
+          id: newUser.uid,
+          email: newUser.email,
+          name: newUser.displayName,
+          age: null,
+          location: null
+        })
+      }
     });
   }
 }
