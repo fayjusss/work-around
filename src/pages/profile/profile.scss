@@ -9,5 +9,10 @@ page-profile {
     p {
       height: 20% !important;
     }
+  .avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    width:230px;
+    height:230px;
   }
 }

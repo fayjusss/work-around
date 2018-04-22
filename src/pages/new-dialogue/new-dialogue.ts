@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ViewController, NavController, NavParams } from 'ionic-angular';
 import { MessengerProvider } from '../../providers/messenger/messenger';
 import { Observable } from 'rxjs/Observable';
 
@@ -13,6 +13,7 @@ export class NewDialoguePage {
 
   constructor(
     public messengerProvider: MessengerProvider,
+    public viewCtrl: ViewController,
     public navCtrl: NavController,
     public navParams: NavParams)
   {
@@ -34,6 +35,8 @@ export class NewDialoguePage {
       this.navCtrl.push('MessengerPage', {
         chatId: newChatId
       });
+      // Closes the new-dialogue modal
+      this.viewCtrl.dismiss();
     });
   }
 

@@ -25,8 +25,6 @@ export class MessengerProvider {
   }
 
   createNewChat(newChatId): Promise<void> {
-    const random : string = "Hey";
-
     return this.firestore
       .doc<Chat>(`/chats/${newChatId}/`)
       .set({

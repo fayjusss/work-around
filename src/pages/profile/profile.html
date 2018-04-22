@@ -2,11 +2,8 @@
     <ion-list *ngFor="let userProfile of userProfile | async" no-lines>
         <ion-item detail-push>
             <ion-thumbnail item-start>
-                <img src="assets/imgs/cat.jpg">
+                 <img class="avatar" [src]="profileUrl | async" (click)="changeProfilePic()">
             </ion-thumbnail>
-            <!--<ion-avatar item-start>-->
-                <!--<img src="assets/imgs/cat.jpg">-->
-            <!--</ion-avatar>-->
             <h1>{{ userProfile?.name}}</h1>
             <p>{{ userProfile?.age }}, {{ userProfile?.location }} </p>
             <button ion-button outline (click)="updateprofile()">Edit Profile</button>
@@ -147,8 +144,6 @@
                 </ion-item>
             </ion-list>
         </ion-list>
-
-
         <ion-list *ngSwitchCase="'Settings'" no-lines>
             <ion-list inset>
                 <ion-list-header>
