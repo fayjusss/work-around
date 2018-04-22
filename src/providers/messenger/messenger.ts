@@ -16,7 +16,7 @@ export class MessengerProvider {
   constructor(
       public afAuth: AngularFireAuth,
       public firestore: AngularFirestore
-    ) {
+  ) {
     afAuth.authState.subscribe(user => {
       if (user) {
         this.userId = user.uid;

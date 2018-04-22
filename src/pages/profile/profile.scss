@@ -1,3 +1,19 @@
 page-profile {
-
+  .current {
+    position: absolute;
+    color: #bbb;
+    font-weight: 100;
+    line-height: 1;
+  }
+  ion-col {
+    p {
+      height: 20% !important;
+    }
+  }
+  .avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    width:230px;
+    height:230px;
+  }
 }

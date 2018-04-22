@@ -23,7 +23,6 @@ import { AngularFireAuth } from "angularfire2/auth";
 export class AddJobPage {
   addJobForm: FormGroup;
 
-
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl: AlertController,
@@ -42,11 +41,6 @@ export class AddJobPage {
           endDate: ['']
       });
   }
-
-
-
-
-
 
   async addJob(): Promise<any> {
       if (!this.addJobForm.valid) {
