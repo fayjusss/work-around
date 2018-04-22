@@ -22,9 +22,10 @@ export class MyJobsPage {
   workingList: Observable<any>;
   completedList: Observable<any>;
   uncompletedList:Observable<any>;
+  
     constructor(
     public navCtrl: NavController,
-    public modalCtrl: ModalController,
+    public modalCtrl: ModalController, 
     public navParams: NavParams,
     public authProvider: AuthData,
     private afAuth: AngularFireAuth,
@@ -38,23 +39,31 @@ export class MyJobsPage {
 
     ionViewDidLoad() {
       this.afAuth.authState.take(1).subscribe(auth => {
-        this.myjobList = null;
-        this.mybidList =null;
-        this.ongoingList= null;
-        this.workingList = null;
+          this.myjobList = this.afs.collection
+              ('jobs', ref => ref.where('providerId', '==', auth.uid).where('status','==','open'))
+              .valueChanges();
+          this.mybidList = this.afs.collection
+              ('bids', ref => ref.where('seekerID','==',auth.uid).where('status','==','open'))
+              .valueChanges();
+          this.ongoingList = this.afs.collection
+                  ('jobs', ref => ref.where('providerId', '==', auth.uid).where('status','==','ongoing'))
+                  .valueChanges();
+        this.workingList = this.afs.collection
+                      ('bids', ref => ref.where('seekerID','==',auth.uid).where('status','==','ongoing'))
+                      .valueChanges();
         this.completedList = this.afs.collection
                 ('bids', ref => ref.where('providerId', '==', auth.uid).where('status','==','completed'))
                 .valueChanges();
         this.uncompletedList = this.afs.collection
                   ('bids', ref => ref.where('providerId', '==', auth.uid).where('status','==','uncomplete'))
                         .valueChanges();
-          console.log(this.myjobList);
       })
     }
     presentBidModal(myjobList) {
         let viewBidModal = this.modalCtrl.create(AcceptBidPage, myjobList);
         viewBidModal.present();
     }
+
     presentverifyModal(completedList){
       let viewverifyModal = this.modalCtrl.create(VerifyPage, completedList);
       viewverifyModal.present();

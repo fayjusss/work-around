@@ -18,6 +18,7 @@ export class ProfilePage {
   public loading: Loading;
 
   userProfile: Observable<any>;
+  option: any = "profile";
   profileUrl: Observable<string | null>;
   selectedPhoto: string;
 
@@ -43,6 +44,19 @@ export class ProfilePage {
 
   ionViewDidLoad() {
 
+  }
+
+  getOverlayStyle() {
+    let transform = 'translateY(-50%) ' + 'translateX(-50%)';
+
+    return {
+        'top': '40%',
+        'left': '50%',
+        'transform': transform,
+        '-moz-transform': transform,
+        '-webkit-transform': transform,
+        'font-size': 20 + 'px'
+    };
   }
 
   logoutUser(){

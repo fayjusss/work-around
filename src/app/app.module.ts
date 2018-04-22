@@ -33,6 +33,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 import { JobsProvider } from '../providers/jobs/jobs';
 import { MessengerProvider } from '../providers/messenger/messenger';
 import { Camera } from '@ionic-native/camera';
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { Camera } from '@ionic-native/camera';
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    RoundProgressModule,
     AngularFireStorageModule,
     Ionic2RatingModule
   ],
