@@ -23,23 +23,25 @@ import { AngularFireAuth } from "angularfire2/auth";
 export class AddJobPage {
   addJobForm: FormGroup;
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public alertCtrl: AlertController,
-              public loadingCtrl: LoadingController,
-              public jobsProvider: JobsProvider,
-              public app: App,
-              public afAuth: AngularFireAuth,
-              public afs: AngularFirestore,
-              formBuilder: FormBuilder) {
-      this.addJobForm = formBuilder.group({
-          type: ['', Validators.compose([Validators.required])],
-          title: ['', Validators.compose([Validators.required])],
-          description: ['', Validators.compose([Validators.required])],
-          money: ['5', Validators.compose([Validators.required])],
-          startDate: [''],
-          endDate: ['']
-      });
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
+    public jobsProvider: JobsProvider,
+    public app: App,
+    public afAuth: AngularFireAuth,
+    public afs: AngularFirestore,
+    formBuilder: FormBuilder
+  ) {
+    this.addJobForm = formBuilder.group({
+      type: ['', Validators.compose([Validators.required])],
+      title: ['', Validators.compose([Validators.required])],
+      description: ['', Validators.compose([Validators.required])],
+      money: ['5', Validators.compose([Validators.required])],
+      startDate: [''],
+      endDate: ['']
+    });
   }
 
   async addJob(): Promise<any> {
@@ -59,8 +61,6 @@ export class AddJobPage {
           const endDate: string = this.addJobForm.value.endDate;
           const status:string = 'open';
 
-          console.log(startDate);
-
           try {
               // Here we'll talk to the provider
               await this.jobsProvider.createJob(
@@ -74,6 +74,14 @@ export class AddJobPage {
               );
               await loading.dismiss();
               this.navCtrl.pop();
+
+              // Shows alert
+              let alert = this.alertCtrl.create({
+                title: 'Done!',
+                subTitle: 'Your job was successfully added! Wait for talented seekers to reply.',
+                buttons: ['OK']
+              });
+              alert.present();
           } catch (error) {
               await loading.dismiss();
               const alert: Alert = this.alertCtrl.create({
