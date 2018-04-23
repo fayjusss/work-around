@@ -4,6 +4,7 @@ import {
     AngularFirestoreDocument,
 } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireStorage } from 'angularfire2/storage';
 import firebase from 'firebase';
 import { User } from '../../models/user';
 
@@ -13,7 +14,8 @@ export class AuthData {
   userId: string;
   constructor(
       public fireStore: AngularFirestore,
-      public afAuth: AngularFireAuth
+      public afAuth: AngularFireAuth,
+      public storage: AngularFireStorage
   ) {
     afAuth.authState.subscribe(user => {
       if (user) {
@@ -73,7 +75,7 @@ export class AuthData {
       // The signed-in user info.
       var newUser = result.user;
 
-      // If user is new then create a new profiel entry
+      // If user is new then create a new profile entry
       if (result.additionalUserInfo.isNewUser) {
         const newSocialUserDocument: AngularFirestoreDocument<User> = this.fireStore.doc(`users/${newUser.uid}`);
         newSocialUserDocument.set({
@@ -83,7 +85,22 @@ export class AuthData {
           age: null,
           location: null
         })
+        this.uploadProfilePic(newUser.photoURL, newUser.uid);
       }
     });
+  }
+
+  uploadProfilePic(url, id) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.responseType = "blob";
+    xhr.onload = (e) => {
+      if (xhr.status === 200) {
+        // `blob` response
+        const filePath = '/profile-pics/' + id + '.jpg';
+        const task = this.storage.upload(filePath, xhr.response);
+      }
+    };
+    xhr.send();
   }
 }
