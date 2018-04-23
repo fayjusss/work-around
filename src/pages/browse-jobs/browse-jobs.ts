@@ -23,6 +23,7 @@ import firebase from 'firebase';
   templateUrl: 'browse-jobs.html',
 })
 export class BrowseJobsPage {
+  startDatePicker: any;
   jobList: Observable<any[]>;
   jobTitle: BehaviorSubject<string|null>;
   jobType: BehaviorSubject<string|null>;
@@ -31,12 +32,20 @@ export class BrowseJobsPage {
   startDate: any;
   endDate: any;
   hide:boolean = false;
+  public customOptions: any = {
+    buttons: [{
+      text: 'Clear',
+      handler: () => this.startDatePicker.setValue(null)
+    }]
+  }
 
-    constructor(public navCtrl: NavController,
-              public jobProvider: JobsProvider,
-              public modalCtrl: ModalController,
-              public alertCtrl: AlertController,
-              public firestore: AngularFirestore) {
+  constructor(
+    public navCtrl: NavController,
+    public jobProvider: JobsProvider,
+    public modalCtrl: ModalController,
+    public alertCtrl: AlertController,
+    public firestore: AngularFirestore
+  ) {
     this.jobTitle = new BehaviorSubject(null);
     this.jobType = new BehaviorSubject(null);
     this.minMoney = 0;
