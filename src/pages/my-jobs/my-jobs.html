@@ -66,12 +66,12 @@
 
     <ion-list *ngSwitchCase="'seeking'">
       <!--Bidding list-->
-      <button text-wrap ion-item  *ngFor="let myBid of mybidList | async" (click)="presentBidModal(myBid)">
+      <button text-wrap ion-item  *ngFor="let myBid of mybidList | async" (click)="presentBidInfoModal(myBid)">
         <ion-badge>Pending</ion-badge>
         <h3> <b>{{ myBid.title }}</b> </h3>
         <p>
           <!--Money-->
-          <span *ngIf="myBid.money; else noMoney"> {{ myBid.money }}&euro; </span>
+          <span *ngIf="myBid.payRequest; else noMoney"> {{ myBid.payRequest }}&euro; </span>
           <ng-template #noMoney><span ion-text>Budget is not specified</span></ng-template>
           <!--&bull;-->
 
@@ -89,7 +89,7 @@
         <h3> <b>{{ workingJob.title }}</b> </h3>
         <p>
           <!--Money-->
-          <span *ngIf="workingJob.money; else noMoney"> {{ workingJob.money }}&euro; </span>
+          <span *ngIf="workingJob.payRequest; else noMoney"> {{ workingJob.payRequest }}&euro; </span>
           <ng-template #noMoney><span ion-text>Budget is not specified</span></ng-template>
           <!--&bull;-->
 

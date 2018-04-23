@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import {AcceptBidPage} from '../accept-bid/accept-bid';
 import {WorkDonePage} from '../work-done/work-done';
 import { VerifyPage } from '../verify/verify';
+import {BidInfoPage} from '../bid-info/bid-info';
 
 @IonicPage()
 @Component({
@@ -27,7 +28,7 @@ export class MyJobsPage {
 
     constructor(
     public navCtrl: NavController,
-    public modalCtrl: ModalController, 
+    public modalCtrl: ModalController,
     public navParams: NavParams,
     public authProvider: AuthData,
     private afAuth: AngularFireAuth,
@@ -74,6 +75,11 @@ export class MyJobsPage {
     presentWorkingModal(workingList){
       let viewWorkModal = this.modalCtrl.create(WorkDonePage, workingList);
       viewWorkModal.present();
+    }
+
+    presentBidInfoModal(myBid){
+      let BidInfoModal = this.modalCtrl.create(BidInfoPage, myBid);
+      BidInfoModal.present();
     }
 
     showjoblist(){
