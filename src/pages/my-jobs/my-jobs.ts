@@ -22,7 +22,9 @@ export class MyJobsPage {
   workingList: Observable<any>;
   completedList: Observable<any>;
   uncompletedList:Observable<any>;
-  
+  option: any = "providing";
+
+
     constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController, 
