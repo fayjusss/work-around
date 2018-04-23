@@ -1,29 +1,16 @@
-<!--
-  Generated template for the ViewJobPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-  <ion-navbar>
-    <ion-buttons left>
-      <button ion-button icon-only (click)="closeModal()">
-        <ion-icon name="arrow-back"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-title>Job Details</ion-title>
-  </ion-navbar>
-</ion-header>
-
-
 <ion-content padding>
+  <button class="button-nav" ion-item clear  no-lines (click)="closeModal()">
+    <ion-icon name="arrow-back" item-start></ion-icon>
+    <ion-title>Job Details</ion-title>
+  </button>
+
   <h1>{{ jobDetails?.title }} </h1>
-  <p id="job-status">OPEN / 6 days left</p>
+  <p id="job-status">{{ jobDetails?.status | uppercase }} / 6 days left</p>
   <p>{{ jobDetails?.description }} </p>
 
   <hr>
   <small>Job Budget(EUR)</small>
-  <h4>&euro;10 - &euro;100</h4>
+  <h4>{{ jobDetails?.money }}&euro;</h4>
 
   <small>Skills Required</small>
   <h6>HTML, CSS, JS</h6>
@@ -51,24 +38,22 @@
   </ion-list>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar padding>
-    <ion-item>
-      <p item-start>Employer Rating</p>
-      <ion-badge item-start>5.0</ion-badge>
-      <rating item-end [(ngModel)]="rate"
-              readOnly="true"
-              max="5"
-              emptyStarIconName="star-outline"
-              halfStarIconName="star-half"
-              starIconName="star"
-              nullable="false"
-              (ngModelChange)="onStarModelChange($event)">
-      </rating>
-    </ion-item>
-  </ion-toolbar>
-  <button margin-bottom ion-button block large icon-left color="secondary" (click)="presentBiddingModal()">
-    <ion-icon name="paper-plane"></ion-icon>
-    Place a Bid
-  </button>
+<ion-footer padding>
+    <!--<ion-item>-->
+      <!--<p item-start>Provider Rating</p>-->
+      <!--<ion-badge item-start>5.0</ion-badge>-->
+      <!--<rating item-end [(ngModel)]="rate"-->
+              <!--readOnly="true"-->
+              <!--max="5"-->
+              <!--emptyStarIconName="star-outline"-->
+              <!--halfStarIconName="star-half"-->
+              <!--starIconName="star"-->
+              <!--nullable="false"-->
+              <!--(ngModelChange)="onStarModelChange($event)">-->
+      <!--</rating>-->
+    <!--</ion-item>-->
+    <button ion-button round block large outline icon-left color="secondary" (click)="presentBiddingModal()">
+      <ion-icon name="paper-plane"></ion-icon>
+      Place a Bid
+    </button>
 </ion-footer>

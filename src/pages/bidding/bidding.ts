@@ -14,6 +14,7 @@ import { Observable } from 'rxjs/Observable';
 export class BiddingPage {
   biddingForm: FormGroup;
   private userDocument: AngularFirestoreDocument<any>;
+  private sendNoti: AngularFirestoreDocument<any>;
   jobDetails: Job;
 
   constructor(
@@ -73,6 +74,16 @@ export class BiddingPage {
         endDate:endDate,
       })
 
+      const notification: string = this.afs.createId();
+        this.userDocument = this.afs.doc(`bids/${bidId}`);
+        this.sendNoti = this.afs.doc(`notification/${notification}`);
+
+        this.sendNoti.set({
+          title:this.jobDetails.title,
+          money: money,
+          getID: providerId,
+          show: "A user has bid " + money + " € for the job "
+        })
     })
 
     this.viewCtrl.dismiss();

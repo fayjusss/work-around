@@ -1,93 +1,109 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>My jobs</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>My Jobs</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-fab top right edge>
-    <button ion-fab mini color="primary" (click)="nagivateToCreateJob()">
+  <ion-fab top right edge margin-bottom>
+    <button ion-fab color="dark" (click)="nagivateToCreateJob()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
-  <h2>Job List</h2>
-  <button ion-button block class="job-list" (click)="showjoblist()" >Job List</button>
-  <div *ngFor="let myjobList of myjobList | async">
-    <button text-wrap ion-item class="animation"  (click)="presentBidModal(myjobList)">
-      <div class="job-head" margin-bottom>
-        <h2>Title: {{ myjobList?.title}} </h2>
-        <p class="description"> Starting date:{{ myjobList?.startDate}} </p>
-        <p class="description"> Ending date:{{ myjobList?.endDate}} </p>
-        </div>
-        <div class="details">
-          <ion-icon color="" float-right [name]="myjobList.type"></ion-icon>
-          <h6 > Description: {{ myjobList?.description}} </h6>
-          <h6 > Money Offer:<a class="money"> {{ myjobList?.money}} &euro;</a> </h6>
-          <h6 > Status:<a class="open"> {{ myjobList?.status}} </a></h6>
-          <h6 > Position:<a class="provider">Provider</a> </h6>
-        </div>
-    </button>
+
+  <div margin-top padding>
+    <ion-segment [(ngModel)]="option">
+      <ion-segment-button value="providing">
+        Providing
+      </ion-segment-button>
+      <ion-segment-button value="seeking">
+        Seeking
+      </ion-segment-button>
+    </ion-segment>
   </div>
 
-  <h2>Bidding List</h2>
-  <button ion-button block class="bid-list" (click)="showbidlist()" >Bidding List</button>
-  <div *ngFor="let mybidList of mybidList | async">
+  <div [ngSwitch]="option">
+    <ion-list *ngSwitchCase="'providing'">
+      <!--My jobs list-->
+      <button text-wrap ion-item  *ngFor="let myJob of myjobList | async" (click)="presentBidModal(myJob)">
+        <ion-badge>Open</ion-badge>
+        <h3> <b>{{ myJob.title }}</b> </h3>
+        <p>
+          <!--Money-->
+          <span *ngIf="myJob.money; else noMoney"> {{ myJob.money }}&euro; </span>
+          <ng-template #noMoney><span ion-text color="light">Budget is not specified</span></ng-template>
+          <!--&bull;-->
 
-    <button text-wrap ion-item  >
-      <div class="job-head" margin-bottom>
-        <h2> Title {{ mybidList?.title}} </h2>
-        <p class="description">Starting date: {{ mybidList?.startDate}} </p>
-        <p class="description"> Ending date:{{ mybidList?.endDate}} </p>
-      </div>
-      <ion-icon color="" float-right [name]="mybidList.type"></ion-icon>
-        <h6 class="description">Proposal: {{ mybidList?.bidProposal}}  </h6>
-        <h6 class="description">Money bid: <a class="money">{{ mybidList?.payRequest}} &euro;</a>  </h6>
-        <h6 class="description">Status:<a class="pending"> Pending</a>  </h6>
-        <h6 class="description">Position:<a class="bidder"> Bidder </a> </h6>
+          <!--Deadline-->
+          <!--<span *ngIf="myJob.endDate; else noEndDate">Deadline: {{ formatDate(myJob.endDate) }}</span>-->
+          <!--<ng-template #noEndDate><span ion-text>Deadline: Not specified</span></ng-template>-->
+          <!--&bull;-->
+        </p>
+        <ion-badge class="badge-outline"><ion-icon color="primary" [name]="myJob.type"></ion-icon></ion-badge>
+      </button>
 
-    </button>
+      <!--Ongoing jobs list-->
+      <button text-wrap ion-item  *ngFor="let ongoingJob of ongoingList | async" (click)="presentBidModal(myJob)">
+        <ion-badge class="badge-success">On going</ion-badge>
+        <h3> <b>{{ ongoingJob.title }}</b> </h3>
+        <p>
+          <!--Money-->
+          <span *ngIf="ongoingJob.money; else noMoney"> {{ ongoingJob.money }}&euro; </span>
+          <ng-template #noMoney><span ion-text color="light">Budget is not specified</span></ng-template>
+          <!--&bull;-->
+
+          <!--Deadline-->
+          <!--<span *ngIf="myJob.endDate; else noEndDate">Deadline: {{ formatDate(myJob.endDate) }}</span>-->
+          <!--<ng-template #noEndDate><span ion-text>Deadline: Not specified</span></ng-template>-->
+          <!--&bull;-->
+        </p>
+        <ion-badge class="badge-outline"><ion-icon color="primary" [name]="ongoingJob.type"></ion-icon></ion-badge>
+      </button>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'seeking'">
+      <!--Bidding list-->
+      <button text-wrap ion-item  *ngFor="let myBid of mybidList | async" (click)="presentBidModal(myBid)">
+        <ion-badge>Pending</ion-badge>
+        <h3> <b>{{ myBid.title }}</b> </h3>
+        <p>
+          <!--Money-->
+          <span *ngIf="myBid.money; else noMoney"> {{ myBid.money }}&euro; </span>
+          <ng-template #noMoney><span ion-text>Budget is not specified</span></ng-template>
+          <!--&bull;-->
+
+          <!--Deadline-->
+          <!--<span *ngIf="myJob.endDate; else noEndDate">Deadline: {{ formatDate(myJob.endDate) }}</span>-->
+          <!--<ng-template #noEndDate><span ion-text>Deadline: Not specified</span></ng-template>-->
+          <!--&bull;-->
+        </p>
+        <ion-badge class="badge-outline"><ion-icon color="primary" [name]="myBid.type"></ion-icon></ion-badge>
+      </button>
+
+      <!--Currently working-->
+      <button text-wrap ion-item  *ngFor="let workingJob of workingList | async" (click)="presentWorkingModal(workingJob)">
+        <ion-badge class="badge-success">On process</ion-badge>
+        <h3> <b>{{ workingJob.title }}</b> </h3>
+        <p>
+          <!--Money-->
+          <span *ngIf="workingJob.money; else noMoney"> {{ workingJob.money }}&euro; </span>
+          <ng-template #noMoney><span ion-text>Budget is not specified</span></ng-template>
+          <!--&bull;-->
+
+          <!--Deadline-->
+          <!--<span *ngIf="myJob.endDate; else noEndDate">Deadline: {{ formatDate(myJob.endDate) }}</span>-->
+          <!--<ng-template #noEndDate><span ion-text>Deadline: Not specified</span></ng-template>-->
+          <!--&bull;-->
+        </p>
+        <ion-badge class="badge-outline"><ion-icon color="primary" [name]="workingJob.type"></ion-icon></ion-badge>
+      </button>
+    </ion-list>
   </div>
 
-  <h2>Ongoing job List</h2>
-  <button ion-button block class="ongoing-list" (click)="showongoinglist()" >Job on Process</button>
-  <div *ngFor="let ongoingList of ongoingList | async">
-
-    <button text-wrap ion-item  >
-      <div class="job-head" margin-bottom>
-        <h2>Title: {{ ongoingList?.title}} </h2>
-        <p class="description"> Time: {{ ongoingList?.time}} days left </p>
-
-        </div>
-
-        <ion-icon color="" float-right [name]="ongoingList.type"></ion-icon>
-        <h6 > Money Offer: <a class="money">{{ ongoingList?.money}} &euro;</a> </h6>
-        <h6 > Status: <a class="onprogress">On Progress</a> </h6>
-        <h6 >Position: <a class="provider">Provider</a> </h6>
-
-    </button>
-  </div>
-
-  <h2>Curently working</h2>
-  <button ion-button block class="work-list" (click)="showcurrentlist()" >Currently Working</button>
-  <div *ngFor="let workingList of workingList | async">
-
-    <button text-wrap ion-item (click)="presentWorkingModal(workingList)" >
-      <div class="job-head" margin-bottom>
-        <h2>Title: {{ workingList?.title}} </h2>
-        <p class="description"> Time: {{ workingList?.time}} days left </p>
-        </div>
-        <ion-icon color="" float-right [name]="workingList.type"></ion-icon>
-        <h6 class="description"> Paymet: <a class="money">{{ workingList?.payRequest}} &euro;</a> </h6>
-        <h6 class="description"> Status: <a class="onprogress">On process</a> </h6>
-        <h6 class="description"> Position: <a class="worker">Worker</a> </h6>
-
-    </button>
-  </div>
-
-  <button ion-button block class="vertify-list" (click)="vertifylist()" >Verify Job</button>
+  <!--<button ion-button block class="vertify-list" (click)="vertifylist()" >Verify Job</button>-->
   <div *ngFor="let completedList of completedList | async">
 
     <button text-wrap ion-item  (click)="presentverifyModal(completedList)">

@@ -19,11 +19,11 @@
 <ion-content padding>
   <div *ngFor="let bidinfo of bidinfo | async">
 
-    <h2>Seeker name:{{ bidinfo?.name}} </h2>
-    <h2>Title:{{ bidDetails?.title}}</h2>
-    <h2>Pay Request:{{ bidDetails?.payRequest}} </h2>
-    <h2>Bid Proposal:{{ bidDetails?.bidProposal}}</h2>
-    <button text-wrap ion-item (click)="acceptbid()" >Accept</button>
+
+    <h2>Bid:<a class="money">{{ bidDetails?.payRequest}} &euro; </a></h2>
+    <p>Seeker name:{{ bidinfo?.name}} </p>
+    <p>Proposal:{{ bidDetails?.bidProposal}}</p>
+    <button text-wrap ion-item class="accept" (click)="acceptbid()" >Accept</button>
 
   </div>
 </ion-content>

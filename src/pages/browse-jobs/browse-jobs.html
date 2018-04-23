@@ -10,7 +10,7 @@
 
   <!--searchbar-->
   <ion-item>
-    <ion-searchbar (ionInput)="filterTitle($event)" placeholder="Browse">Browse</ion-searchbar>
+    <ion-searchbar (ionInput)="filterTitle($event)" placeholder="Search"></ion-searchbar>
     <ion-icon name="funnel" item-end (click)="ngIfCtrl()"></ion-icon>
   </ion-item>
 
@@ -56,8 +56,7 @@
     <div *ngFor="let job of jobList | async">
       <button text-wrap ion-item  (click)="presentViewJobModal(job)"
               *ngIf="job.money >= minMoney && job.money <= maxMoney && checkStartDate(job.startDate) && checkEndDate(job.endDate)">
-        <ion-icon item-start [name]="job.type"></ion-icon>
-        <h3> {{ job.title }} </h3>
+        <h3> <b>{{ job.title }}</b> </h3>
         <p>
           <!--Money-->
           <span class="money" *ngIf="job.money; else noMoney"> {{ job.money }}&euro; </span>
@@ -67,6 +66,7 @@
           <span *ngIf="job.endDate; else noEndDate">Deadline: {{ formatDate(job.endDate) }}</span>
           <ng-template #noEndDate><span ion-text>Deadline: Not specified</span></ng-template>
         </p>
+        <ion-badge class="badge-outline"><ion-icon color="primary" [name]="job.type"></ion-icon></ion-badge>
       </button>
     </div>
   </ion-list>

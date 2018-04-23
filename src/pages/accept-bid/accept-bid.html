@@ -17,14 +17,19 @@
 
 
 <ion-content padding>
-<h1>Title: {{ jobDetails?.title }} </h1>
-<h1>Money Offer: <a class="money">{{ jobDetails?.money }} &euro;</a></h1>
+  <div class="job-info">
+    <h1>Title: {{ jobDetails?.title }} </h1>
+    <p class="description"> Starting date:{{ jobDetails?.startDate}} </p>
+    <p class="description"> Ending date:{{ jobDetails?.endDate}} </p>
+    <h3>Starting Bid: <a class="money">{{ jobDetails?.money }} &euro;</a></h3>
+  </div>
+
 <div *ngFor="let mybidList of mybidList | async">
 
-  <button text-wrap ion-item (click)='presentBidInfo(mybidList)'  >
+  <button text-wrap ion-item (click)='presentBidInfo(mybidList)' class="job-bid-info"  >
     <div class="job-head" margin-bottom>
-      <h2 >Bid:<a class="money"> {{ mybidList?.payRequest}} &euro; </a></h2>
-      <h2 >Task completion time: {{ mybidList?.time}} days</h2>
+      <h1 >Bid:<a class="money"> {{ mybidList?.payRequest}} &euro; </a></h1>
+      <p class="description"> Task completion time: {{ mybidList?.time}} days</p>
     </div>
     <h6>Proposal: {{mybidList?.bidProposal}} </h6>
   </button>
