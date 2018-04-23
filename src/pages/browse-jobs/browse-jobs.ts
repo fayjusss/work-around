@@ -30,8 +30,9 @@ export class BrowseJobsPage {
   maxMoney: number;
   startDate: any;
   endDate: any;
+  hide:boolean = false;
 
-  constructor(public navCtrl: NavController,
+    constructor(public navCtrl: NavController,
               public jobProvider: JobsProvider,
               public modalCtrl: ModalController,
               public alertCtrl: AlertController,
@@ -150,5 +151,9 @@ export class BrowseJobsPage {
   presentViewJobModal(job) {
       let viewJobModal = this.modalCtrl.create(ViewJobPage, job);
       viewJobModal.present();
+  }
+
+  ngIfCtrl(){
+      this.hide = !this.hide;
   }
 }

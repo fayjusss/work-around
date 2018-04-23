@@ -8,6 +8,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import { credentials } from './config';
 
@@ -26,13 +27,15 @@ import { ProfilePage } from "../pages/profile/profile";
 import { NewDialoguePage } from "../pages/new-dialogue/new-dialogue";
 import { AcceptBidPage } from "../pages/accept-bid/accept-bid";
 import { WorkDonePage } from "../pages/work-done/work-done";
-import {AccpetBidInfoPage} from "../pages/accpet-bid-info/accpet-bid-info";
-import {VerifyPage} from "../pages/verify/verify";
-
-import { JobsProvider } from '../providers/jobs/jobs';
+import { AccpetBidInfoPage } from "../pages/accpet-bid-info/accpet-bid-info";
+import { VerifyPage } from "../pages/verify/verify";
 
 import { Ionic2RatingModule } from 'ionic2-rating';
+import { JobsProvider } from '../providers/jobs/jobs';
 import { MessengerProvider } from '../providers/messenger/messenger';
+import { Camera } from '@ionic-native/camera';
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
+
 
 @NgModule({
   declarations: [
@@ -60,6 +63,8 @@ import { MessengerProvider } from '../providers/messenger/messenger';
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    RoundProgressModule,
+    AngularFireStorageModule,
     Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
@@ -82,6 +87,7 @@ import { MessengerProvider } from '../providers/messenger/messenger';
     VerifyPage,
   ],
   providers: [
+    Camera,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

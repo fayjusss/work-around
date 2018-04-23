@@ -1,44 +1,205 @@
-<!--
-  Generated template for the ProfilePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Profile</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
 <ion-content padding>
-  <ion-list *ngFor="let userProfile of userProfile | async">
-	<ion-row>
-		<ion-item>
-    	<ion-thumbnail item-start>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
-    	</ion-thumbnail>
-			<button ion-button (click)="updateprofile()">Edit Profile</button>
-			</ion-item>
-		</ion-row>
-   
-		<ion-list>
-			<ion-item>
-    		<h2>{{ userProfile?.name}}</h2>
-			</ion-item>
-			<ion-item>
-    		<h2>{{ userProfile?.age }}</h2>
-			</ion-item>
-			<ion-item>
-    		<h2>{{ userProfile?.location }}</h2>
-			</ion-item>
-			  <button ion-button block type="button" (click)="logoutUser()">
-    Log out
-  </button>
-		</ion-list>
-  </ion-list>
+    <ion-list *ngFor="let userProfile of userProfile | async" no-lines>
+        <ion-item detail-push>
+            <ion-thumbnail item-start>
+              <img *ngIf="!showSpinner; else spinner" class="avatar" [src]="profileUrl | async" (click)="changeProfilePic()">
+              <ng-template #spinner>
+                <div class="sk-circle">
+                  <div class="sk-circle1 sk-child"></div>
+                  <div class="sk-circle2 sk-child"></div>
+                  <div class="sk-circle3 sk-child"></div>
+                  <div class="sk-circle4 sk-child"></div>
+                  <div class="sk-circle5 sk-child"></div>
+                  <div class="sk-circle6 sk-child"></div>
+                  <div class="sk-circle7 sk-child"></div>
+                  <div class="sk-circle8 sk-child"></div>
+                  <div class="sk-circle9 sk-child"></div>
+                  <div class="sk-circle10 sk-child"></div>
+                  <div class="sk-circle11 sk-child"></div>
+                  <div class="sk-circle12 sk-child"></div>
+                </div>
+              </ng-template>
+            </ion-thumbnail>
+            <h1 *ngIf="userProfile?.name">{{ userProfile?.name}}</h1>
+            <div *ngIf="userProfile?.age || userProfile?.location; else noInfo">
+              <p>{{ userProfile?.age }}, {{ userProfile?.location }} </p>
+            </div>
+            <ng-template #noInfo><p>Please, edit your personal info</p></ng-template>
+            <button ion-button outline (click)="updateprofile()">Edit Profile</button>
+        </ion-item>
+    </ion-list>
 
+    <div padding>
+        <ion-segment [(ngModel)]="option">
+            <ion-segment-button value="profile">
+               Profile
+            </ion-segment-button>
+            <ion-segment-button value="Reviews">
+                Reviews
+            </ion-segment-button>
+            <ion-segment-button value="Settings">
+                Settings
+            </ion-segment-button>
+        </ion-segment>
+    </div>
 
+    <div [ngSwitch]="option">
+        <ion-list *ngSwitchCase="'profile'">
+            <ion-item>
+                <h2>About</h2>
+                <p text-wrap padding-top>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non tellus cursus, maximus arcu et, consequat velit. Curabitur ac risus ultrices augue vulputate mattis id et urna. Pellentesque viverra sodales nulla non accumsan. Vivamus fermentum velit et lacus imperdiet finibus. Praesent odio leo, mollis at mauris quis, sagittis eleifend dolor.</p>
+            </ion-item>
+            <ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <div class="current" [ngStyle]="getOverlayStyle()">50%</div>
+                            <round-progress
+                                    [current]=50
+                                    [max]=100
+                                    [color]="'#FF9800'"
+                                    [background]="'#eaeaea'"
+                                    [stroke]="20"
+                                    [responsive]="true"
+                                    [duration]="800"
+                                    [animation]="'easeInOutQuart'"
+                                    [animationDelay]="0"></round-progress>
+                            <p padding-top text-center>Completed</p>
+                        </ion-col>
+                        <ion-col>
+                            <div class="current" [ngStyle]="getOverlayStyle()">50%</div>
+                            <round-progress
+                                    [current]=50
+                                    [max]=100
+                                    [color]="'#FF9800'"
+                                    [background]="'#eaeaea'"
+                                    [stroke]="20"
+                                    [responsive]="true"
+                                    [duration]="800"
+                                    [animation]="'easeInOutQuart'"
+                                    [animationDelay]="0"></round-progress>
+                            <p padding-top text-center>On Budget</p>
+                        </ion-col>
+                        <ion-col>
+                            <div class="current" [ngStyle]="getOverlayStyle()">50%</div>
+                            <round-progress
+                                    [current]=50
+                                    [max]=100
+                                    [color]="'#FF9800'"
+                                    [background]="'#eaeaea'"
+                                    [stroke]="20"
+                                    [responsive]="true"
+                                    [duration]="800"
+                                    [animation]="'easeInOutQuart'"
+                                    [animationDelay]="0"></round-progress>
+                            <p padding-top text-center>On Time</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-item>
+                <h2 padding-bottom>My Skills</h2>
+                <ion-list>
+                    <p>HTMl</p>
+                    <p>CSS</p>
+                    <p>JS</p>
+                    <p>PHP</p>
+                    <p>Python</p>
+                    <p>MySQL</p>
+                </ion-list>
+
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Reviews'" no-lines>
+            <ion-list>
+                <ion-item>
+                    <em><b>"Great Work! Thanks.."</b></em>
+                    <br/>
+                    <ion-badge margin-top>5.0</ion-badge>
+                    <ion-item>
+                        <ion-avatar item-start>
+                            <img src="assets/imgs/cat.jpg">
+                        </ion-avatar>
+                        <p>&euro;90.00 EUR</p>
+                        <p>by <em>Kitty Kat</em> - 1 days ago</p>
+                    </ion-item>
+                </ion-item>
+                <ion-item>
+                    <em><b>"Great Work! Thanks.."</b></em>
+                    <br/>
+                    <ion-badge margin-top>5.0</ion-badge>
+                    <ion-item>
+                        <ion-avatar item-start>
+                            <img src="assets/imgs/cat.jpg">
+                        </ion-avatar>
+                        <p>&euro;90.00 EUR</p>
+                        <p>by <em>Kitty Kat</em> - 1 days ago</p>
+                    </ion-item>
+                </ion-item>
+                <ion-item>
+                    <em><b>"Great Work! Thanks.."</b></em>
+                    <br/>
+                    <ion-badge margin-top>5.0</ion-badge>
+                    <ion-item>
+                        <ion-avatar item-start>
+                            <img src="assets/imgs/cat.jpg">
+                        </ion-avatar>
+                        <p>&euro;90.00 EUR</p>
+                        <p>by <em>Kitty Kat</em> - 1 days ago</p>
+                    </ion-item>
+                </ion-item>
+                <ion-item>
+                    <em><b>"Great Work! Thanks.."</b></em>
+                    <br/>
+                    <ion-badge margin-top>5.0</ion-badge>
+                    <ion-item>
+                        <ion-avatar item-start>
+                            <img src="assets/imgs/cat.jpg">
+                        </ion-avatar>
+                        <p>&euro;90.00 EUR</p>
+                        <p>by <em>Kitty Kat</em> - 1 days ago</p>
+                    </ion-item>
+                </ion-item>
+            </ion-list>
+        </ion-list>
+        <ion-list *ngSwitchCase="'Settings'" no-lines>
+            <ion-list inset>
+                <ion-list-header>
+                    Account Settings
+                </ion-list-header>
+                <ion-item>
+                    <button ion-item>
+                        <h2>Memberships</h2>
+                        <p>Upgrade your membership for a better value</p>
+                    </button>
+                </ion-item>
+                <ion-item>
+                    <button ion-item>
+                        <h2>Payment/Deposit funds</h2>
+                        <p>Details regarding your payments account</p>
+                    </button>
+                </ion-item>
+            </ion-list>
+
+            <ion-list inset>
+                <ion-list-header>
+                    About
+                </ion-list-header>
+                <ion-item>
+                    <button ion-item>
+                        <h2>App Version</h2>
+                        <p>0.3</p>
+                    </button>
+                </ion-item>
+                <ion-item>
+                    <button ion-item>
+                        <h2>Rate</h2>
+                        <p>Rate the app!</p>
+                    </button>
+                </ion-item>
+            </ion-list>
+        </ion-list>
+    </div>
+    <button ion-button block outline color="danger" (click)="logoutUser()">Log out</button>
 </ion-content>

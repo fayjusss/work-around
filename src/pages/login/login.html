@@ -1,58 +1,44 @@
-<!--
-  Generated template for the LoginPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
 <ion-content padding>
+  <img margin-vertical src="assets/imgs/logo3.png">
   <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
 
     <ion-item>
       <ion-label stacked>Email</ion-label>
-      <ion-input formControlName="email" type="email" placeholder="Your email address"
+      <ion-input formControlName="email" type="email"
         [class.invalid]="!loginForm.controls.email.valid && blur"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Password</ion-label>
-      <ion-input formControlName="password" type="password" placeholder="Your password"
+      <ion-input formControlName="password" type="password"
         [class.invalid]="!loginForm.controls.password.valid && blur"></ion-input>
     </ion-item>
 
-    <button ion-button block round margin-top style="box-shadow: 5px 10px;" type="submit" [disabled]="!loginForm.valid">
+    <button ion-button block margin-vertical color="light" type="submit" [disabled]="!loginForm.valid">
       Login
     </button>
 
   </form>
 
-  <button ion-button block clear (click)="goToSignup()">
+  <button ion-button block clear color="light" (click)="goToSignup()">
     Create a new account
   </button>
 
-  <button ion-button block clear (click)="goToResetPassword()">
+  <button ion-button small block clear color="light" (click)="goToResetPassword()">
     I forgot my password
   </button>
 
   <div text-center padding-top>
     <button class="circle" ion-button icon-only clear large (click)="socialLogin('google')" *ngIf="!userProfile">
-      <ion-icon name="logo-googleplus" style="color: #dd4b39;"></ion-icon>
+      <ion-icon name="logo-googleplus" color="dark"></ion-icon>
     </button>
 
     <button class="circle" ion-button icon-only clear large (click)="socialLogin('facebook')" *ngIf="!userProfile">
-      <ion-icon name="logo-facebook" style="color: #3B5998;"></ion-icon>
+      <ion-icon name="logo-facebook" color="dark"></ion-icon>
     </button>
 
     <button class="circle" ion-button icon-only clear large (click)="socialLogin('twitter')" *ngIf="!userProfile">
-      <ion-icon name="logo-twitter" style="color: #00aced;"></ion-icon>
+      <ion-icon name="logo-twitter" color="dark"></ion-icon>
     </button>
   </div>
 

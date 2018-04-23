@@ -16,7 +16,7 @@ export class MessengerProvider {
   constructor(
       public afAuth: AngularFireAuth,
       public firestore: AngularFirestore
-    ) {
+  ) {
     afAuth.authState.subscribe(user => {
       if (user) {
         this.userId = user.uid;
@@ -25,8 +25,6 @@ export class MessengerProvider {
   }
 
   createNewChat(newChatId): Promise<void> {
-    const random : string = "Hey";
-
     return this.firestore
       .doc<Chat>(`/chats/${newChatId}/`)
       .set({
