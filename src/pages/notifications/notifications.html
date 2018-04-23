@@ -9,4 +9,10 @@
 
 <ion-content padding>
 
+    <div *ngFor="let mynotiList of mynotiList | async">
+      <button text-wrap ion-item>
+      <p>{{mynotiList?.show}} <b>{{mynotiList?.title}}</b> {{mynotiList?.showafter}} </p>
+    </button>
+  </div>
+
 </ion-content>
