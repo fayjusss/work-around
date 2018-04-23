@@ -18,4 +18,8 @@ page-browse-jobs {
   .money {
     color: green;
   }
+  .badge-outline {
+    background-color: transparent;
+    border: 1px solid color($colors, primary);
+  }
 }
