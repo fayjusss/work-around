@@ -35,29 +35,28 @@ export class ProfilePage {
     public loadingCtrl: LoadingController,
     private camera: Camera,
   ) {
-    this.userId = this.messengerProvider.userId;
-
     this.afAuth.authState.take(1).subscribe(auth => {
+      this.userId = auth.uid;
+
+      const ref = this.storage.ref('profile-pics/' + this.userId + '.jpg')
+      this.profileUrl = ref.getDownloadURL();
+      this.profileUrl.subscribe(() => {
+        this.showSpinner = false;
+      }, err => {
+        // Fetches the cat image if the profile pic doesn't exist
+        this.showSpinner = true;
+        this.profileUrl = this.storage.ref('profile-pics/cat.jpg').getDownloadURL();
+        this.profileUrl.subscribe(() => {
+          this.showSpinner = false;
+        }, err => {
+          console.log(err);
+        })
+      })
+
       this.userProfile = this.afs.collection
         ('users', ref => ref.where('id', '==', auth.uid))
         .valueChanges();
     })
-
-    const ref = this.storage.ref('profile-pics/' + this.userId + '.jpg')
-    this.profileUrl = ref.getDownloadURL();
-    this.profileUrl.subscribe(() => {
-      this.showSpinner = false;
-    }, err => {
-      // Fetches the cat image if the profile pic doesn't exist
-      this.showSpinner = true;
-      this.profileUrl = this.storage.ref('profile-pics/cat.jpg').getDownloadURL();
-      this.profileUrl.subscribe(() => {
-        this.showSpinner = false;
-      }, err => {
-        console.log(err);
-      })
-    })
-
   }
 
   ionViewDidLoad() {

@@ -5,12 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import { AngularFireAuth } from "angularfire2/auth";
 import {AccpetBidInfoPage} from "../accpet-bid-info/accpet-bid-info";
-/**
- * Generated class for the AcceptBidPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({

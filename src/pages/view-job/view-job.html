@@ -1,9 +1,15 @@
-<ion-content padding>
-  <button class="button-nav" ion-item clear  no-lines (click)="closeModal()">
-    <ion-icon name="arrow-back" item-start></ion-icon>
-    <ion-title>Job Details</ion-title>
-  </button>
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Job details</ion-title>
+  </ion-navbar>
+</ion-header>
 
+<ion-content padding>
   <h1>{{ jobDetails?.title }} </h1>
   <p id="job-status">{{ jobDetails?.status | uppercase }} / 6 days left</p>
   <p>{{ jobDetails?.description }} </p>

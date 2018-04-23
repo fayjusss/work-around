@@ -24,10 +24,15 @@ export class MessengerProvider {
     });
   }
 
-  createNewChat(newChatId): Promise<void> {
+  createNewChat(newChatId, otherUsersId): Promise<void> {
+    const participant_1 = this.userId;
+    const participant_2 = otherUsersId;
+
     return this.firestore
       .doc<Chat>(`/chats/${newChatId}/`)
       .set({
+        participant_1,
+        participant_2
       });
   }
 
