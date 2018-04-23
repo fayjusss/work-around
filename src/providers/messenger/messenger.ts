@@ -95,6 +95,14 @@ export class MessengerProvider {
           ref => ref
       )
   }
+
+  getOtherUsersName(otherUsersId: string) {
+    return this.firestore.collection<any>(
+      `/users`,
+      ref => ref.where('id', '==', otherUsersId)
+    )
+  }
+
   setChatId(chatId: string) {
     this.chatId = chatId;
   }
