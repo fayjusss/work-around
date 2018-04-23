@@ -45,7 +45,7 @@ export class WorkDonePage {
       title:this.bidDetails.title,
       money: this.bidDetails.payRequest,
       show: "Your worker has compeleted the job",
-      showafter: ".Please verify the job"
+      showafter: ".Please verify the job",
     })
     this.jobDocument = this.afs.doc(`jobs/${this.bidDetails.jobId}`);
     this.jobDocument.update({
