@@ -41,7 +41,7 @@
 
     <ion-item>
       <ion-label>Start Date</ion-label>
-      <ion-datetime (ionChange)="filterDate($event, 1)" displayFormat="DD/MM/YYYY" placeholder="Pick a starting date"></ion-datetime>
+      <ion-datetime [(ngModel)]="startDatePicker" (ionChange)="filterDate($event, 1)" displayFormat="DD/MM/YYYY" placeholder="Pick a starting date" [pickerOptions]="customOptions"></ion-datetime>
     </ion-item>
 
     <ion-item>

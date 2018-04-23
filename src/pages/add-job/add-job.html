@@ -18,8 +18,8 @@
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>Name</ion-label>
-      <ion-input formControlName="title" type="text" placeholder="Add Title"></ion-input>
+      <ion-label>Job title</ion-label>
+      <ion-input formControlName="title" type="text" placeholder="Add a short title"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Description</ion-label>
@@ -37,11 +37,11 @@
       <ion-label>End Date</ion-label>
       <ion-datetime formControlName="endDate" displayFormat="DD/MM/YYYY"></ion-datetime>
     </ion-item>
-    <ion-item class="error-message" *ngIf="!addJobForm.controls.title.valid
+    <ion-item no-lines class="error-message" *ngIf="!addJobForm.controls.title.valid
       && addJobForm.controls.title.touched">
-      <p>Title Required!</p>
+      <p text-center>Job title is required!</p>
     </ion-item>
-    <button ion-button block type="submit" [disabled]="!addJobForm.valid" >
+    <button class="submitButton" ion-button block type="submit" [disabled]="!addJobForm.valid" >
       Add Job
     </button>
   </form>

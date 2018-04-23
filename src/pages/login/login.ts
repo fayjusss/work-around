@@ -13,12 +13,6 @@ import { AuthData } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 import { TabsPage } from "../tabs/tabs";
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
