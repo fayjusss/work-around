@@ -1,0 +1,26 @@
+<!--
+  Generated template for the BidInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Bid for the job</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="job-info">
+    <h1>Title: {{ jobDetails?.title }} </h1>
+    <p class="description"> Starting date:{{ jobDetails?.startDate}} </p>
+    <p class="description"> Ending date:{{ jobDetails?.endDate}} </p>
+    <h3>Starting Bid: <a class="money">{{ jobDetails?.payRequest }} &euro;</a></h3>
+  </div>
+</ion-content>
