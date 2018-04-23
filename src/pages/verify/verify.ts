@@ -22,6 +22,7 @@ export class VerifyPage {
   workerlist: Observable<any>;
   private jobDocument: AngularFirestoreDocument<any>;
   private bidDocument: AngularFirestoreDocument<any>;
+  private notification: AngularFirestoreDocument<any>;
   constructor(public navCtrl: NavController,private afAuth: AngularFireAuth, public navParams: NavParams, public modalCtrl: ModalController,public viewCtrl: ViewController,
   public afs: AngularFirestore) {
   }
@@ -48,6 +49,15 @@ export class VerifyPage {
       status:'closed',
 
     })
+
+    const notification: string = this.afs.createId();
+      this.notification = this.afs.doc(`notification/${notification}`);
+      this.notification.set({
+        getID: this.jobDetails.seekerID,
+        payment: this.jobDetails.payRequest,
+        show:"You have been paid " +this.jobDetails.payRequest+ "€ for completing ",
+        title:this.jobDetails.title,
+      })
     this.viewCtrl.dismiss();
   }
 

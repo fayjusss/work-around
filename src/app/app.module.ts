@@ -12,13 +12,14 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import { credentials } from './config';
 
+import { MyJobsPage } from "../pages/my-jobs/my-jobs";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs'
 import { AuthData } from '../providers/auth/auth';
 import { BrowseJobsPage } from "../pages/browse-jobs/browse-jobs";
 import { BiddingPage } from "../pages/bidding/bidding";
-import { MyJobsPage } from "../pages/my-jobs/my-jobs";
+
 import { ViewJobPage } from "../pages/view-job/view-job";
 import { ChatsPage } from "../pages/chats/chats";
 import { NotificationsPage } from "../pages/notifications/notifications";
@@ -38,11 +39,12 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 @NgModule({
   declarations: [
+    MyJobsPage,
     MyApp,
     BrowseJobsPage,
     BiddingPage,
     HomePage,
-    MyJobsPage,
+
     ViewJobPage,
     ChatsPage,
     NotificationsPage,
@@ -67,12 +69,13 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    MyJobsPage,
     MyApp,
     BrowseJobsPage,
     BiddingPage,
     HomePage,
     WorkDonePage,
-    MyJobsPage,
+
     ViewJobPage,
     ChatsPage,
     NotificationsPage,
