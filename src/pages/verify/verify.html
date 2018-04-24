@@ -19,8 +19,8 @@
 <ion-content padding>
   <div *ngFor="let workerlist of workerlist | async">
 <h1>Job title: {{jobDetails?.title}}</h1>
-<p class="description">Status: {{jobDetails?.payRequest}}</p>
-<p class="description">Paymet: {{jobDetails?.status}} &euro;</p>
+<p class="description">Status: {{jobDetails?.status}}</p>
+<p class="description">Paymet: {{jobDetails?.payRequest}} &euro;</p>
 <p class="description">Worker: {{workerlist?.name}}</p>
 <button text-wrap ion-item (click)="acceptpayment()" >Accept Payment</button>
 </div>

@@ -28,6 +28,7 @@ import { AcceptBidPage } from "../pages/accept-bid/accept-bid";
 import { WorkDonePage } from "../pages/work-done/work-done";
 import { AccpetBidInfoPage } from "../pages/accpet-bid-info/accpet-bid-info";
 import { VerifyPage } from "../pages/verify/verify";
+import {OngoingJobPage} from "../pages/ongoing-job/ongoing-job";
 
 import { BidInfoPage } from "../pages/bid-info/bid-info";
 import { Ionic2RatingModule } from 'ionic2-rating';
@@ -55,6 +56,7 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     AccpetBidInfoPage,
     VerifyPage,
     BidInfoPage,
+    OngoingJobPage,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +87,7 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     AccpetBidInfoPage,
     VerifyPage,
     BidInfoPage,
+    OngoingJobPage,
   ],
   providers: [
     Camera,

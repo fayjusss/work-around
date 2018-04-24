@@ -17,10 +17,15 @@
 
 
 <ion-content padding>
-  <div class="job-info">
+  <div class="job-info" *ngFor="let providerList of providerList | async">
+    <div class="job-info" *ngFor="let jobList of jobList | async">
     <h1>Title: {{ jobDetails?.title }} </h1>
     <p class="description"> Starting date:{{ jobDetails?.startDate}} </p>
     <p class="description"> Ending date:{{ jobDetails?.endDate}} </p>
-    <h3>Starting Bid: <a class="money">{{ jobDetails?.payRequest }} &euro;</a></h3>
+    <p>Provider Name:{{providerList?.name}}</p>
+    <h3>Starting Bid: <a class="money">{{ jobDetails?.providerMoneyOffer }} &euro;</a></h3>
+    <h3>Your Bid: <a class="money">{{ jobDetails?.payRequest }} &euro;</a></h3>
   </div>
+  </div>
+  <button text-wrap ion-item class="accept" (click)="accept()" >OK</button>
 </ion-content>

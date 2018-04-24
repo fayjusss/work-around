@@ -1,0 +1,26 @@
+<!--
+  Generated template for the OngoingJobPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Ongoing Job</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="job-info" *ngFor="let workerList of workerList | async">
+  <h1>Title: {{ jobDetails?.title }} </h1>
+  <p class="description"> Status:<ion-badge class="badge-success">On going</ion-badge></p>
+  <p>Payment: {{jobDetails?.money}}</p>
+  
+  </div>
+</ion-content>

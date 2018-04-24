@@ -9,6 +9,7 @@ import {AcceptBidPage} from '../accept-bid/accept-bid';
 import {WorkDonePage} from '../work-done/work-done';
 import { VerifyPage } from '../verify/verify';
 import {BidInfoPage} from '../bid-info/bid-info';
+import {OngoingJobPage} from "../ongoing-job/ongoing-job";
 
 @IonicPage()
 @Component({
@@ -45,6 +46,7 @@ export class MyJobsPage {
           this.myjobList = this.afs.collection
               ('jobs', ref => ref.where('providerId', '==', auth.uid).where('status','==','open'))
               .valueChanges();
+              
           this.mybidList = this.afs.collection
               ('bids', ref => ref.where('seekerID','==',auth.uid).where('status','==','open'))
               .valueChanges();
@@ -80,6 +82,11 @@ export class MyJobsPage {
     presentBidInfoModal(myBid){
       let BidInfoModal = this.modalCtrl.create(BidInfoPage, myBid);
       BidInfoModal.present();
+    }
+
+    presentOngoingModal(ongoingJob){
+      let OngoingModal = this.modalCtrl.create(OngoingJobPage, ongoingJob);
+      OngoingModal.present();
     }
 
     showjoblist(){
