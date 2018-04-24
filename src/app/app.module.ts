@@ -21,6 +21,7 @@ import { BiddingPage } from "../pages/bidding/bidding";
 import { MyJobsPage } from "../pages/my-jobs/my-jobs";
 import { ViewJobPage } from "../pages/view-job/view-job";
 import { ChatsPage } from "../pages/chats/chats";
+import { IntroPage } from "../pages/intro/intro";
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { ProfilePage } from "../pages/profile/profile";
 import { NewDialoguePage } from "../pages/new-dialogue/new-dialogue";
@@ -39,6 +40,7 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
 @NgModule({
   declarations: [
     MyApp,
+    IntroPage,
     BrowseJobsPage,
     BiddingPage,
     HomePage,
@@ -68,6 +70,7 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    IntroPage,
     BrowseJobsPage,
     BiddingPage,
     HomePage,

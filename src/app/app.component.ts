@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 import { TabsPage } from "../pages/tabs/tabs";
+import { IntroPage } from "../pages/intro/intro";
 
 import { credentials } from './config';
 
@@ -28,7 +29,7 @@ export class MyApp {
         this.rootPage = 'LoginPage';
         unsubscribe();
       } else {
-        this.rootPage = TabsPage;
+        this.rootPage = IntroPage;
         unsubscribe();
       }
     });
