@@ -32,12 +32,7 @@ export class BrowseJobsPage {
   startDate: any;
   endDate: any;
   hide:boolean = false;
-  public customOptions: any = {
-    buttons: [{
-      text: 'Clear',
-      handler: () => this.startDatePicker.setValue(null)
-    }]
-  }
+  public customOptions : any;
 
   constructor(
     public navCtrl: NavController,

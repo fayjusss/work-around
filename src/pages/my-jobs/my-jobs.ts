@@ -27,7 +27,7 @@ export class MyJobsPage {
 
     constructor(
     public navCtrl: NavController,
-    public modalCtrl: ModalController, 
+    public modalCtrl: ModalController,
     public navParams: NavParams,
     public authProvider: AuthData,
     private afAuth: AngularFireAuth,
@@ -36,7 +36,7 @@ export class MyJobsPage {
     }
 
     nagivateToCreateJob() {
-        this.navCtrl.push('AddJobPage');
+      this.navCtrl.push('AddJobPage');
     }
 
     ionViewDidLoad() {

@@ -3,13 +3,6 @@ import { IonicPage, ViewController, NavParams, ModalController } from 'ionic-ang
 import {BiddingPage} from "../bidding/bidding";
 import {Job} from "../../models/job";
 
-/**
- * Generated class for the ViewJobPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-view-job',

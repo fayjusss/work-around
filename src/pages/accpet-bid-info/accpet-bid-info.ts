@@ -3,12 +3,7 @@ import { IonicPage, NavController, ViewController, NavParams } from 'ionic-angul
 import {Bid} from "../../models/bid";
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
-/**
- * Generated class for the AccpetBidInfoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -29,6 +24,7 @@ export class AccpetBidInfoPage {
     this.bidinfo = this.afs.collection('users', ref => ref.where('id','==',this.bidDetails.seekerID))
     .valueChanges();
   }
+
   closeModal(){
     this.viewCtrl.dismiss();
   }

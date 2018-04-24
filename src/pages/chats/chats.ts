@@ -13,6 +13,8 @@ import { NewDialoguePage } from "../new-dialogue/new-dialogue";
 })
 export class ChatsPage {
   chatList: Observable<any[]>;
+  otherUsersId: string;
+  userList: Observable<any[]>;
 
   constructor(
     public messengerProvider: MessengerProvider,
@@ -23,6 +25,16 @@ export class ChatsPage {
   {
     this.chatList = this.messengerProvider
       .getChatsList()
+      .snapshotChanges().map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })
+      })
+
+    this.userList = this.messengerProvider
+      .getUsersList()
       .snapshotChanges().map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -41,5 +53,38 @@ export class ChatsPage {
     this.navCtrl.push('MessengerPage', {
       chatId: chatId
     });
+  }
+
+  userHasThisChat(chat) {
+    if (chat.participant_1 == this.messengerProvider.userId)
+    {
+      this.otherUsersId = chat.participant_2;
+      return true;
+    } else if (chat.participant_2 == this.messengerProvider.userId)
+    {
+      this.otherUsersId = chat.participant_1;
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  isThisUser(user) {
+    if (this.otherUsersId == user.id ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  showOtherUsersName(user) {
+    if (user) {
+      if (this.otherUsersId == user.id) {
+        return user.name;
+      } else {
+        return "Kotakbas Ivanovich";
+      }
+    }
   }
 }

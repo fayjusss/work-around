@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Chat
+      Fayjus Salehin
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -10,7 +10,6 @@
   <div id="chatMessages">
      <div *ngFor="let message of messagesList | async" [class]="message.specialMessage ? 'message special' : 'message'">
        <div [class]="message.senderId == userId ? 'innerMessage messageRight' : 'innerMessage messageLeft'">
-         <div class="username">{{ message.user}}</div>
          <div class="messageContent">{{ message.messageText }}</div>
        </div>
      </div>
