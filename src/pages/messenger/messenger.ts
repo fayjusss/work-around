@@ -44,23 +44,13 @@ export class MessengerPage {
     this.message = '';
   }
 
-  ionViewDidLoad() {
-    // You joined the chat code
-    // console.log(this.navParams.get('chatId'));
+  getName() {
 
-    // try {
-    //   this.messengerProvider.sendSpecialMessage("joined", moment().toISOString());
-    // } catch (error) {
-    //   console.log(error);
-    // }
+  }
+
+  ionViewDidLoad() {
   }
 
   ionViewWillLeave() {
-    // You left the chat code
-    // try {
-    //   this.messengerProvider.sendSpecialMessage("left", moment().toISOString());
-    // } catch (error) {
-    //   console.log(error);
-    // }
   }
 }
