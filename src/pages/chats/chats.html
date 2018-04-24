@@ -12,6 +12,11 @@
 
 <ion-content padding>
   <ion-list no-lines>
+    <div class="no-dialogues">
+      <div>
+        <span color="light">You don't have any conversations yet.<br>Start a new conversation!</span>
+      </div>
+    </div>
     <div *ngFor="let chat of chatList | async; index as i">
       <ion-item *ngIf="userHasThisChat(chat)">
         <button text-wrap ion-item (click)="openChat(chat.id)">
