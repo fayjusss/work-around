@@ -3,6 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
+import { IntroPage } from "../pages/intro/intro";
 import { TabsPage } from "../pages/tabs/tabs";
 
 import { credentials } from './config';
@@ -25,7 +26,7 @@ export class MyApp {
 
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
       if (!user) {
-        this.rootPage = 'LoginPage';
+        this.rootPage = 'IntroPage';
         unsubscribe();
       } else {
         this.rootPage = TabsPage;
