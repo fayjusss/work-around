@@ -40,7 +40,6 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
 @NgModule({
   declarations: [
     MyApp,
-    IntroPage,
     BrowseJobsPage,
     BiddingPage,
     HomePage,
@@ -70,7 +69,6 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    IntroPage,
     BrowseJobsPage,
     BiddingPage,
     HomePage,
