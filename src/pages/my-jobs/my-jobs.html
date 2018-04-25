@@ -46,12 +46,12 @@
       </button>
 
       <!--Ongoing jobs list-->
-      <button text-wrap ion-item  *ngFor="let ongoingJob of ongoingList | async" ><!--(click)="presentOngoingModal(ongoingJob)">-->
+      <button text-wrap ion-item  *ngFor="let ongoingJob of ongoingList | async" (click)="presentOngoingModal(ongoingJob)">
         <ion-badge class="badge-success">On going</ion-badge>
         <h3> <b>{{ ongoingJob.title }}</b> </h3>
         <p>
           <!--Money-->
-          <span *ngIf="ongoingJob.money; else noMoney"> {{ ongoingJob.money }}&euro; </span>
+          <span *ngIf="ongoingJob.payRequest; else noMoney"> {{ ongoingJob.payRequest }}&euro; </span>
           <ng-template #noMoney><span ion-text color="light">Budget is not specified</span></ng-template>
           <!--&bull;-->
 

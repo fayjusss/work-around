@@ -18,13 +18,14 @@
 
 <ion-content padding>
   <div *ngFor="let bidinfo of bidinfo | async">
+    <div *ngFor="let workinfo of workinfo | async">
 <h2>Title:{{ bidDetails?.title}} </h2>
-<h2>Payment:£{{ bidDetails?.payRequest}}</h2>
-<h2>Provider name:{{ bidinfo?.name}} </h2>
-<div *ngFor="let workinfo of workinfo | async">
-<h2>description:{{ workinfo?.description}} </h2>
+<p class="description">Status: <ion-badge class="badge-success">On process</ion-badge> </p>
+<p class="description">Payment:£{{ bidDetails?.payRequest}}</p>
+<p class="description">Provider name:{{ bidinfo?.name}} </p>
+<h3>description:{{ workinfo?.description}} </h3>
 </div>
-<button text-wrap ion-item (click)="Complete()" >Complete Job</button>
+<button text-wrap ion-item class="middle" (click)="Complete()" >Complete Job</button>
 </div>
 
 </ion-content>

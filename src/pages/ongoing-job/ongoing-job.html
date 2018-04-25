@@ -20,7 +20,9 @@
   <div class="job-info" *ngFor="let workerList of workerList | async">
   <h1>Title: {{ jobDetails?.title }} </h1>
   <p class="description"> Status:<ion-badge class="badge-success">On going</ion-badge></p>
-  <p>Payment: {{jobDetails?.money}}</p>
-  
+  <p>Payment: {{jobDetails?.payRequest}}</p>
+  <p>Worker: {{workerList?.name}}</p>
+  <button text-wrap ion-item class="middle" (click)="accept()" >OK</button>
+
   </div>
 </ion-content>

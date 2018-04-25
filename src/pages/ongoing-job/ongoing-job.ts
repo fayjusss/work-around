@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
-import {Job} from "../../models/job";
+import {Bid} from "../../models/bid";
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import { AngularFireAuth } from "angularfire2/auth";
@@ -18,7 +18,7 @@ import { AngularFireAuth } from "angularfire2/auth";
   templateUrl: 'ongoing-job.html',
 })
 export class OngoingJobPage {
-  jobDetails: Job;
+  jobDetails: Bid;
   workerList: Observable<any>;
   constructor(public navCtrl: NavController,private afAuth: AngularFireAuth, public navParams: NavParams, public modalCtrl: ModalController,public viewCtrl: ViewController,
   public afs: AngularFirestore) {
@@ -26,11 +26,14 @@ export class OngoingJobPage {
 
   ionViewDidLoad() {
     this.jobDetails = this.navParams.data;
-    this.workerList = this.afs.collection('bids', ref => ref.where('jobId', '==', this.jobDetails.jobId).where('status','==',this.jobDetails.status))
+    this.workerList = this.afs.collection('users', ref => ref.where('id', '==', this.jobDetails.seekerID))
     .valueChanges();
 
   }
   closeModal(){
+    this.viewCtrl.dismiss();
+  }
+  accept(){
     this.viewCtrl.dismiss();
   }
 
