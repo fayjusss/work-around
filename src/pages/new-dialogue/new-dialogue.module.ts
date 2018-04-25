@@ -4,7 +4,7 @@ import { NewDialoguePage } from './new-dialogue';
 
 @NgModule({
   declarations: [
-    NewDialoguePage,
+    // NewDialoguePage,
   ],
   imports: [
     IonicPageModule.forChild(NewDialoguePage),

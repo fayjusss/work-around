@@ -28,12 +28,18 @@ import { AcceptBidPage } from "../pages/accept-bid/accept-bid";
 import { WorkDonePage } from "../pages/work-done/work-done";
 import { AccpetBidInfoPage } from "../pages/accpet-bid-info/accpet-bid-info";
 import { VerifyPage } from "../pages/verify/verify";
+import { LoginPage } from "../pages/login/login";
+import { AddJobPage } from "../pages/add-job/add-job";
+import { EditProfilePage } from "../pages/edit-profile/edit-profile";
+import { ProfileupdatePage } from "../pages/profileupdate/profileupdate";
+import { ResetPasswordPage } from "../pages/reset-password/reset-password";
 
 import { Ionic2RatingModule } from 'ionic2-rating';
 import { JobsProvider } from '../providers/jobs/jobs';
 import { MessengerProvider } from '../providers/messenger/messenger';
 import { Camera } from '@ionic-native/camera';
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import {SignupPage} from "../pages/signup/signup";
 
 
 @NgModule({
@@ -53,6 +59,12 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     WorkDonePage,
     AccpetBidInfoPage,
     VerifyPage,
+    LoginPage,
+    AddJobPage,
+    EditProfilePage,
+    ProfileupdatePage,
+    ResetPasswordPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -82,6 +94,12 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     AcceptBidPage,
     AccpetBidInfoPage,
     VerifyPage,
+    LoginPage,
+    AddJobPage,
+    EditProfilePage,
+    ProfileupdatePage,
+    ResetPasswordPage,
+    SignupPage
   ],
   providers: [
     Camera,
