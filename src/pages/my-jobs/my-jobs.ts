@@ -8,6 +8,8 @@ import { Observable } from 'rxjs/Observable';
 import {AcceptBidPage} from '../accept-bid/accept-bid';
 import {WorkDonePage} from '../work-done/work-done';
 import { VerifyPage } from '../verify/verify';
+import {BidInfoPage} from '../bid-info/bid-info';
+import {OngoingJobPage} from "../ongoing-job/ongoing-job";
 
 @IonicPage()
 @Component({
@@ -44,11 +46,12 @@ export class MyJobsPage {
           this.myjobList = this.afs.collection
               ('jobs', ref => ref.where('providerId', '==', auth.uid).where('status','==','open'))
               .valueChanges();
+
           this.mybidList = this.afs.collection
               ('bids', ref => ref.where('seekerID','==',auth.uid).where('status','==','open'))
               .valueChanges();
           this.ongoingList = this.afs.collection
-                  ('jobs', ref => ref.where('providerId', '==', auth.uid).where('status','==','ongoing'))
+                  ('bids', ref => ref.where('providerId', '==', auth.uid).where('status','==','ongoing'))
                   .valueChanges();
         this.workingList = this.afs.collection
                       ('bids', ref => ref.where('seekerID','==',auth.uid).where('status','==','ongoing'))
@@ -74,6 +77,16 @@ export class MyJobsPage {
     presentWorkingModal(workingList){
       let viewWorkModal = this.modalCtrl.create(WorkDonePage, workingList);
       viewWorkModal.present();
+    }
+
+    presentBidInfoModal(myBid){
+      let BidInfoModal = this.modalCtrl.create(BidInfoPage, myBid);
+      BidInfoModal.present();
+    }
+
+    presentOngoingModal(ongoingJob){
+      let OngoingModal = this.modalCtrl.create(OngoingJobPage, ongoingJob);
+      OngoingModal.present();
     }
 
     showjoblist(){
