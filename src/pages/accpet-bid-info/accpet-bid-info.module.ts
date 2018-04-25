@@ -4,7 +4,7 @@ import { AccpetBidInfoPage } from './accpet-bid-info';
 
 @NgModule({
   declarations: [
-    AccpetBidInfoPage,
+    // AccpetBidInfoPage,
   ],
   imports: [
     IonicPageModule.forChild(AccpetBidInfoPage),

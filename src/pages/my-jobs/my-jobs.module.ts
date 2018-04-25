@@ -4,7 +4,7 @@ import { MyJobsPage } from './my-jobs';
 
 @NgModule({
   declarations: [
-    MyJobsPage,
+    // MyJobsPage,
   ],
   imports: [
     IonicPageModule.forChild(MyJobsPage),
