@@ -29,18 +29,16 @@ import { AcceptBidPage } from "../pages/accept-bid/accept-bid";
 import { WorkDonePage } from "../pages/work-done/work-done";
 import { AccpetBidInfoPage } from "../pages/accpet-bid-info/accpet-bid-info";
 import { VerifyPage } from "../pages/verify/verify";
-import { LoginPage } from "../pages/login/login";
-import { AddJobPage } from "../pages/add-job/add-job";
+import {OngoingJobPage} from "../pages/ongoing-job/ongoing-job";
 import { EditProfilePage } from "../pages/edit-profile/edit-profile";
-import { ProfileupdatePage } from "../pages/profileupdate/profileupdate";
-import { ResetPasswordPage } from "../pages/reset-password/reset-password";
 
+import { BidInfoPage } from "../pages/bid-info/bid-info";
 import { Ionic2RatingModule } from 'ionic2-rating';
 import { JobsProvider } from '../providers/jobs/jobs';
 import { MessengerProvider } from '../providers/messenger/messenger';
 import { Camera } from '@ionic-native/camera';
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
-import {SignupPage} from "../pages/signup/signup";
+
 
 
 @NgModule({
@@ -60,12 +58,9 @@ import {SignupPage} from "../pages/signup/signup";
     WorkDonePage,
     AccpetBidInfoPage,
     VerifyPage,
-    LoginPage,
-    AddJobPage,
+    BidInfoPage,
+    OngoingJobPage,
     EditProfilePage,
-    ProfileupdatePage,
-    ResetPasswordPage,
-    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -95,12 +90,10 @@ import {SignupPage} from "../pages/signup/signup";
     AcceptBidPage,
     AccpetBidInfoPage,
     VerifyPage,
-    LoginPage,
-    AddJobPage,
+    BidInfoPage,
+    OngoingJobPage,
     EditProfilePage,
-    ProfileupdatePage,
-    ResetPasswordPage,
-    SignupPage
+
   ],
   providers: [
     Camera,

@@ -4,7 +4,7 @@ import { BiddingPage } from './bidding';
 
 @NgModule({
   declarations: [
-    // BiddingPage,
+    BiddingPage,
   ],
   imports: [
     IonicPageModule.forChild(BiddingPage),

@@ -16,6 +16,7 @@ export class AccpetBidInfoPage {
   private sendNoti: AngularFirestoreDocument<any>;
   private jobDocument: AngularFirestoreDocument<any>;
   private bidDocument: AngularFirestoreDocument<any>;
+
   constructor(public navCtrl: NavController,public afs: AngularFirestore,public viewCtrl: ViewController, public navParams: NavParams) {
   }
 
@@ -43,6 +44,7 @@ export class AccpetBidInfoPage {
       status:'ongoing',
       money: this.bidDetails.payRequest,
       time:this.bidDetails.time,
+      status2: "closed",
 
     })
 
@@ -51,6 +53,9 @@ export class AccpetBidInfoPage {
       status:'ongoing',
 
     })
+
+
+
     this.viewCtrl.dismiss();
   }
 

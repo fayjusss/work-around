@@ -8,4 +8,5 @@ export interface Job {
     startDate: string;
     endDate: string;
     status:string;
+    status2:string;
 }

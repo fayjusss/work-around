@@ -60,6 +60,7 @@ export class AddJobPage {
           const startDate: string = this.addJobForm.value.startDate;
           const endDate: string = this.addJobForm.value.endDate;
           const status:string = 'open';
+          const status2:string = '';
 
           try {
               // Here we'll talk to the provider
@@ -70,7 +71,8 @@ export class AddJobPage {
                   money,
                   startDate,
                   endDate,
-                  status
+                  status,
+                  status2
               );
               await loading.dismiss();
               this.navCtrl.pop();

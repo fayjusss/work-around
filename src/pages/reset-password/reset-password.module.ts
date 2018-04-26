@@ -4,7 +4,7 @@ import { ResetPasswordPage } from './reset-password';
 
 @NgModule({
   declarations: [
-    // ResetPasswordPage,
+    ResetPasswordPage,
   ],
   imports: [
     IonicPageModule.forChild(ResetPasswordPage),

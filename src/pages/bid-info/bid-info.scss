@@ -1,4 +1,4 @@
-page-accept-bid {
+page-bid-info {
   .money{
     color: green !important;
   }
@@ -6,12 +6,19 @@ page-accept-bid {
     margin-top: 5px;
   }
   .job-info{
-    
+
     padding: 5px 10px 5px 10px;
-    margin: 15px 5px 15px 5px;
+    margin: 10px 5px 10px 5px;
     border-radius: 5px;
   }
-  .job-bid-info{
 
+  .statusclose{
+    background-color: red;
   }
+
+  .accept{
+    text-align: center;
+  }
+
+
 }
