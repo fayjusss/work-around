@@ -4,7 +4,7 @@ import { WorkDonePage } from './work-done';
 
 @NgModule({
   declarations: [
-    // WorkDonePage,
+    WorkDonePage,
   ],
   imports: [
     IonicPageModule.forChild(WorkDonePage),
