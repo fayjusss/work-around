@@ -4,7 +4,7 @@ import { AcceptBidPage } from './accept-bid';
 
 @NgModule({
   declarations: [
-    AcceptBidPage,
+    // AcceptBidPage,
   ],
   imports: [
     IonicPageModule.forChild(AcceptBidPage),
