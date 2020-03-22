@@ -1,2 +1,2 @@
 # WorkAround
-A hybrid job posting/finding application based on ionic created for Software Development Project 2 course from OAMK.
+A hybrid application for job posting/finding based on ionic. It was created for Software Development Project 2 course from OAMK.
